@@ -1,32 +1,31 @@
-<div *ngIf (isVisible)>
+
   <form>
     <h2> Login or Signup </h2>
-    <label> Username </label>
+    <label> <span class="fa fa-user"></span> Username :  </label>
+      <br>
     <input type="text" [(ngModel)]="formInfo.username" name="username"/>
     <br>
-    <label> Password </label>
+    <label><span class="fa fa-key"></span> Password : </label>
+      <br>
     <input type="password" [(ngModel)]="formInfo.password" name="password"/>
     <br>
-    <label> Email </label>
+    <label><span class="fa fa-at"></span> Email :  </label>
+      <br>
     <input type="text" [(ngModel)]="formInfo.email" name="email"/>
-    <br>
+      <br>
     <button (click)="login()"> login </button>
+
     <button (click)="signup()"> signup </button>
   </form>
-</div>
 <p class="error"> {{ error }} </p>
 
 <div *ngIf="user">
   <h2> You are now logged in as {{ user.username }}!! </h2>
   <p> Here's the user object </p>
   <pre> {{ user | json }} </pre>
-<!-- 
-  <p *ngIf="privateData"> Here's some data fetched from a protected API </p>
-  <pre> {{ privateData | json }} </pre> -->
 
   <button (click)="logout()"> logout </button>
-  <!-- <button (click)="getPrivateData()"> Get private data </button> -->
 </div>
 
-<router-outlet></router-outlet>
+
 

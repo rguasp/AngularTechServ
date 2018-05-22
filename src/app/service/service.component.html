@@ -3,3 +3,11 @@
 <p>
   service works!
 </p>
+
+<ul>
+<li *ngFor="let oneService of allTheServices">
+  <p> {{oneService}} </p>
+<a routerLink="/services/{{oneService._id}}" ><h3>{{oneService.name}}</h3></a>
+<!--<button type="button" (click)="deleteTask(oneTask._id)" >Delete</button>-->
+</li>
+</ul>

@@ -15,7 +15,6 @@ const routes: Routes = [
   { path: 'service', component: ServiceComponent }
 ];
 
-
 @NgModule({
   declarations: [
     AppComponent,

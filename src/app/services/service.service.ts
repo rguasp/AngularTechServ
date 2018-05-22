@@ -10,8 +10,8 @@ export class serviceService {
 
   constructor(private http: Http) { }
 
-  getAllServices(e) {
-    return this.http.get('http://localhost:3000/service')
+  getAllServices() {
+    return this.http.get('http://localhost:3000/services/services')
         .map((responseFromApi) => responseFromApi.json())
   }
 }
