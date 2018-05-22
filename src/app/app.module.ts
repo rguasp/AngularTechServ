@@ -9,10 +9,14 @@ import { HomeComponent } from './home/home.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { OfferedServicesComponent } from './offered-services/offered-services.component';
 import { ProductsListComponent } from './products-list/products-list.component';
+import { SignupComponent } from './components/signup/signup.component';
+import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home',  component: HomeComponent },
+  { path: 'login',  component: LoginComponent },
+  { path: 'signup',  component: SignupComponent },
   { path: 'profile',  component: UserProfileComponent },
   { path: 'services',  component: OfferedServicesComponent },
   { path: 'products',  component: ProductsListComponent }
@@ -26,13 +30,15 @@ const routes: Routes = [
     HomeComponent,
     UserProfileComponent,
     OfferedServicesComponent,
-    ProductsListComponent
+    ProductsListComponent,
+    SignupComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(routes)  
+    RouterModule.forRoot(routes)
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

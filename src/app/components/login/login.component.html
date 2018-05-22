@@ -1,0 +1,20 @@
+<form>
+    <h2> Login </h2>
+    <label> <span class="fa fa-user"></span> Username : </label>
+      <br>
+    <input type="text" [(ngModel)]="formInfo.username" name="username"/>
+    <br>
+    <label><span class="fa fa-key"></span> Password : </label>
+      <br>
+    <input type="password" [(ngModel)]="formInfo.password" name="password"/>
+    <br>
+    <button (click)="login()" class="btn btn-success"> login </button>
+      </form>
+  <p class="error"> {{ error }} </p>
+  
+
+<div>
+Don't have account? <a [routerLink]="['/signup']">Signup</a>
+</div>
+
+

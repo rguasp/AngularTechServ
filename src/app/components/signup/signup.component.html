@@ -1,10 +1,5 @@
-<h1>HomePage</h1>
-
-
-
-
-<!-- <form>
-    <h2> Login or Signup </h2>
+<form>
+    <h2> Signup </h2>
     <label> <span class="fa fa-user"></span> Username : </label>
       <br>
     <input type="text" [(ngModel)]="formInfo.username" name="username"/>
@@ -16,9 +11,7 @@
     <label><span class="fa fa-at"></span> Email : </label>
       <br>
     <input type="text" [(ngModel)]="formInfo.email" name="email"/>
-    <br><br>
-    <button (click)="login()" class="btn btn-success"> login </button>
-    
+    <br><br>    
     <button (click)="signup()" class="btn btn-success"> signup </button>
   </form>
   <p class="error"> {{ error }} </p>
@@ -30,4 +23,8 @@
   
     <button (click)="logout()" class="btn btn-success"> logout </button>
   </div> 
-   -->
+
+  <div>
+    You have account? <a [routerLink]="['/login']">Login</a>
+  </div>
+  
