@@ -9,6 +9,8 @@ import { Observable } from 'rxjs/Observable';
 })
 export class HomeComponent implements OnInit {
 
+  isVisible: boolean = false;
+
   constructor(private myService: AuthService) {}
 
   formInfo: any = {username: '', password: '', email: ''};
@@ -18,12 +20,14 @@ export class HomeComponent implements OnInit {
   error: string;
 
   title = 'app';
-
+  
   login() {
+    this.isVisible = true;
     this.myService.login(this.formInfo)
       .subscribe(
         (user) => {this.user = user;
           this.formInfo = {}; // clear the input
+          this.isVisible = true;
         },
         (err) => this.error = err
       );
