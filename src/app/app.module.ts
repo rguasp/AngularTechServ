@@ -6,17 +6,27 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AuthService } from './services/auth.service';
 import { HomeComponent } from './home/home.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { OfferedServicesComponent } from './offered-services/offered-services.component';
+import { ProductsListComponent } from './products-list/products-list.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home',  component: HomeComponent }
+  { path: 'home',  component: HomeComponent },
+  { path: 'profile',  component: UserProfileComponent },
+  { path: 'services',  component: OfferedServicesComponent },
+  { path: 'products',  component: ProductsListComponent }
+
 ];
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    UserProfileComponent,
+    OfferedServicesComponent,
+    ProductsListComponent
   ],
   imports: [
     BrowserModule,
