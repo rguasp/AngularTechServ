@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './services/auth.service';
 import { Observable } from 'rxjs/Observable';
+
 import { serviceService } from './services/service.service';
+
+import * as $ from 'jquery';
+
 
 @Component({
   selector: 'app-root',
@@ -11,6 +15,7 @@ import { serviceService } from './services/service.service';
 export class AppComponent {
 
   constructor() {}
+
 
  
 }

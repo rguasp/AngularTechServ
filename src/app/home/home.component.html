@@ -1,22 +1,23 @@
 
-  <form>
-    <h2> Login or Signup </h2>
-    <label> <span class="fa fa-user"></span> Username :  </label>
-      <br>
-    <input type="text" [(ngModel)]="formInfo.username" name="username"/>
+<form>
+  <h2> Login or Signup </h2>
+  <label> <span class="fa fa-user"></span> Username : </label>
     <br>
-    <label><span class="fa fa-key"></span> Password : </label>
-      <br>
-    <input type="password" [(ngModel)]="formInfo.password" name="password"/>
+  <input type="text" [(ngModel)]="formInfo.username" name="username"/>
+  <br>
+  <label><span class="fa fa-key"></span> Password : </label>
     <br>
-    <label><span class="fa fa-at"></span> Email :  </label>
-      <br>
-    <input type="text" [(ngModel)]="formInfo.email" name="email"/>
-      <br>
-    <button (click)="login()"> login </button>
+  <input type="password" [(ngModel)]="formInfo.password" name="password"/>
+  <br>
+  <label><span class="fa fa-at"></span> Email : </label>
+    <br>
+  <input type="text" [(ngModel)]="formInfo.email" name="email"/>
+  <br><br>
+  <button (click)="login()" class="btn btn-success"> login </button>
 
-    <button (click)="signup()"> signup </button>
-  </form>
+  <button (click)="signup()" class="btn btn-success"> signup </button>
+</form>
+
 <p class="error"> {{ error }} </p>
 
 <div *ngIf="user">
@@ -24,8 +25,8 @@
   <p> Here's the user object </p>
   <pre> {{ user | json }} </pre>
 
-  <button (click)="logout()"> logout </button>
+
 </div>
-
-
+  <button (click)="logout()" class="btn btn-success"> logout </button>
+</div>
 
