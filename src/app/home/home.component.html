@@ -1,5 +1,4 @@
 
-
 <form>
   <h2> Login or Signup </h2>
   <label> <span class="fa fa-user"></span> Username : </label>
@@ -18,6 +17,7 @@
 
   <button (click)="signup()" class="btn btn-success"> signup </button>
 </form>
+
 <p class="error"> {{ error }} </p>
 
 <div *ngIf="user">
@@ -25,5 +25,8 @@
   <p> Here's the user object </p>
   <pre> {{ user | json }} </pre>
 
+
+</div>
   <button (click)="logout()" class="btn btn-success"> logout </button>
 </div>
+

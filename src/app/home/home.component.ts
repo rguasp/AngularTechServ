@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
   error: string;
 
   title = 'app';
-
+  
   login() {
     this.myService.login(this.formInfo)
       .subscribe(

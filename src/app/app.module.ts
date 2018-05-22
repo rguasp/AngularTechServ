@@ -6,17 +6,20 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AuthService } from './services/auth.service';
 import { HomeComponent } from './home/home.component';
+import { ServiceComponent } from './service/service.component';
+import { serviceService } from './services/service.service';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home',  component: HomeComponent }
+  { path: 'home',  component: HomeComponent },
+  { path: 'service', component: ServiceComponent }
 ];
-
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    ServiceComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +27,7 @@ const routes: Routes = [
     HttpModule,
     RouterModule.forRoot(routes)  
   ],
-  providers: [AuthService],
+  providers: [AuthService, serviceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
