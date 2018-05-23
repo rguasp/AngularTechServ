@@ -15,6 +15,8 @@ import { LoginComponent } from './components/login/login.component';
 
 import { ServiceComponent } from './service/service.component';
 import { serviceService } from './services/service.service';
+import { ReviewsComponent } from './reviews/reviews.component';
+import { reviewService } from './services/review.service';
 
 
 const routes: Routes = [
@@ -23,9 +25,11 @@ const routes: Routes = [
   { path: 'login',  component: LoginComponent },
   { path: 'signup',  component: SignupComponent },
   { path: 'profile',  component: UserProfileComponent },
-  { path: 'services',  component: OfferedServicesComponent },
+  // { path: 'services',  component: OfferedServicesComponent },
   { path: 'products',  component: ProductsListComponent },
-  { path: 'service', component: ServiceComponent }
+  { path: 'services', component: ServiceComponent },
+  { path: 'reviews', component: ReviewsComponent }
+
 
 ];
 
@@ -38,7 +42,8 @@ const routes: Routes = [
     ProductsListComponent,
     SignupComponent,
     LoginComponent,
-    ServiceComponent
+    ServiceComponent,
+    ReviewsComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +51,7 @@ const routes: Routes = [
     HttpModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [AuthService, serviceService],
+  providers: [AuthService, serviceService, reviewService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

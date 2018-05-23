@@ -3,6 +3,7 @@ import { AuthService } from './services/auth.service';
 import { Observable } from 'rxjs/Observable';
 
 import { serviceService } from './services/service.service';
+import { reviewService } from './services/review.service';
 
 import * as $ from 'jquery';
 
