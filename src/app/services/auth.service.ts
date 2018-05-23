@@ -7,6 +7,7 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class AuthService {
+  currentUser: any;
 
   constructor(private http: Http) { }
 
@@ -15,31 +16,31 @@ export class AuthService {
   }
 
   signup(user) {
-    return this.http.post(`http://localhost:3000/api/signup`, user)
+    return this.http.post(`http://localhost:3000/api/signup`, user, { withCredentials: true })
       .map(res => res.json())
       .catch(this.handleError);
   }
 
   login(user) {
-    return this.http.post(`http://localhost:3000/api/login`, user)
+    return this.http.post(`http://localhost:3000/api/login`, user, { withCredentials: true })
       .map(res => res.json())
       .catch(this.handleError);
   }
 
   logout() {
-    return this.http.post(`http://localhost:3000/api/logout`, {})
+    return this.http.delete(`http://localhost:3000/api/logout`, { withCredentials: true })
       .map(res => res.json())
       .catch(this.handleError);
   }
 
   isLoggedIn() {
-    return this.http.get(`http://localhost:3000/api/loggedin`)
-      .map(res => res.json())
+    return this.http.get(`http://localhost:3000/api/loggedin`, { withCredentials: true })
+      .map(userFrombackend => { this.currentUser = userFrombackend, userFrombackend.json(); } )
       .catch(this.handleError);
   }
 
   getPrivateData() {
-    return this.http.get(`http://localhost:3000/api/private`)
+    return this.http.get(`http://localhost:3000/api/private`, { withCredentials: true })
       .map(res => res.json())
       .catch(this.handleError);
   }

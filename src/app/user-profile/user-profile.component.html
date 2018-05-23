@@ -1,0 +1,29 @@
+<h1 class="top-height">Welcome <span class="bestow">{{user.username}}</span>!</h1>
+
+<br>
+
+<div class="flex-container">
+    
+    <div>
+        <img src='{{user.image}}' alt="user" width="175" height="175"> 
+        <br><br>
+        <a href='/profile/{{user._id}}/edit' ><button class="b-color remove ">Edit Profile</button></a>
+        <br><br>
+        
+    </div>
+    
+    
+    <div class="text-left">
+        <p><b>Name:</b><br> {{user.firstname}}  {{user.lastname}}</p>
+        <p><b>E-mail:</b> <br>{{user.email}}</p>
+        
+        
+    </div>
+    
+    <div *ngIf="user">
+        <button (click)="logout()" class="btn btn-success"> logout </button>
+
+        
+        
+    </div>
+</div>
