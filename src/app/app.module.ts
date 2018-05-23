@@ -6,11 +6,16 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AuthService } from './services/auth.service';
 import { HomeComponent } from './home/home.component';
+
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { OfferedServicesComponent } from './offered-services/offered-services.component';
 import { ProductsListComponent } from './products-list/products-list.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
+
+import { ServiceComponent } from './service/service.component';
+import { serviceService } from './services/service.service';
+
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -19,10 +24,10 @@ const routes: Routes = [
   { path: 'signup',  component: SignupComponent },
   { path: 'profile',  component: UserProfileComponent },
   { path: 'services',  component: OfferedServicesComponent },
-  { path: 'products',  component: ProductsListComponent }
+  { path: 'products',  component: ProductsListComponent },
+  { path: 'service', component: ServiceComponent }
 
 ];
-
 
 @NgModule({
   declarations: [
@@ -32,7 +37,8 @@ const routes: Routes = [
     OfferedServicesComponent,
     ProductsListComponent,
     SignupComponent,
-    LoginComponent
+    LoginComponent,
+    ServiceComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +46,7 @@ const routes: Routes = [
     HttpModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [AuthService],
+  providers: [AuthService, serviceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
