@@ -25,7 +25,7 @@ export class UserProfileComponent implements OnInit {
       this.formInfo = this.myService.currentUser;
       console.log(this.formInfo);
       // this.user = JSON.parse(this.myService.currentUser._body);
-      this.user = this.myService.currentUser;
+      // this.user = this.myService.currentUser;
       // console.log('User from profile component: ', JSON.parse(this.myService.currentUser._body))
     })
     .catch( err => {

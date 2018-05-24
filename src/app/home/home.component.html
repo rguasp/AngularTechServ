@@ -1,12 +1,11 @@
 
 
+<div class="top-space"><h1>HOME PAGE</h1></div>
+  <div *ngIf="user">
+    <h2> Hello, {{ user.username }}!! </h2>
+    <p> Welcome to the beginning of a faster PC ! </p>
+    <!--<pre> {{ formInfo | json }} </pre>-->
+    <button (click)="logout()" class="btn btn-success"> logout </button>
+  </div>
 
-<div *ngIf="formInfo">
-  <div class="title"><h1>HOME PAGE</h1></div>
-  <h2> Hello, {{ formInfo.username }}!! </h2>
-  <p> Welcome to the beginning of a faster PC ! </p>
-  <!--<pre> {{ formInfo | json }} </pre>-->
-
-  <button (click)="logout()" class="btn btn-success"> logout </button>
-</div>
 
