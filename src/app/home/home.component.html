@@ -1,20 +1,22 @@
 
-<div class="top-space">
-    <h1>HomePage</h1>
+
 
 </div>
 
 
 
-<!-- 
+
 <p class="error"> {{ error }} </p>
 
-<div *ngIf="user">
-  <h2> You are now logged in as {{ user.username }}!! </h2>
-  <p> Here's the user object </p>
-  <pre> {{ user | json }} </pre>
+
+<div *ngIf="formInfo">
+  <div class="title"><h1>HOME PAGE</h1></div>
+  <h2> Hello, {{ formInfo.username }}!! </h2>
+  <p> Welcome to the beginning of a faster PC ! </p>
+  <!--<pre> {{ formInfo | json }} </pre>-->
 
   <button (click)="logout()" class="btn btn-success"> logout </button>
 </div>
 
-<h1 class="top-height">Welcome <span class="bestow">{{user.username}}</span>!</h1> -->
+<h1 class="top-height">Welcome <span class="bestow">{{user.username}}</span>!</h1> 
+

@@ -18,6 +18,9 @@ export class ServiceComponent implements OnInit {
 
   newService: any = {name: '', description: ''};
 
+    formInfo: any = {username: '', password: '', email: '', role: ''};
+
+
   user: any;
   currentUser: any;
 
@@ -40,9 +43,8 @@ export class ServiceComponent implements OnInit {
     this.myService.isLoggedIn()
     .toPromise()
     .then( () => {
-      console.log(this.myService.currentUser);
-      this.user = this.myService.currentUser;
-      // console.log('User from profile component: ', JSON.parse(this.myService.currentUser._body))
+      this.formInfo = this.myService.currentUser;
+      console.log(this.formInfo);
     })
     .catch( err => {
       console.log('error while accessing unothorized stuff: ', err);

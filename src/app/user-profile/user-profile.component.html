@@ -1,7 +1,11 @@
 
+
 <div class="top-space">
 <h1 class="top-height">Welcome <span class="bestow">{{formInfo.username}}</span>!</h1>
 
+
+
+    <h1 class="top-height">Welcome <span class="bestow">{{formInfo.username}}</span>!</h1>
 
 
 
@@ -35,7 +39,7 @@
     </div>
 
     
-    <div *ngIf="user">
+    <div *ngIf="user.isLoggedIn()">
         <button (click)="logout()" class="btn btn-success"> logout </button>
     </div>
 </div>

@@ -8,7 +8,9 @@
   
   <button type="button" (click)="deleteTask(oneTask._id)" >Create Service</button>
 </div> -->
-<div *ngIf="myService.role === 'ADMIN'">
+
+<div *ngIf="formInfo.role === 'ADMIN'">
+
   <button type="button" (click)="toggleForm()">Add New Service</button>
 </div>
 <br>
