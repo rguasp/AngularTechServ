@@ -8,7 +8,7 @@ import { AuthService } from './services/auth.service';
 import { HomeComponent } from './home/home.component';
 
 import { UserProfileComponent } from './user-profile/user-profile.component';
-import { OfferedServicesComponent } from './offered-services/offered-services.component';
+// import { OfferedServicesComponent } from './offered-services/offered-services.component';
 import { ProductsListComponent } from './products-list/products-list.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
@@ -23,9 +23,9 @@ const routes: Routes = [
   { path: 'login',  component: LoginComponent },
   { path: 'signup',  component: SignupComponent },
   { path: 'profile',  component: UserProfileComponent },
-  { path: 'services',  component: OfferedServicesComponent },
+  // { path: 'services',  component: OfferedServicesComponent },
   { path: 'products',  component: ProductsListComponent },
-  { path: 'service', component: ServiceComponent }
+  { path: 'services', component: ServiceComponent }
 
 ];
 
@@ -34,7 +34,7 @@ const routes: Routes = [
     AppComponent,
     HomeComponent,
     UserProfileComponent,
-    OfferedServicesComponent,
+    // OfferedServicesComponent,
     ProductsListComponent,
     SignupComponent,
     LoginComponent,
