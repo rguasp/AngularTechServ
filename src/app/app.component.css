@@ -1,0 +1,14 @@
+
+
+.t-bar {
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+button {
+    color: white;
+    background-color: #353A3F;
+    border: none;
+}

@@ -9,6 +9,7 @@ import { Observable } from 'rxjs/Observable';
 export class AuthService {
   currentUser: any;
 
+
   constructor(private http: Http) { }
 
   handleError(e) {
@@ -36,7 +37,16 @@ export class AuthService {
   isLoggedIn() {
     return this.http.get(`http://localhost:3000/api/loggedin`, { withCredentials: true })
       // .map(userFrombackend => { this.currentUser = userFrombackend, userFrombackend.json(); } )
+      .map(res => {
+        this.currentUser = res.json();
+      })
       .catch(this.handleError);
+  }
+
+  getUser() {
+    return this.http.get('http://localhost:3000/api/userdata', {withCredentials: true})
+    .map(res => res.json())
+    .catch(this.handleError);
   }
 
   getPrivateData() {

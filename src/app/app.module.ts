@@ -15,6 +15,10 @@ import { LoginComponent } from './components/login/login.component';
 
 import { ServiceComponent } from './service/service.component';
 import { serviceService } from './services/service.service';
+import { Router } from '@angular/router';
+import { ReviewsComponent } from './reviews/reviews.component';
+import { reviewService } from './services/review.service';
+
 
 
 const routes: Routes = [
@@ -25,8 +29,8 @@ const routes: Routes = [
   { path: 'profile',  component: UserProfileComponent },
   // { path: 'services',  component: OfferedServicesComponent },
   { path: 'products',  component: ProductsListComponent },
-  { path: 'services', component: ServiceComponent }
-
+  { path: 'services', component: ServiceComponent },
+  { path: 'reviews', component: ReviewsComponent }
 ];
 
 @NgModule({
@@ -38,7 +42,8 @@ const routes: Routes = [
     ProductsListComponent,
     SignupComponent,
     LoginComponent,
-    ServiceComponent
+    ServiceComponent,
+    ReviewsComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +51,7 @@ const routes: Routes = [
     HttpModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [AuthService, serviceService],
+  providers: [AuthService, serviceService, reviewService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

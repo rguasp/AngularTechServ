@@ -22,20 +22,24 @@ export class UserProfileComponent implements OnInit {
     this.myService.isLoggedIn()
     .toPromise()
     .then( () => {
-      console.log(this.myService.currentUser._body);
-      this.user = JSON.parse(this.myService.currentUser._body);
+      this.formInfo = this.myService.currentUser;
+      console.log(this.formInfo);
+      // this.user = JSON.parse(this.myService.currentUser._body);
+      this.user = this.myService.currentUser;
       // console.log('User from profile component: ', JSON.parse(this.myService.currentUser._body))
     })
     .catch( err => {
-      console.log('error while accessing unothorized stuff: ', err);
+      console.log('error while accessing unauthorized stuff: ', err);
       this.myRouter.navigate(['/']);
     });
   }
 
   logout() {
+    console.log('loged out');
     this.myService.logout()
     .subscribe(
       () => {
+        localStorage.clear();
         this.user = null;
         this.formInfo = {};
         this.myRouter.navigate(['/']);
