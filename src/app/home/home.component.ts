@@ -14,14 +14,13 @@ export class HomeComponent implements OnInit {
   user: any;
   title = 'app';
 
-  
   ngOnInit() {
     // Stores session
     this.myService.isLoggedIn()
     .toPromise()
     .then( () => {
-      console.log(this.myService.currentUser._body);
-      this.user = JSON.parse(this.myService.currentUser._body);
+      console.log('home component.ts ', this.myService.currentUser);
+      this.user = this.myService.currentUser;
       // console.log('User from profile component: ', JSON.parse(this.myService.currentUser._body))
     })
     .catch( err => {

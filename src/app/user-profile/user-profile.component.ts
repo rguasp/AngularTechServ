@@ -40,6 +40,7 @@ export class UserProfileComponent implements OnInit {
     .subscribe(
       () => {
         localStorage.clear();
+        this.myService.currentUser = null;
         this.user = null;
         this.formInfo = {};
         this.myRouter.navigate(['/']);

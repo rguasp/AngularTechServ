@@ -8,7 +8,7 @@
   
   <button type="button" (click)="deleteTask(oneTask._id)" >Create Service</button>
 </div> -->
-<div *ngIf="user.role === 'ADMIN'">
+<div *ngIf="myService.role === 'ADMIN'">
   <button type="button" (click)="toggleForm()">Add New Service</button>
 </div>
 <br>
@@ -30,7 +30,7 @@
       <!-- <p> {{oneService}} </p> -->
 <a routerLink="/services/{{oneService._id}}" ><h3>{{oneService.name}}</h3></a>
 <p>{{oneService.description}}</p>
- <div *ngIf="user.role === 'ADMIN'">
+ <div *ngIf="myService.role === 'ADMIN'">
 
   <button type="button" (click)="deleteTask(oneTask._id)" >Delete</button>
   <button type="button" (click)="deleteTask(oneTask._id)" >Edit</button>

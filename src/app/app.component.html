@@ -47,13 +47,16 @@
                 </div> -->
                   
 
-                <div *ngIf="user; else signup">
-                    
-                       <button (click)="logout()"> <a class="nav-link text-light" [routerLink]="['/login']">Logout</a></button>
+                <div>
+                    <a *ngIf="!myService.currentUser" class="nav-link text-light" [routerLink]="['/signup']">Sign up</a>
+                    <a *ngIf="myService.currentUser" (click)="logout()" class="nav-link text-light" [routerLink]="['/login']">Logout</a>
                 </div>
+                <!-- <div *ngIf="myService; else signup">
+                    <button (click)="logout()"> <a class="nav-link text-light" [routerLink]="['/login']">Logout</a></button>
+                    
+                    <ng-template #signup><a class="nav-link text-light" [routerLink]="['/signup']">Sign up</a></ng-template>
+                </div> -->
                
-                <ng-template #signup><a class="nav-link text-light" [routerLink]="['/signup']">Sign up</a></ng-template>
-                
 
 
             </div>
