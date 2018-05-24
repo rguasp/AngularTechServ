@@ -9,6 +9,7 @@ import { Observable } from 'rxjs/Observable';
 export class AuthService {
   currentUser: any;
 
+
   constructor(private http: Http) { }
 
   handleError(e) {

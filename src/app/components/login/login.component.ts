@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    console.log();
     this.myService.login(this.formInfo)
       .subscribe(
         (user) => {
@@ -35,12 +36,16 @@ export class LoginComponent implements OnInit {
   } // end login
 
   logout() {
+    console.log('loged out');
     this.myService.logout()
     .subscribe(
-      () => {this.user = null;
+      () => {
+        localStorage.clear();
+        this.user = null;
         this.formInfo = {};
+        this.myRouter.navigate(['/']);
       },
       (err) => this.error = err
     );
-  } // end logout
+  }
 }

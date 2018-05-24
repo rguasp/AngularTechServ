@@ -8,15 +8,17 @@ import { AuthService } from './services/auth.service';
 import { HomeComponent } from './home/home.component';
 
 import { UserProfileComponent } from './user-profile/user-profile.component';
-import { OfferedServicesComponent } from './offered-services/offered-services.component';
+// import { OfferedServicesComponent } from './offered-services/offered-services.component';
 import { ProductsListComponent } from './products-list/products-list.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
 
 import { ServiceComponent } from './service/service.component';
 import { serviceService } from './services/service.service';
+import { Router } from '@angular/router';
 import { ReviewsComponent } from './reviews/reviews.component';
 import { reviewService } from './services/review.service';
+
 
 
 const routes: Routes = [
@@ -38,7 +40,7 @@ const routes: Routes = [
     AppComponent,
     HomeComponent,
     UserProfileComponent,
-    OfferedServicesComponent,
+    // OfferedServicesComponent,
     ProductsListComponent,
     SignupComponent,
     LoginComponent,
