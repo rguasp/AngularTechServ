@@ -30,7 +30,7 @@ export class UserProfileComponent implements OnInit {
     })
     .catch( err => {
       console.log('error while accessing unauthorized stuff: ', err);
-      this.myRouter.navigate(['/']);
+      this.myRouter.navigate(['/login']);
     });
   }
 

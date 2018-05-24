@@ -1,8 +1,18 @@
 
+<<<<<<< HEAD
 
 <div class="top-space">
     
     <h1 class="top-height">Welcome <span class="bestow">{{formInfo.username}}</span>!</h1>
+=======
+
+
+<div class="top-space">
+
+    <h1 class="top-height">Welcome <span class="bestow">{{formInfo.username}}</span>!</h1>
+
+
+>>>>>>> aeda66f1d0ee1971ef135f74142f7443b3fffec4
 
 <br>
 
@@ -28,13 +38,13 @@
     <div class="text-left">
         <!-- <p><b>Name:</b><br> {{user.firstname}}  {{user.lastname}}</p> -->
 
-        <p><b>E-mail:</b> <br>{{user.email}}</p>
+        <p><b>E-mail:</b> <br>{{formInfo.email}}</p>
         
         
-    </div>-->
+    </div>
 
     
-    <div *ngIf="user">
+    <div *ngIf="user.isLoggedIn()">
         <button (click)="logout()" class="btn btn-success"> logout </button>
     </div>
 </div>
