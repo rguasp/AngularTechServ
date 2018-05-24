@@ -44,6 +44,7 @@ export class ServiceComponent implements OnInit {
     .toPromise()
     .then( () => {
       this.formInfo = this.myService.currentUser;
+      this.user = this.myService.currentUser;
       console.log(this.formInfo);
     })
     .catch( err => {
