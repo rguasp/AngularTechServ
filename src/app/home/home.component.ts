@@ -20,8 +20,8 @@ export class HomeComponent implements OnInit {
     this.myService.isLoggedIn()
     .toPromise()
     .then( () => {
+      console.log('home component.ts ', this.myService.currentUser);
       this.user = this.myService.currentUser;
-      console.log(this.user);
       // console.log('User from profile component: ', JSON.parse(this.myService.currentUser._body))
     })
     .catch( err => {

@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
@@ -30,7 +31,7 @@ export class UserProfileComponent implements OnInit {
     })
     .catch( err => {
       console.log('error while accessing unauthorized stuff: ', err);
-      this.myRouter.navigate(['/login']);
+      this.myRouter.navigate(['/']);
     });
   }
 
@@ -40,6 +41,7 @@ export class UserProfileComponent implements OnInit {
     .subscribe(
       () => {
         localStorage.clear();
+        this.myService.currentUser = null;
         this.user = null;
         this.formInfo = {};
         this.myRouter.navigate(['/']);
@@ -47,6 +49,5 @@ export class UserProfileComponent implements OnInit {
       (err) => this.error = err
     );
   } // end logout
-
 
 }
