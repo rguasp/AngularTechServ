@@ -60,7 +60,6 @@ login() {
     );
 } // end login
 
-
 logout() {
   console.log('loged out');
   this.myService.logout()

@@ -11,10 +11,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private myService: AuthService, private myRouter: Router ) {}
 
-  formInfo: any = {username: '', password: '', email: ''};
-
   user: any;
-
   title = 'app';
 
   ngOnInit() {
@@ -22,13 +19,13 @@ export class HomeComponent implements OnInit {
     this.myService.isLoggedIn()
     .toPromise()
     .then( () => {
-      this.formInfo = this.myService.currentUser;
-      console.log(this.formInfo)
-      // this.user = this.myService.currentUser;
+      console.log('home component.ts ', this.myService.currentUser);
+      this.user = this.myService.currentUser;
+      // console.log('User from profile component: ', JSON.parse(this.myService.currentUser._body))
     })
     .catch( err => {
       console.log('error while accessing unothorized stuff: ', err);
-      this.myRouter.navigate(['/home']);
+      this.myRouter.navigate(['/']);
     });
   }
 
