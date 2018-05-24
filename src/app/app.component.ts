@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 
 import { serviceService } from './services/service.service';
+import { reviewService } from './services/review.service';
 
 import * as $ from 'jquery';
 
