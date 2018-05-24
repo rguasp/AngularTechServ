@@ -1,6 +1,14 @@
 
 
 
+</div>
+
+
+
+
+<p class="error"> {{ error }} </p>
+
+
 <div *ngIf="formInfo">
   <div class="title"><h1>HOME PAGE</h1></div>
   <h2> Hello, {{ formInfo.username }}!! </h2>
@@ -9,4 +17,6 @@
 
   <button (click)="logout()" class="btn btn-success"> logout </button>
 </div>
+
+<h1 class="top-height">Welcome <span class="bestow">{{user.username}}</span>!</h1> 
 

@@ -17,17 +17,14 @@ export class HomeComponent implements OnInit {
 
   title = 'app';
 
-  
   ngOnInit() {
     // Stores session
     this.myService.isLoggedIn()
     .toPromise()
     .then( () => {
       this.formInfo = this.myService.currentUser;
-      console.log(this.formInfo);
-      // this.user = JSON.parse(this.myService.currentUser._body);
+      console.log(this.formInfo)
       // this.user = this.myService.currentUser;
-      // console.log('User from profile component: ', JSON.parse(this.myService.currentUser._body))
     })
     .catch( err => {
       console.log('error while accessing unothorized stuff: ', err);

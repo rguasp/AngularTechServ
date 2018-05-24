@@ -45,8 +45,6 @@ export class ServiceComponent implements OnInit {
     .then( () => {
       this.formInfo = this.myService.currentUser;
       console.log(this.formInfo);
-      this.user = this.myService.currentUser;
-      // console.log('User from profile component: ', JSON.parse(this.myService.currentUser._body))
     })
     .catch( err => {
       console.log('error while accessing unothorized stuff: ', err);
