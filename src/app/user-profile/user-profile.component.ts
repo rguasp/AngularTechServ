@@ -33,9 +33,11 @@ export class UserProfileComponent implements OnInit {
   }
 
   logout() {
+    console.log('loged out');
     this.myService.logout()
     .subscribe(
       () => {
+        localStorage.clear();
         this.user = null;
         this.formInfo = {};
         this.myRouter.navigate(['/']);

@@ -1,3 +1,5 @@
+<div class="top-space">
+
 <form>
     <h2> Login </h2>
     <label> <span class="fa fa-user"></span> Username : </label>
@@ -7,7 +9,7 @@
     <label><span class="fa fa-key"></span> Password : </label>
       <br>
     <input type="password" [(ngModel)]="formInfo.password" name="password"/>
-    <br>
+    <br><br>
     <button (click)="login()" class="btn btn-success"> login </button>
       </form>
   <p class="error"> {{ error }} </p>
@@ -18,3 +20,4 @@ Don't have account? <a [routerLink]="['/signup']">Signup</a>
 </div>
 
 
+</div>
