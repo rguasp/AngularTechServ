@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Observable } from 'rxjs/Observable';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -9,12 +9,25 @@ import { Observable } from 'rxjs/Observable';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private myService: AuthService) {}
-  
+  constructor(private myService: AuthService, private myRouter: Router ) {}
+
+  user: any;
   title = 'app';
 
-
+  
   ngOnInit() {
+    // Stores session
+    this.myService.isLoggedIn()
+    .toPromise()
+    .then( () => {
+      console.log(this.myService.currentUser._body);
+      this.user = JSON.parse(this.myService.currentUser._body);
+      // console.log('User from profile component: ', JSON.parse(this.myService.currentUser._body))
+    })
+    .catch( err => {
+      console.log('error while accessing unothorized stuff: ', err);
+      this.myRouter.navigate(['/']);
+    });
   }
 
 }

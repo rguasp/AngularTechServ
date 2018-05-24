@@ -10,8 +10,16 @@ export class serviceService {
 
   constructor(private http: Http) { }
 
+  handleError(e) {
+    return Observable.throw(e.json().message);
+  }
+
   getAllServices() {
     return this.http.get('http://localhost:3000/services/services')
-        .map((responseFromApi) => responseFromApi.json())
+        .map((responseFromApi) => responseFromApi.json());
+  }
+  createService(theWholeTaskObject) {
+    return this.http.post('http://localhost:3000/services/create', theWholeTaskObject)
+    .map((responseFromApi) => responseFromApi.json());
   }
 }

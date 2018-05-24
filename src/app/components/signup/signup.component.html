@@ -18,14 +18,6 @@
   </form>
   <p class="error"> {{ error }} </p>
   
-  <div *ngIf="user">
-    <h2> You are now logged in as {{ user.username }}!! </h2>
-    <p> Here's the user object </p>
-    <pre> {{ user | json }} </pre>
-  
-    <button (click)="logout()" class="btn btn-success"> logout </button>
-  </div> 
-
   <div>
     You have account? <a [routerLink]="['/login']">Login</a>
   </div>

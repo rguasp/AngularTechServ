@@ -10,15 +10,12 @@
 <div class="flex-container">
     
 
-    <!--<div>
-
     <!-- <div>
 
         <img src='{{user.image}}' alt="user" width="175" height="175"> 
         <br><br>
-        <a href='/profile/{{user._id}}/edit' ><button class="b-color remove ">Edit Profile</button></a>
+        <a href="/profile/{{user._id}}/edit"><button class="b-color remove ">Edit Profile</button></a>
         <br><br>
-        
 
     </div>-->
     
@@ -36,6 +33,7 @@
         
         
     </div>-->
+
     
     <div *ngIf="user">
         <button (click)="logout()" class="btn btn-success"> logout </button>
