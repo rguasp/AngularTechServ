@@ -1,40 +1,42 @@
-
 <div class="top-space">
-<h1>
-  service works!
-</h1>
-
-<!-- <div *ngIf="user">
+  <h1>
+    service works!
+  </h1>
   
-  <button type="button" (click)="deleteTask(oneTask._id)" >Create Service</button>
-</div> -->
-<div *ngIf="formInfo.role === 'ADMIN'">
-  <button type="button" (click)="toggleForm()">Add New Service</button>
-</div>
-<br>
-<form *ngIf="isFormShowing">
-  <label>Title</label>
-  <input [(ngModel)]="newService.name" type="text" name="title"/>
+  <!-- <div *ngIf="user">
+    
+    <button type="button" (click)="deleteTask(oneTask._id)" >Create Service</button>
+  </div> -->
+  
+  <div *ngIf="formInfo.role === 'ADMIN'">
+  
+    <button type="button" (click)="toggleForm()">Add New Service</button>
+  </div>
   <br>
-  <label>Content of Task</label>
-    <input  [(ngModel)]="newService.description" type="text" name="content"/>
+
+  <form *ngIf="isFormShowing">
+    <label>Title</label>
+    <input [(ngModel)]="newService.name" type="text" name="title"/>
     <br>
-    <br>
-    <button (click)="addNewTask()" type="button"> Submit </button>
-</form>
-
-
-
-<ul>
-  <li *ngFor="let oneService of allTheServices">
-      <!-- <p> {{oneService}} </p> -->
-<a routerLink="/services/{{oneService._id}}" ><h3>{{oneService.name}}</h3></a>
-<p>{{oneService.description}}</p>
- <div *ngIf="formInfo.role === 'ADMIN'">
-
-  <button type="button" (click)="deleteTask(oneTask._id)" >Delete</button>
-  <button type="button" (click)="deleteTask(oneTask._id)" >Edit</button>
- </div> 
-</li>
-</ul>
-</div>
+    <label>Content of Task</label>
+      <input  [(ngModel)]="newService.description" type="text" name="content"/>
+      <br>
+      <br>
+      <button (click)="addNewTask()" type="button"> Submit </button>
+  </form>
+  
+  
+  
+  <ul>
+    <li *ngFor="let oneService of allTheServices">
+        <!-- <p> {{oneService}} </p> -->
+  <a routerLink="/services/{{oneService._id}}" ><h3>{{oneService.name}}</h3></a>
+  <p>{{oneService.description}}</p>
+   <div *ngIf="formInfo.role === 'ADMIN'">
+  
+    <button type="button" (click)="deleteTask(oneTask._id)" >Delete</button>
+    <button type="button" (click)="deleteTask(oneTask._id)" >Edit</button>
+   </div> 
+  </li>
+  </ul>
+  </div>

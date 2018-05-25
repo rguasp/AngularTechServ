@@ -10,6 +10,8 @@ import { reviewService } from './services/review.service';
 import * as $ from 'jquery';
 
 
+
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -25,7 +27,10 @@ export class AppComponent implements OnInit {
   error: string;
 
 
-constructor(private myService: AuthService, private myRouter: Router) {}
+constructor(
+  private myService: AuthService,
+  private myRouter: Router
+) {}
 
 
 
@@ -34,8 +39,8 @@ ngOnInit() {
   this.myService.isLoggedIn()
   .toPromise()
   .then( () => {
-    console.log(this.myService.currentUser._body);
-    this.user = JSON.parse(this.myService.currentUser._body);
+    console.log('app component.ts ', this.myService.currentUser);
+    this.user = this.myService.currentUser;
     // console.log('User from profile component: ', JSON.parse(this.myService.currentUser._body))
   })
   .catch( err => {
@@ -56,7 +61,6 @@ login() {
       (err) => this.error = err
     );
 } // end login
-
 
 logout() {
   console.log('loged out');
