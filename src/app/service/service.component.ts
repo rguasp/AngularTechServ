@@ -18,7 +18,7 @@ export class ServiceComponent implements OnInit {
 
   newService: any = {name: '', description: ''};
 
-    formInfo: any = {username: '', password: '', email: '', role: ''};
+    formInfo: any = {username: '', password: '', email: ''};
 
 
   user: any;
