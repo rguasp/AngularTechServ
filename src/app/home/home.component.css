@@ -356,3 +356,28 @@ template {
   .top-space {
     margin-top: 56px;
   }
+
+  .comp-pic {
+    background-image: url("https://images.pexels.com/photos/450035/pexels-photo-450035.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+    height: 600px;
+    color: white;
+    background-size: cover;
+  }
+
+  div {
+    background: #353A3F;
+    height: 600px;
+  }
+
+  .white-let {
+    color: white;
+  }
+
+  .white-div {
+    background: whitesmoke;
+    color: #353A3F;
+  }
+  
+  .carousel {
+    z-index: 0;
+  }

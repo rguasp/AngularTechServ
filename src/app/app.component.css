@@ -12,3 +12,7 @@ button {
     background-color: #353A3F;
     border: none;
 }
+nav {
+    z-index: 1;
+
+}
