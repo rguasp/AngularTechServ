@@ -10,6 +10,8 @@ import { reviewService } from './services/review.service';
 import * as $ from 'jquery';
 
 
+
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
