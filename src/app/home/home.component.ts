@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
 
   user: any;
   title = 'app';
+  error: string;
 
   ngOnInit() {
     // Stores session
@@ -28,5 +29,17 @@ export class HomeComponent implements OnInit {
       this.myRouter.navigate(['/']);
     });
   }
+
+  logout() {
+    console.log('logged out');
+    this.myService.logout()
+    .subscribe(
+      () => {
+        localStorage.clear();
+        this.user = null;
+        this.myRouter.navigate(['/']);
+      },
+      (err) => this.error = err
+  )};
 
 }
