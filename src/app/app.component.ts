@@ -64,6 +64,7 @@ logout() {
   .subscribe(
     () => {
       localStorage.clear();
+      this.myService.currentUser = null;
       this.user = null;
       this.formInfo = {};
       this.myRouter.navigate(['/']);

@@ -17,7 +17,6 @@ export class HomeComponent implements OnInit {
 
   title = 'app';
 
-  
   ngOnInit() {
     // Stores session
     this.myService.isLoggedIn()
