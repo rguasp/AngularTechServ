@@ -40,6 +40,6 @@ export class HomeComponent implements OnInit {
         this.myRouter.navigate(['/']);
       },
       (err) => this.error = err
-  )};
+  ); }
 
 }

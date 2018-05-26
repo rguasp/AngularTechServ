@@ -15,27 +15,27 @@
   <br>
 
   <form *ngIf="isFormShowing">
-    <label>Title</label>
-    <input [(ngModel)]="newService.name" type="text" name="title"/>
+    <label>Name of Service</label>
+    <input  [(ngModel)]="newService.name" type="text" name="Name"/>
     <br>
-    <label>Content of Task</label>
-      <input  [(ngModel)]="newService.description" type="text" name="content"/>
+    <label>Description of Service</label>
+      <input  [(ngModel)]="newService.description" type="text" name="description"/>
       <br>
       <br>
-      <button (click)="addNewTask()" type="button"> Submit </button>
+      <button (click)="createService()" type="submit"> Submit </button>
   </form>
   
   
   
   <ul>
-    <li *ngFor="let oneService of allTheServices">
+    <li *ngFor="let oneService of allTheServices.reverse()">
         <!-- <p> {{oneService}} </p> -->
   <a routerLink="/services/{{oneService._id}}" ><h3>{{oneService.name}}</h3></a>
   <p>{{oneService.description}}</p>
    <div *ngIf="formInfo.role === 'ADMIN'">
   
-    <button type="button" (click)="deleteTask(oneTask._id)" >Delete</button>
-    <button type="button" (click)="deleteTask(oneTask._id)" >Edit</button>
+    <button type="button" (click)="deleteService(oneService._id)" >Delete</button>
+    <button type="button" (click)="editService(oneService._id)" >Edit</button>
    </div> 
   </li>
   </ul>
