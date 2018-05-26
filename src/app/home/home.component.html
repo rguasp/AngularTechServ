@@ -1,20 +1,36 @@
 
 
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+<div id="carouselExampleIndicators" class="carousel slide sector" data-ride="carousel">
     <ol class="carousel-indicators">
       <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
       <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
       <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
     </ol>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
+    <div class="carousel-inner sector">
+      <div class="carousel-item active sector">
         <img class="d-block w-100" src="https://images.pexels.com/photos/450035/pexels-photo-450035.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="First slide">
+        <div class="carousel-caption d-none d-md-block">
+            <div class="underlay">
+                <div class="blur d-block w-100"></div>
+              
+            </div>
+                </div>
+            </div>
+      <div class="carousel-item sector">
+         
+            <img class="d-block w-100" src="https://images.pexels.com/photos/825262/pexels-photo-825262.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Second slide">
+            <div class="carousel-caption d-none d-md-block">
+                <h1 class="car-title">Computer<br> Repair</h1>
+            </div>
       </div>
-      <div class="carousel-item">
-        <img class="d-block w-100" src="https://images.pexels.com/photos/825262/pexels-photo-825262.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Second slide">
-      </div>
-      <div class="carousel-item">
-        <img class="d-block w-100" src="https://images.pexels.com/photos/263370/pexels-photo-263370.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Third slide">
+      <div class="carousel-item sector">
+           
+        <img class="d-block w-100 blur" src="https://images.pexels.com/photos/263370/pexels-photo-263370.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Third slide">
+        <div class="carousel-caption d-none d-md-block">
+                <div>
+                <h1 class="car-title">Virus <br> Removal</h1>
+                </div>
+              </div>
       </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -26,13 +42,63 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
-<div>
-    <h2 class="text-center white-let">This is the secend section</h2>
 
-</div>
-<div class="white-div">
+
+
+
+
+  <div class="sector">
+
+   
+  
+
+</div><!--END section 2-->
+
+
+<div class="white-div sector">
     <h2 class="text-center">Third section</h2> 
+
+    <div class="flex-container">
+      <div class="card">
+        <div class="card-body text-center">
+          <p class="card-text">Computer repair and diagnostics</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body text-center">
+          <p class="card-text">Computer tuneup and optimization</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body text-center">
+          <p class="card-text">virus repair and removal</p>
+        </div>
+      </div>
+    </div>
+
+
+</div><!--END section 3-->
+
+<div class="sector">
+
+
+  <!-- <div id="googleMap"></div> -->
+  <div class="my-map">
+  <agm-map 
+  [latitude]="lat"
+  [longitude]="lng"
+  [zoom]="zoom"
+  [disableDefaultUI]="false"
+  [zoomControl]="false"
+  (mapClick)="mapClicked($event)">
+
+  <agm-marker [latitude]="lat" [longitude]="lng">
+    <agm-info-window ><a href="https://www.google.com/maps/place/Ironhack/@25.765852,-80.19607,187m/data=!3m1!1e3!4m5!3m4!1s0x0:0xa0bda5d9915b7493!8m2!3d25.766033!4d-80.196191?hl=en-US" target="_blank">View in google maps</a></agm-info-window>
+  </agm-marker>
+
+</agm-map>  
 </div>
+</div><!--END section 4-->
 
 
 

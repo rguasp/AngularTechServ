@@ -2,11 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
+import { MouseEvent } from '@agm/core';
+import { AgmCoreModule } from '@agm/core';
+
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
+
+
 export class HomeComponent implements OnInit {
 
   constructor(private myService: AuthService, private myRouter: Router ) {}
@@ -14,6 +20,37 @@ export class HomeComponent implements OnInit {
   user: any;
   title = 'app';
   error: string;
+
+// // google maps zoom level
+zoom = 10;
+// // initial center position for the map
+lat = 25.766034;
+lng = -80.196191;
+
+// clickedMarker(label: string, index: number) {
+//   console.log(`clicked the marker: ${label || index}`);
+// }
+
+// mapClicked($event: MouseEvent) {
+//   this.markers.push({
+//     lat: $event.coords.lat,
+//     lng: $event.coords.lng,
+//     draggable: true
+//   });
+// }
+
+// markerDragEnd(m: marker, $event: MouseEvent) {
+//   console.log('dragEnd', m, $event);
+// }
+
+// markers: marker[] = [
+//   {
+//     lat: 51.673858,
+//     lng: 7.815982,
+//     label: 'A',
+//     draggable: true
+//   }
+// ]
 
   ngOnInit() {
     // Stores session
@@ -30,6 +67,8 @@ export class HomeComponent implements OnInit {
     });
   }
 
+
+
   logout() {
     console.log('logged out');
     this.myService.logout()
@@ -40,6 +79,13 @@ export class HomeComponent implements OnInit {
         this.myRouter.navigate(['/']);
       },
       (err) => this.error = err
-  )};
+  );
+}
+
 
 }
+
+
+
+
+

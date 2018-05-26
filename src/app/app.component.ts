@@ -7,6 +7,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { serviceService } from './services/service.service';
 import { reviewService } from './services/review.service';
 
+
 import * as $ from 'jquery';
 
 
@@ -49,6 +50,20 @@ ngOnInit() {
   });
 }
 
+signup() {
+  // console.log(this.formInfo);
+  this.myService.signup(this.formInfo)
+    .subscribe(
+      (user) => {
+        this.user = user;
+        this.formInfo = {}; // clear the input
+        // console.log(this.user);
+        this.myRouter.navigate(['/profile']);
+      },
+      (err) => this.error = err
+    );
+}
+
 login() {
   this.myService.login(this.formInfo)
     .subscribe(
@@ -78,3 +93,4 @@ logout() {
 
 }
 }
+
