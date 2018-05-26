@@ -38,6 +38,12 @@ export class ServiceComponent implements OnInit {
     });
   }
 
+  // addCart() {
+  //   this.myService.addToCart();
+  //   this.myRouter.navigateByUrl('/cart/create');
+  // };
+
+
   ngOnInit() {
     this.getAllTheServices();
     this.myService.isLoggedIn()

@@ -18,6 +18,7 @@ import { serviceService } from './services/service.service';
 import { Router } from '@angular/router';
 import { ReviewsComponent } from './reviews/reviews.component';
 import { reviewService } from './services/review.service';
+import { CartComponent } from './cart/cart.component';
 
 
 
@@ -30,7 +31,8 @@ const routes: Routes = [
   // { path: 'services',  component: OfferedServicesComponent },
   { path: 'products',  component: ProductsListComponent },
   { path: 'services', component: ServiceComponent },
-  { path: 'reviews', component: ReviewsComponent }
+  { path: 'reviews', component: ReviewsComponent },
+  { path: 'cart', component: CartComponent }
 ];
 
 @NgModule({
@@ -43,7 +45,8 @@ const routes: Routes = [
     SignupComponent,
     LoginComponent,
     ServiceComponent,
-    ReviewsComponent
+    ReviewsComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
