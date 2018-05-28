@@ -4,6 +4,8 @@ import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { serviceService } from '../services/service.service';
 import 'rxjs/add/operator/toPromise';
+import { FileSelectDirective } from 'ng2-file-upload';
+
 
 @Component({
   selector: 'app-service',
@@ -12,14 +14,19 @@ import 'rxjs/add/operator/toPromise';
 })
 export class ServiceComponent implements OnInit {
 
+  // uploader: FileUploader = new FileUploader({
+  //   url: `/services/`
+  // });
+
   allTheServices: Array <any> = [];
 
   isFormShowing: Boolean = false;
 
-  newService: any = {name: '', description: ''};
+  newService: any = {name: '', description: '', img: ''};
 
   formInfo: any = {username: '', password: '', email: ''};
 
+  feedback: string;
 
   user: any;
   currentUser: any;
@@ -31,6 +38,13 @@ export class ServiceComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    // this.uploader.onSuccessItem = (item, response) => {
+    //   this.feedback = JSON.parse(response).message;
+    // };
+
+    // this.uploader.onErrorItem = (item, response, status, headers) => {
+    //   this.feedback = JSON.parse(response).message;
+    // };
     this.getAllTheServices();
     this.myService.isLoggedIn()
     .toPromise()
@@ -62,7 +76,17 @@ export class ServiceComponent implements OnInit {
     .subscribe(() => {
       this.getAllTheServices();
     });
+    // this.uploader.uploadAll();
   }
+
+  // updateService(){
+  //   this.serviceservice.updateService()
+  //   .subscribe(() => {
+  //     this.getAllTheServices();
+  //   });
+
+
+  // }
 
   deleteService(idArgument) {
     this.serviceservice.deleteService(idArgument)

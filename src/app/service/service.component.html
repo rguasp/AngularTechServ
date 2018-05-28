@@ -16,11 +16,13 @@
 
   <form *ngIf="isFormShowing">
     <label>Name of Service</label>
-    <input  [(ngModel)]="newService.name" type="text" name="Name"/>
+    <input  [(ngModel)]="newService.name" type="text" name="name"/>
     <br>
     <label>Description of Service</label>
       <input  [(ngModel)]="newService.description" type="text" name="description"/>
       <br>
+      <input type="file" name="file" ng2FileSelect [uploader]="uploader" />
+      <!-- [(ngModel)]="newService.img"  -->
       <br>
       <button (click)="createService()" type="submit"> Submit </button>
   </form>
@@ -28,14 +30,14 @@
   
   
   <ul>
-    <li *ngFor="let oneService of allTheServices.reverse()">
-        <!-- <p> {{oneService}} </p> -->
+    <li *ngFor="let oneService of allTheServices.reverse()">  
+        <p> {{oneService.img}} </p> 
   <a routerLink="/services/{{oneService._id}}" ><h3>{{oneService.name}}</h3></a>
   <p>{{oneService.description}}</p>
    <div *ngIf="formInfo.role === 'ADMIN'">
   
     <button type="button" (click)="deleteService(oneService._id)" >Delete</button>
-    <button type="button" (click)="editService(oneService._id)" >Edit</button>
+    <button type="button" (click)="updateService(oneService._id)" >Edit</button>
    </div> 
   </li>
   </ul>
