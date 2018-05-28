@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import { serviceService } from '../services/service.service';
+
 import 'rxjs/add/operator/toPromise';
 
 @Component({
@@ -17,14 +19,15 @@ export class CartComponent implements OnInit {
 
   constructor(
     private myRouter: Router,
-    private myService: AuthService
+    private myService: AuthService,
+    private serviceservice: serviceService,
   ) { }
 
   getAllTheItems() {
     console.log('getting all the items');
-    this.myService.currentUser.addToCart()
-    .subscribe((cartList) => {
-      this.itemsInCart = cartList;
+    this.myService.currentUser.getUserCart();
+    .subscribe( () => {
+      this.myService.currentUser.cart = this.itemsInCart;
     });
   }
 

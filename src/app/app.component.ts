@@ -20,16 +20,21 @@ import * as $ from 'jquery';
 export class AppComponent implements OnInit {
 
 
-  formInfo: any = {username: '', password: '', email: ''};
+  formInfo: any = {username: '', password: '', email: '', cart: []};
 
   user: any;
 
   error: string;
 
+  newItem: any = {
+    name: ``;
+  };
+
 
 constructor(
   private myService: AuthService,
-  private myRouter: Router
+  private myRouter: Router,
+  private serviceservice: serviceService,
 ) {}
 
 
@@ -40,6 +45,7 @@ ngOnInit() {
   .toPromise()
   .then( () => {
     console.log('app component.ts ', this.myService.currentUser);
+    this.formInfo = this.myService.currentUser;
     this.user = this.myService.currentUser;
     // console.log('User from profile component: ', JSON.parse(this.myService.currentUser._body))
   })

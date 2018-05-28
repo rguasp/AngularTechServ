@@ -50,9 +50,10 @@ export class AuthService {
   }
 
   addToCart() {
-    return this.http.get('http://localhost:3000/api/cart/create', {withCredentials: true})
+    return this.http.get('http://localhost:3000/api/cart/:id/create', {withCredentials: true})
     .map(res => {
-      this.currentUser.cart.push();
+      // this.currentUser.cart.push();
+      console.log("Items added to cart");
     })
     .catch(this.handleError);
   }

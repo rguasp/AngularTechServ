@@ -3,6 +3,7 @@ import {Observable} from 'rxjs/Observable';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { serviceService } from '../services/service.service';
+
 import 'rxjs/add/operator/toPromise';
 
 @Component({
@@ -18,7 +19,13 @@ export class ServiceComponent implements OnInit {
 
   newService: any = {name: '', description: ''};
 
-    formInfo: any = {username: '', password: '', email: ''};
+  formInfo: any = {username: '', password: '', email: '', cart: []};
+
+  itemsInCart: Array <object> = [];
+
+  newItem: any = {
+    name: ``;
+  };
 
 
   user: any;
@@ -38,14 +45,27 @@ export class ServiceComponent implements OnInit {
     });
   }
 
-  // addCart() {
-  //   this.myService.addToCart();
-  //   this.myRouter.navigateByUrl('/cart/create');
-  // };
+  // getAllTheItems() {
+  //   console.log('getting all the items');
+  //   this.serviceservice.cart.addToCart()
+  //   .subscribe((newItem) => {
+  //     this.itemsInCart = newItem;
+  //     this.myService.currentUser.cart = this.itemsInCart;
+  //   });
+  // }
+
+  addItemToCart(newItem) {
+    // console.log("====" + this.newItem);
+    const cartItem = JSON.stringify(this.newItem);
+    this.myService.currentUser.cart.push(newItem);
+    this.itemsInCart = this.myService.currentUser.cart;
+    console.log("items in cart" + this.itemsInCart);
+  }
 
 
   ngOnInit() {
     this.getAllTheServices();
+    // this.getAllTheItems();
     this.myService.isLoggedIn()
     .toPromise()
     .then( () => {

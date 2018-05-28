@@ -29,16 +29,29 @@
     
     
     <ul>
+
       <li *ngFor="let oneService of allTheServices">
-          <!-- <p> {{oneService}} </p> -->
-    <a routerLink="/services/{{oneService._id}}" ><h3>{{oneService.name}}</h3></a>
-    <p>{{oneService.description}}</p>
-     <div *ngIf="formInfo.role === 'ADMIN'">
+
+    <a routerLink="/services/{{oneService._id}}" ><h3>{{oneService.name}}</h3></a>  
     
+    <form>
+        <!--<button type="POST" (click)="addItemToCart()" >Add to Cart</button> -->
+      </form>
+
+    <p>{{oneService.description}}</p>
+
+    <div>
+        <button type="button" (click)="addItemToCart(this.oneService.name)" >Add to Cart</button> 
+      </div>   
+
+     <div *ngIf="formInfo.role === 'ADMIN'">
       <button type="button" (click)="deleteTask(oneTask._id)" >Delete</button>
       <button type="button" (click)="deleteTask(oneTask._id)" >Edit</button>
-      
-     </div> 
+     </div>
+
     </li>
+
+
     </ul>
+
     </div>
