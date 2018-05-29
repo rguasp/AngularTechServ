@@ -1,10 +1,28 @@
 
-<div class="top-space">
-        <h1 class="top-height">Welcome <span class="bestow">{{formInfo.username}}</span>!</h1>
+<div class="top-space sector ">
+
+        <div class="card">
+                <div class="card-body text-center">
+                        <h1 class="top-height">Welcome <span class="bestow">{{formInfo.username}}</span>!</h1>                 
+                         <p><img class="img-fluid team-member" src="{{formInfo.img}}" width="200" alt="card image"></p>
+                        <div class="text-left">
+                                <!-- <p><b>Name:</b><br> {{user.firstname}}  {{user.lastname}}</p> -->
+                        
+                                <p class="text-center"><b>E-mail:</b> <br>{{formInfo.email}}</p>
+                                
+                                
+                            </div>
+                        
+                            
+                            <div *ngIf="formInfo">
+                                <button (click)="logout()" class="btn btn-success"> logout </button>
+                            </div>                </div>
+              </div>
+
       
         <br>
         
-        <div class="flex-container">
+        <!-- <div class="flex-container"> -->
             
         
             <!-- <div>
@@ -20,10 +38,10 @@
             </div> -->
             
             
-            <div class="text-left">
+            <!-- <div class="text-left"> -->
                 <!-- <p><b>Name:</b><br> {{user.firstname}}  {{user.lastname}}</p> -->
         
-                <p><b>E-mail:</b> <br>{{formInfo.email}}</p>
+                <!-- <p><b>E-mail:</b> <br>{{formInfo.email}}</p>
                 
                 
             </div>
@@ -32,5 +50,8 @@
             <div *ngIf="formInfo">
                 <button (click)="logout()" class="btn btn-success"> logout </button>
             </div>
+        </div> -->
+
         </div>
-        </div>
+    </div>
+    </div>

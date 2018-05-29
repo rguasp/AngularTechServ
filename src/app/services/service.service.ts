@@ -5,6 +5,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import { Observable } from 'rxjs/Observable';
 
+
 @Injectable()
 export class serviceService {
   currentUser: any;
@@ -19,10 +20,20 @@ export class serviceService {
 
   getAllServices() {
     return this.http.get('http://localhost:3000/services/services')
-        .map((responseFromApi) => responseFromApi.json());
+    .map((responseFromApi) => responseFromApi.json());
   }
-  createService(theWholeTaskObject) {
-    return this.http.post('http://localhost:3000/services/create', theWholeTaskObject)
+  createNewService(theWholeServiceObject) {
+    return this.http.post(`http://localhost:3000/services/services/create`, theWholeServiceObject)
+    .map((responseFromApi) => responseFromApi.json());
+  }
+
+  deleteService(id) {
+    return this.http.post(`http://localhost:3000/services/services/delete/${id}`, {})
+    .map((responseFromApi) => responseFromApi.json());
+  }
+
+  updateService(theID, theUpdates) {
+    return this.http.post(`http://localhost:3000/services/services/update/${theID}`, theUpdates)
     .map((responseFromApi) => responseFromApi.json());
   }
 

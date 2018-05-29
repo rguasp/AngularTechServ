@@ -7,6 +7,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { serviceService } from './services/service.service';
 import { reviewService } from './services/review.service';
 
+
 import * as $ from 'jquery';
 
 
@@ -38,11 +39,13 @@ constructor(
 
 
 
+
 ngOnInit() {
   this.myService.isLoggedIn()
   .toPromise()
   .then( () => {
     console.log('app component.ts ', this.myService.currentUser);
+    this.user = JSON.parse(sessionStorage.getItem('mySession'));
     this.formInfo = this.myService.currentUser;
     this.user = this.myService.currentUser;
     // console.log('User from profile component: ', JSON.parse(this.myService.currentUser._body))
@@ -51,6 +54,20 @@ ngOnInit() {
     console.log('error while accessing unothorized stuff: ', err);
     this.myRouter.navigate(['/']);
   });
+}
+
+signup() {
+  // console.log(this.formInfo);
+  this.myService.signup(this.formInfo)
+    .subscribe(
+      (user) => {
+        this.user = user;
+        this.formInfo = {}; // clear the input
+        // console.log(this.user);
+        this.myRouter.navigate(['/profile']);
+      },
+      (err) => this.error = err
+    );
 }
 
 login() {
@@ -67,7 +84,7 @@ login() {
 } // end login
 
 logout() {
-  console.log('loged out');
+  console.log('logged out');
   this.myService.logout()
   .subscribe(
     () => {
@@ -79,7 +96,6 @@ logout() {
     },
     (err) => this.error = err
   );
-
+}
 }
 
-}

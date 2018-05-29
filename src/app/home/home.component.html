@@ -1,20 +1,63 @@
 
+<div class="sector top-space top-search-img">
+  
+  
+  
+  <form class="dropdown">
+    <input type="text" class="my-input"  (keyup)="searchFunction($event)" id="my-input" placeholder="SEARCH FOR A SERVICE..">
+    <button type="submit" class="b-color"><span class="fa fa-search btn search-b"></span></button>
 
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ul class="service-list" id="service-list" >
+        <li class="hide"><a href="#">Cloud Backup</a></li>
+        <li class="hide"><a href="#">PC Diagnostic</a></li>
+      
+        <li class="hide"><a href="#">PC Tune-Up</a></li>
+        <li class="hide"><a href="#">RAM Upgrade</a></li>
+      
+        <li class="hide"><a href="#">Software Installation</a></li>
+        <li class="hide"><a href="#">SSD Upgrade</a></li>
+        <li class="hide"><a href="#">Virus Removal</a></li>
+      </ul>
+  </form>
+  
+  <!-- <h1 class="text-center white-let" >Search for a Service</h1> -->
+
+
+</div><!--END section 2-->
+
+
+<div id="carouselExampleIndicators" class="carousel slide sector" data-ride="carousel">
     <ol class="carousel-indicators">
       <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
       <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
       <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
     </ol>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img class="d-block w-100" src="https://images.pexels.com/photos/450035/pexels-photo-450035.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="First slide">
+    <div class="carousel-inner sector">
+      <div class="carousel-item active sector">
+        <img class="d-block w-100 blur" src="https://images.pexels.com/photos/356043/pexels-photo-356043.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="First slide">
+        <div class="carousel-caption d-none d-md-block">
+            <div>
+            <h1 class="car-title">Cloud <br> Backup</h1>
+            </div>
+          </div>
+            </div>
+            
+      <div class="carousel-item sector">
+         
+            <img class="d-block w-100" src="https://images.pexels.com/photos/825262/pexels-photo-825262.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Second slide">
+            <div class="carousel-caption d-none d-md-block">
+                <h1 class="car-title">Computer<br> Repair</h1>
+            </div>
       </div>
-      <div class="carousel-item">
-        <img class="d-block w-100" src="https://images.pexels.com/photos/825262/pexels-photo-825262.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Second slide">
-      </div>
-      <div class="carousel-item">
-        <img class="d-block w-100" src="https://images.pexels.com/photos/263370/pexels-photo-263370.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Third slide">
+      
+      <div class="carousel-item sector">
+           
+        <img class="d-block w-100 blur" src="https://images.pexels.com/photos/263370/pexels-photo-263370.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Third slide">
+        <div class="carousel-caption d-none d-md-block">
+                <div>
+                <h1 class="car-title">Virus <br> Removal</h1>
+                </div>
+              </div>
       </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -25,14 +68,118 @@
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="sr-only">Next</span>
     </a>
+  </div><!--END section-->
+
+
+
+<div class="white-div sector">
+    <h2 class="text-center title-padding">Meet The Team</h2> 
+
+    <div class="flex-container">
+      <!-- <div class="card">
+        <div class="card-body text-center">
+          <p class="card-text">Computer repair and diagnostics</p>
+        </div>
+      </div> -->
+        <div class="card">
+          <div class="card-body text-center">
+            <h4 class="card-title">Rafa</h4>
+            <p><img class="img-fluid team-member" src="https://media.licdn.com/dms/image/C4E03AQERFu8HTCSw9w/profile-displayphoto-shrink_800_800/0?e=1533168000&v=beta&t=GPjVaoKFVzW2z3K2YibduQVWEGveHfvxLqA-pCXp36c" alt="card image"></p>
+                <p class="card-text">Tech repair veteran with years of experience. You name it, hes fixed it.</p>
+                <a href="https://www.linkedin.com/in/rguasp/" target="_blank"><img class="icon" src="../../assets/images/if_square-linkedin_317725.svg"></a>
+          </div>
+        </div>
+     
+      <!-- <div class="card">
+        <div class="card-body text-center">
+          <p class="card-text">Computer tuneup and optimization</p>
+        </div>
+      </div> -->
+      <div class="card">
+          <div class="card-body text-center">
+            <h4 class="card-title">Neil</h4>
+            <p><img class="img-fluid team-member" src="https://media.licdn.com/dms/image/C4E03AQHPiIdEzwV72Q/profile-displayphoto-shrink_800_800/0?e=1533168000&v=beta&t=nATAyNVeMTW5P_kJ3OeC1VzPeGyBxjekVzqVxtWnjnU" alt="card image"></p>
+                <p class="card-text">There isn't a tech problem he hasn't been able to solve. You ask and he delivers. </p>
+                <a href="https://www.linkedin.com/in/neilxcode/" target="_blank"><img class="icon" src="../../assets/images/if_square-linkedin_317725.svg"></a>
+          </div>
+        </div>
+      
+      
+      <!-- <div class="card">
+        <div class="card-body text-center">
+          <p class="card-text">virus repair and removal</p>
+        </div>
+      </div> -->
+      <div class="card">
+          <div class="card-body text-center">
+            <h4 class="card-title">Jens</h4>
+            <p><img class="img-fluid team-member" src="https://media.licdn.com/dms/image/C5603AQHEdvUieNr3tg/profile-displayphoto-shrink_200_200/0?e=1533168000&v=beta&t=UEtqYtHoBMEP17SXLwKq7WTLMkCUiR9fSO1cfx61eTo" alt="card image"></p>
+                <p class="card-text">New to tech repair but won't stop until all of your needs have been met and then some.</p>
+                <a href="https://www.linkedin.com/in/jens-kai/" target="_blank"><img class="icon" src="../../assets/images/if_square-linkedin_317725.svg"></a>
+          </div>
+        </div>
+    
+    
+    </div>
+
+
+</div><!--END section 3-->
+
+<div class="sector">
+
+
+  <!-- <div id="googleMap"></div> -->
+  
+  <div class="flex-container section-4">
+  
+  <div class="google-map">
+  <!-- <agm-map 
+  [latitude]="lat"
+  [longitude]="lng"
+  [zoom]="zoom"
+  [disableDefaultUI]="false"
+  [zoomControl]="false"
+  (mapClick)="mapClicked($event)">
+
+  <agm-marker [latitude]="lat" [longitude]="lng">
+    <agm-info-window ><a class="google-link" href="https://www.google.com/maps/place/Ironhack/@25.765852,-80.19607,187m/data=!3m1!1e3!4m5!3m4!1s0x0:0xa0bda5d9915b7493!8m2!3d25.766033!4d-80.196191?hl=en-US" target="_blank">View in google maps</a></agm-info-window>
+  </agm-marker>
+
+</agm-map>   -->
+</div>
+
+<div class="contact-us">
+  <h2 class="white-let text-center">Contact Us</h2>
+
+<div class="flex-c">
+  
+  <div class="flex-icon white-let">
+  <a href="https://www.facebook.com/" target="_blank"><img class="icon" src="../../assets/images/facebook_317727.svg"></a>
+  <h5><a href="https://www.facebook.com/" target="_blank">Facebook</a></h5>
   </div>
-<div>
-    <h2 class="text-center white-let">This is the secend section</h2>
+  
+  <div class="flex-icon white-let">
+  <a href="https://twitter.com/" target="_blank"><img class="icon" src="../../assets/images/if_twitter_834708.svg"></a>
+  <h5><a href="https://twitter.com/" target="_blank">Twitter</a></h5>
+  </div>
+  
+  <div class="flex-icon white-let">
+  <a href="https://www.instagram.com/" target="_blank"><img class="icon" src="../../assets/images/if_Instagram_1298747.svg"></a>
+  <h5><a href="https://www.instagram.com/" target="_blank">Instagram</a></h5>
+  </div>
+  
+  <!-- <div class="flex-icon white-let">
+  <a href="https://www.linkedin.com/feed/" target="_blank"><img class="icon" src="../../assets/images/if_square-linkedin_317725.svg"></a>
+  <h5><a href="https://www.linkedin.com/feed/" target="_blank">Linkedin</a></h5>
+  </div> -->
 
 </div>
-<div class="white-div">
-    <h2 class="text-center">Third section</h2> 
+
 </div>
+
+</div><!--END flex conatiner-->
+
+</div><!--END section 4-->
 
 
 

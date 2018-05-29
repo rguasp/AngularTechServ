@@ -1,24 +1,27 @@
-
 <div class="top-space">
-    <h1>
-      service works!
-    </h1>
+  <h1>
+    service works!
+  </h1>
+  
+  <!-- <div *ngIf="user">
     
-    <!-- <div *ngIf="user">
-      
-      <button type="button" (click)="deleteTask(oneTask._id)" >Create Service</button>
-    </div> -->
-    
-    <div *ngIf="formInfo.role === 'ADMIN'">
-    
-      <button type="button" (click)="toggleForm()">Add New Service</button>
-    </div>
-    <br>
+    <button type="button" (click)="deleteTask(oneTask._id)" >Create Service</button>
+  </div> -->
+  
+  <div *ngIf="formInfo.role === 'ADMIN'">
+  
+    <button type="button" (click)="toggleForm()">Add New Service</button>
+  </div>
+  <br>
 
-    <form *ngIf="isFormShowing">
-      <label>Title</label>
-      <input [(ngModel)]="newService.name" type="text" name="title"/>
+  <form *ngIf="isFormShowing">
+    <label>Name of Service</label>
+    <input  [(ngModel)]="newService.name" type="text" name="name"/>
+    <br>
+    <label>Description of Service</label>
+      <input  [(ngModel)]="newService.description" type="text" name="description"/>
       <br>
+<<<<<<< HEAD
       <label>Content of Task</label>
         <input  [(ngModel)]="newService.description" type="text" name="content"/>
         <br>
@@ -48,9 +51,43 @@
       <button type="button" (click)="deleteTask(oneTask._id)" >Edit</button>
      </div>
 
+=======
+      <label>Price of Service</label>
+      <input  [(ngModel)]="newService.price" type="number" name="price"/>
+      <!-- <input type="file" name="file" ng2FileSelect [uploader]="uploader" /> -->
+      <!-- [(ngModel)]="newService.img"  -->
+      <br>
+      <button (click)="createService()" type="submit"> Submit </button>
+  </form>
+  
+  
+  
+  <ul>
+    <li *ngFor="let oneService of allTheServices.reverse()">  
+      <p> {{oneService.img}} </p> 
+      <a routerLink="/services/{{oneService._id}}" ><h3>{{oneService.name}}</h3></a>
+      <p>{{oneService.description}}</p>
+      <p>Service Price: ${{oneService.price}}.00</p>
+      <br>
+       <button type="button" (click)="addItemToCart(oneService._id)" >Add to Cart</button> 
+      <div *ngIf="formInfo.role === 'ADMIN'">
+        <button type="button" (click)="deleteService(oneService._id)" >Delete</button>
+        <button type="button" (click)="toggleForm2()">Edit</button>
+        <form *ngIf="isFormShowing2">
+          <h2>Edit this Service</h2>
+             <label>Name</label>
+            <input [(ngModel)]="theUpdates.name" type="text" name="name">
+            <br>
+            <label>Description</label>
+             <input [(ngModel)]="theUpdates.description" type="text" name="description">
+             <br>
+             <label>Price</label>
+             <input [(ngModel)]="theUpdates.price" type="number" name="price">
+             <br>
+          <button type="button" (click)="updateService(oneService._id)" >Submit</button>
+        </form>
+      </div> 
+>>>>>>> 038a39469554c28fe5a5d29fb033db6c3b7ffa51
     </li>
-
-
-    </ul>
-
-    </div>
+  </ul>
+  </div>
