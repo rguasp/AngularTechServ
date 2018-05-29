@@ -25,11 +25,19 @@ export class serviceService {
     .map((responseFromApi) => responseFromApi.json());
   }
 
-  addToCart() {
-    return this.http.get('http://localhost:3000/api/cart/create', {withCredentials: true})
-    .map(res => {
-      this.currentUser.cart.push();
-    })
-    .catch(this.handleError);
+  addToCart(item) {
+    return this.http.put('http://localhost:3000/api/cart/id:/add', item, {withCredentials: true})
+    // .map(res => {
+    //   // this.currentUser.cart.unshift(this.item);
+    //   // this.currentUser.cart.unshift(this.item);
+    //   // console.log("Items added to cart");
+    // })
+    // .catch(this.handleError);
+  }
+
+  getUserCart() {
+    return this.http.get('http://localhost:3000/services/userCart', {withCredentials: true})
+    .map((responseFromApi) => responseFromApi.json());
   }
 }
+

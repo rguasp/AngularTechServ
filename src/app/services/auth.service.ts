@@ -49,19 +49,20 @@ export class AuthService {
       .catch(this.handleError);
   }
 
-  addToCart() {
-    return this.http.get('http://localhost:3000/api/cart/:id/create', {withCredentials: true})
+  addToCart(item) {
+    return this.http.get('http://localhost:3000/api/cart/:id/add', item, {withCredentials: true})
     .map(res => {
-      // this.currentUser.cart.push();
+      this.currentUser.cart.unshift(this.item);
       console.log("Items added to cart");
     })
     .catch(this.handleError);
   }
 
+
   getUserCart() {
-    return this.http.get('http://localhost:3000/api/cart', {withCredentials: true})
+    return this.http.get('http://localhost:3000/api/cart/:id', {withCredentials: true})
     .map(res => {
-      this.currentUser.cart;
+      this.currentUser.cart.json();
     })
     .catch(this.handleError);
   }

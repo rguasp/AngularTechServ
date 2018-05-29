@@ -26,9 +26,7 @@ export class AppComponent implements OnInit {
 
   error: string;
 
-  newItem: any = {
-    name: ``;
-  };
+  newItem: any;
 
 
 constructor(
@@ -83,4 +81,5 @@ logout() {
   );
 
 }
+
 }

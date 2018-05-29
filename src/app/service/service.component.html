@@ -41,7 +41,7 @@
     <p>{{oneService.description}}</p>
 
     <div>
-        <button type="button" (click)="addItemToCart(this.oneService.name)" >Add to Cart</button> 
+        <button type="button" (click)="addItemToCart(oneService._id)" >Add to Cart</button> 
       </div>   
 
      <div *ngIf="formInfo.role === 'ADMIN'">

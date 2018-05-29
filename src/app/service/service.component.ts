@@ -15,21 +15,16 @@ export class ServiceComponent implements OnInit {
 
   allTheServices: Array <any> = [];
 
-  isFormShowing: Boolean = false;
-
   newService: any = {name: '', description: ''};
 
   formInfo: any = {username: '', password: '', email: '', cart: []};
 
-  itemsInCart: Array <object> = [];
+  public itemsInCart: Array <any> = [];
 
-  newItem: any = {
-    name: ``;
-  };
+
 
 
   user: any;
-  currentUser: any;
 
   constructor(
     private serviceservice: serviceService,
@@ -54,13 +49,16 @@ export class ServiceComponent implements OnInit {
   //   });
   // }
 
-  addItemToCart(newItem) {
+  addItemToCart(itemId) {
     // console.log("====" + this.newItem);
-    const cartItem = JSON.stringify(this.newItem);
-    this.myService.currentUser.cart.push(newItem);
-    this.itemsInCart = this.myService.currentUser.cart;
-    console.log("items in cart" + this.itemsInCart);
+    // const cartItem = JSON.stringify(this.newItem);
+    // this.myService.currentUser.cart.push(this.newItem);
+    this.myService.addToCart(this.itemId);
+    // this.itemsInCart = this.myService.currentUser.cart;
+    // console.log("items in cart" + this.itemsInCart);
   }
+
+  // addServiceToCart()
 
 
   ngOnInit() {
@@ -75,7 +73,7 @@ export class ServiceComponent implements OnInit {
     })
     .catch( err => {
       console.log('error while accessing unothorized stuff: ', err);
-      this.myRouter.navigate(['/services']);
+      // this.myRouter.navigate(['/services']);
     });
   }
 

@@ -23,21 +23,28 @@ export class CartComponent implements OnInit {
     private serviceservice: serviceService,
   ) { }
 
-  getAllTheItems() {
-    console.log('getting all the items');
-    this.myService.currentUser.getUserCart();
-    .subscribe( () => {
-      this.myService.currentUser.cart = this.itemsInCart;
-    });
-  }
+  // getAllTheItems() {
+  //   console.log('getting all the items');
+  //   this.myService.currentUser.getUserCart()
+  //   .subscribe((itemsList) => {
+  //     this.myService.currentUser.cart = this.itemsList;
+  //     this.itemsInCart = this.itemsList;
+  //   });
+  // }
+
+  // itemToAdd(item) {
+  //   this.offeredService = service;
+  //   this.itemsInCart.push(service);
+  //   alert(service + ' added to cart');
+  // }
 
   ngOnInit() {
-    this.getAllTheItems();
-    this.myService.isLoggedIn()
-    .toPromise()
-    .then( () => {
-      this.myService.currentUser.cart = this.itemsInCart;
-    })
-  }
+  //   this.getAllTheItems();
+  //   this.myService.isLoggedIn()
+  //   .toPromise()
+  //   .then( () => {
+  //     this.myService.currentUser.cart = this.itemsInCart;
+  //   })
+  // }
 
 }
