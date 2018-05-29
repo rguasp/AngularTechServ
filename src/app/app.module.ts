@@ -18,6 +18,7 @@ import { serviceService } from './services/service.service';
 import { Router } from '@angular/router';
 import { ReviewsComponent } from './reviews/reviews.component';
 import { reviewService } from './services/review.service';
+import { CartComponent } from './cart/cart.component';
 
 import { AgmCoreModule } from '@agm/core';
 
@@ -32,7 +33,9 @@ const routes: Routes = [
   // { path: 'services',  component: OfferedServicesComponent },
   { path: 'products',  component: ProductsListComponent },
   { path: 'services', component: ServiceComponent },
-  { path: 'reviews', component: ReviewsComponent }
+  // { path: 'services/usercart', component: ServiceComponent },
+  { path: 'reviews', component: ReviewsComponent },
+  { path: 'cart/:id', component: CartComponent }
 ];
 
 
@@ -47,7 +50,8 @@ const routes: Routes = [
     SignupComponent,
     LoginComponent,
     ServiceComponent,
-    ReviewsComponent
+    ReviewsComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

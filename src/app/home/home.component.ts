@@ -16,11 +16,18 @@ import { AgmCoreModule } from '@agm/core';
 
 export class HomeComponent implements OnInit {
 
-  constructor(private myService: AuthService, private myRouter: Router ) {}
+    formInfo: any = {username: '', password: '', email: ''};
+
+
+  constructor(
+    private myService: AuthService,
+    private myRouter: Router
+      ) {}
 
   user: any;
   title = 'app';
   error: string;
+
 
 // // google maps zoom level
 zoom = 10;
@@ -53,12 +60,14 @@ lng = -80.196191;
 //   }
 // ]
 
+
   ngOnInit() {
     // Stores session
     this.myService.isLoggedIn()
     .toPromise()
     .then( () => {
       console.log('home component.ts ', this.myService.currentUser);
+      // this.formInfo = this.myService.currentUser;
       this.user = this.myService.currentUser;
       // console.log('User from profile component: ', JSON.parse(this.myService.currentUser._body))
     })
