@@ -344,4 +344,19 @@
 
   .top-space {
     margin-top: 56px;
+    padding-top: 100px;
+  }
+
+  .sector {
+    background: #353A3F;
+    height: 650px;
+  }
+
+  .white-let {
+    color: white;
+  }
+
+  .card {
+    width: 33%;
+    margin: 0 auto;
   }
