@@ -7,6 +7,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { serviceService } from './services/service.service';
 import { reviewService } from './services/review.service';
 
+
 import * as $ from 'jquery';
 
 
@@ -38,6 +39,7 @@ constructor(
 
 
 
+
 ngOnInit() {
   this.myService.isLoggedIn()
   .toPromise()
@@ -51,6 +53,20 @@ ngOnInit() {
     console.log('error while accessing unothorized stuff: ', err);
     this.myRouter.navigate(['/']);
   });
+}
+
+signup() {
+  // console.log(this.formInfo);
+  this.myService.signup(this.formInfo)
+    .subscribe(
+      (user) => {
+        this.user = user;
+        this.formInfo = {}; // clear the input
+        // console.log(this.user);
+        this.myRouter.navigate(['/profile']);
+      },
+      (err) => this.error = err
+    );
 }
 
 login() {
@@ -82,4 +98,8 @@ logout() {
 
 }
 
+
+
+
 }
+

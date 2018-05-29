@@ -20,6 +20,8 @@ import { ReviewsComponent } from './reviews/reviews.component';
 import { reviewService } from './services/review.service';
 import { CartComponent } from './cart/cart.component';
 
+import { AgmCoreModule } from '@agm/core';
+
 
 
 const routes: Routes = [
@@ -35,6 +37,8 @@ const routes: Routes = [
   { path: 'reviews', component: ReviewsComponent },
   { path: 'cart/:id', component: CartComponent }
 ];
+
+
 
 @NgModule({
   declarations: [
@@ -53,7 +57,13 @@ const routes: Routes = [
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    // == added for googhle
+    AgmCoreModule.forRoot({
+      // please get your own API key here:
+      // https://developers.google.com/maps/documentation/javascript/get-api-key?hl=en
+      apiKey: 'AIzaSyDI7YXdxw-UFTwU_zW8smFsCND2MOgFPDg'
+    })
   ],
   providers: [AuthService, serviceService, reviewService],
   bootstrap: [AppComponent]
