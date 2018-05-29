@@ -521,6 +521,8 @@ input::placeholder {
   padding: 0;
   margin: 0;
   width: 60%;
+  display: block;
+
 }
 
 .service-list li a {
@@ -538,6 +540,9 @@ input::placeholder {
   background-color: #eee; /* Add a hover effect to all links, except for headers */
 }
 
+/* .dropdown:hover .service-list {
+  display: block;
+} */
 
 /* ol.carousel-indicators {
   position: absolute;
@@ -566,3 +571,4 @@ ol.carousel-indicators li.active {
 /* background-image: url('/css/searchicon.png'); Add a search icon to input
 background-position: 10px 12px; Position the search icon
 background-repeat: no-repeat; Do not repeat the icon image */
+

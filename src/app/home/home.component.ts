@@ -79,8 +79,9 @@ lng = -80.196191;
       console.log('error while accessing unothorized stuff: ', err);
       this.myRouter.navigate(['/']);
     });
+    document.getElementById('service-list').removeAttribute('display');
+    // document.getElementsByClassName('hide')[1].setAttribute('display', 'none');
   }
-
 
 
   logout() {
