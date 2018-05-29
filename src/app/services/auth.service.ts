@@ -10,7 +10,7 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class AuthService {
   currentUser: any;
-  itemBeingAdded: {name: '', price: 0};
+  itemId : any;
 
 
   constructor(private http: Http) { }
@@ -49,10 +49,10 @@ export class AuthService {
       .catch(this.handleError);
   }
 
-  addToCart(item) {
-    return this.http.get('http://localhost:3000/api/cart/:id/add', item, {withCredentials: true})
+  addToCart(itemId) {
+    return this.http.put('http://localhost:3000/api/cart/:id/add', itemId, {withCredentials: true})
     .map(res => {
-      this.currentUser.cart.unshift(this.item);
+      this.currentUser.cart.unshift(this.itemId);
       console.log("Items added to cart");
     })
     .catch(this.handleError);

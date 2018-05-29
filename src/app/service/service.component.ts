@@ -19,12 +19,13 @@ export class ServiceComponent implements OnInit {
 
   formInfo: any = {username: '', password: '', email: '', cart: []};
 
-  public itemsInCart: Array <any> = [];
+  itemsInCart: Array <any> = [];
 
-
+  newItem: any;
 
 
   user: any;
+  itemId: any;
 
   constructor(
     private serviceservice: serviceService,
@@ -40,25 +41,16 @@ export class ServiceComponent implements OnInit {
     });
   }
 
-  // getAllTheItems() {
-  //   console.log('getting all the items');
-  //   this.serviceservice.cart.addToCart()
-  //   .subscribe((newItem) => {
-  //     this.itemsInCart = newItem;
-  //     this.myService.currentUser.cart = this.itemsInCart;
-  //   });
-  // }
 
   addItemToCart(itemId) {
     // console.log("====" + this.newItem);
-    // const cartItem = JSON.stringify(this.newItem);
-    // this.myService.currentUser.cart.push(this.newItem);
+    // const newItem = JSON.stringify(this.itemId);
+    this.myService.currentUser.cart.unshift(this.itemId);
     this.myService.addToCart(this.itemId);
-    // this.itemsInCart = this.myService.currentUser.cart;
-    // console.log("items in cart" + this.itemsInCart);
+    // this.itemsInCart = this.serviceservice.cart;
+    console.log("items in cart" + this.itemsInCart);
   }
 
-  // addServiceToCart()
 
 
   ngOnInit() {

@@ -33,7 +33,7 @@ const routes: Routes = [
   { path: 'services', component: ServiceComponent },
   // { path: 'services/usercart', component: ServiceComponent },
   { path: 'reviews', component: ReviewsComponent },
-  { path: 'cart/:id', component: CartComponent }
+  // { path: 'cart/:id', component: CartComponent }
 ];
 
 @NgModule({
@@ -47,7 +47,7 @@ const routes: Routes = [
     LoginComponent,
     ServiceComponent,
     ReviewsComponent,
-    CartComponent
+    // CartComponent
   ],
   imports: [
     BrowserModule,
