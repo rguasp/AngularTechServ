@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class UserProfileComponent implements OnInit {
 
-  formInfo: any = {username: '', password: '', email: ''};
+  formInfo: any = {};
 
   user: any;
 

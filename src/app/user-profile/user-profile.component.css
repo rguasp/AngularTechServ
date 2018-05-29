@@ -348,8 +348,9 @@
   }
 
   .sector {
-    background: #353A3F;
+    background: url("https://images.pexels.com/photos/872958/pexels-photo-872958.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
     height: 650px;
+    background-size: cover;
   }
 
   .white-let {
@@ -357,6 +358,7 @@
   }
 
   .card {
-    width: 33%;
+    width: 50%;
     margin: 0 auto;
+    border-radius: 15px;
   }

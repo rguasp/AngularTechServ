@@ -22,7 +22,7 @@
                         <a class="nav-link"  [routerLink]="['/about']">About |</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" *ngIf="myService.currentUser"  [routerLink]="['/profile']">Profile |</a>
+                        <a class="nav-link" *ngIf="myService.currentUser"  [routerLink]="['/profile']">{{myService.currentUser.username}} |</a>
                         <a class="nav-link" *ngIf="!myService.currentUser" [routerLink]="['/login']" data-dismiss="modal" data-toggle="modal" data-target="#logModal">Login |</a>
                     </li>
                     
