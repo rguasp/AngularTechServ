@@ -21,6 +21,37 @@
     <label>Description of Service</label>
       <input  [(ngModel)]="newService.description" type="text" name="description"/>
       <br>
+<<<<<<< HEAD
+      <label>Content of Task</label>
+        <input  [(ngModel)]="newService.description" type="text" name="content"/>
+        <br>
+        <br>
+        <button (click)="addNewTask()" type="button"> Submit </button>
+    </form>
+    
+    
+    
+    <ul>
+
+      <li *ngFor="let oneService of allTheServices">
+
+    <a routerLink="/services/{{oneService._id}}" ><h3>{{oneService.name}}</h3></a>
+    
+    <form>
+        <!--<button type="POST" (click)="addItemToCart()" >Add to Cart</button> -->
+      </form>
+
+    <p>{{oneService.description}}</p>
+
+        <button type="button" (click)="addItemToCart(oneService._id)" >Add to Cart</button>
+  
+
+     <div *ngIf="formInfo.role === 'ADMIN'">
+      <button type="button" (click)="deleteTask(oneTask._id)" >Delete</button>
+      <button type="button" (click)="deleteTask(oneTask._id)" >Edit</button>
+     </div>
+
+=======
       <label>Price of Service</label>
       <input  [(ngModel)]="newService.price" type="number" name="price"/>
       <!-- <input type="file" name="file" ng2FileSelect [uploader]="uploader" /> -->
@@ -56,6 +87,7 @@
           <button type="button" (click)="updateService(oneService._id)" >Submit</button>
         </form>
       </div> 
+>>>>>>> 038a39469554c28fe5a5d29fb033db6c3b7ffa51
     </li>
   </ul>
   </div>

@@ -41,7 +41,7 @@ const routes: Routes = [
   { path: 'services', component: ServiceComponent },
   // { path: 'services/usercart', component: ServiceComponent },
   { path: 'reviews', component: ReviewsComponent },
-  { path: 'cart/:id', component: CartComponent }
+  // { path: 'cart/:id', component: CartComponent }
 ];
 
 
@@ -57,10 +57,14 @@ const routes: Routes = [
     LoginComponent,
     ServiceComponent,
     ReviewsComponent,
+<<<<<<< HEAD
+    // CartComponent
+=======
     AboutPageComponent,
     FileSelectDirective,
     // EditServiceComponent
     CartComponent
+>>>>>>> 038a39469554c28fe5a5d29fb033db6c3b7ffa51
   ],
   imports: [
     BrowserModule,

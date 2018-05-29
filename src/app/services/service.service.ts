@@ -10,6 +10,7 @@ import { Observable } from 'rxjs/Observable';
 export class serviceService {
   currentUser: any;
 
+
   constructor(
     private http: Http) { }
 
@@ -36,15 +37,15 @@ export class serviceService {
     .map((responseFromApi) => responseFromApi.json());
   }
 
+
+
   addToCart(item) {
-    return this.http.put('http://localhost:3000/api/cart/id:/add', item, {withCredentials: true})
-    // .map(res => {
+    return this.http.put('http://localhost:3000/api/cart/:id/add', item, {withCredentials: true})
+    // .map((responseFromApi) => responseFromApi.json());
+    //   this.currentUser.cart.unshift(this.item);
     //   // this.currentUser.cart.unshift(this.item);
-    //   // this.currentUser.cart.unshift(this.item);
-    //   // console.log("Items added to cart");
-    // })
-    // .catch(this.handleError);
-  }
+    //   console.log("Items added to cart");
+    }
 
   getUserCart() {
     return this.http.get('http://localhost:3000/services/userCart', {withCredentials: true})

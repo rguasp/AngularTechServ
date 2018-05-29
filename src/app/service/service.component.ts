@@ -28,14 +28,15 @@ export class ServiceComponent implements OnInit {
 
   formInfo: any = {username: '', password: '', email: '', cart: []};
 
-  public itemsInCart: Array <any> = [];
+  itemsInCart: Array <any> = [];
 
-
+  newItem: any;
 
 
   feedback: string;
 
   user: any;
+  itemId: any;
 
   constructor(
     private serviceservice: serviceService,
@@ -43,16 +44,32 @@ export class ServiceComponent implements OnInit {
     private myService: AuthService
   ) { }
 
+<<<<<<< HEAD
+  getAllTheServices() {
+    console.log('getting all the services');
+    this.serviceservice.getAllServices()
+    .subscribe((serviceList) => {
+      this.allTheServices = serviceList;
+    });
+  }
+
+=======
+>>>>>>> 038a39469554c28fe5a5d29fb033db6c3b7ffa51
 
   addItemToCart(itemId) {
     // console.log("====" + this.newItem);
-    // const cartItem = JSON.stringify(this.newItem);
-    // this.myService.currentUser.cart.push(this.newItem);
+    // const newItem = JSON.stringify(this.itemId);
+    this.myService.currentUser.cart.unshift(this.itemId);
     this.myService.addToCart(this.itemId);
-    // this.itemsInCart = this.myService.currentUser.cart;
-    // console.log("items in cart" + this.itemsInCart);
+    // this.itemsInCart = this.serviceservice.cart;
+    console.log("items in cart" + this.itemsInCart);
   }
 
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> 038a39469554c28fe5a5d29fb033db6c3b7ffa51
   ngOnInit() {
     this.getAllTheServices();
     // this.getAllTheItems();
