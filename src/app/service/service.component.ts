@@ -1,10 +1,12 @@
 import { Component, OnInit} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { serviceService } from '../services/service.service';
 
 import 'rxjs/add/operator/toPromise';
+import { FileSelectDirective } from 'ng2-file-upload';
+
 
 @Component({
   selector: 'app-service',
@@ -15,7 +17,14 @@ export class ServiceComponent implements OnInit {
 
   allTheServices: Array <any> = [];
 
-  newService: any = {name: '', description: ''};
+
+  isFormShowing: Boolean = false;
+  isFormShowing2: Boolean = false;
+
+
+  theUpdates: any = {};
+
+  newService: any = {};
 
   formInfo: any = {username: '', password: '', email: '', cart: []};
 
@@ -23,6 +32,8 @@ export class ServiceComponent implements OnInit {
 
 
 
+
+  feedback: string;
 
   user: any;
 
@@ -32,22 +43,6 @@ export class ServiceComponent implements OnInit {
     private myService: AuthService
   ) { }
 
-  getAllTheServices() {
-    console.log('getting all the services');
-    this.serviceservice.getAllServices()
-    .subscribe((serviceList) => {
-      this.allTheServices = serviceList;
-    });
-  }
-
-  // getAllTheItems() {
-  //   console.log('getting all the items');
-  //   this.serviceservice.cart.addToCart()
-  //   .subscribe((newItem) => {
-  //     this.itemsInCart = newItem;
-  //     this.myService.currentUser.cart = this.itemsInCart;
-  //   });
-  // }
 
   addItemToCart(itemId) {
     // console.log("====" + this.newItem);
@@ -58,23 +53,60 @@ export class ServiceComponent implements OnInit {
     // console.log("items in cart" + this.itemsInCart);
   }
 
-  // addServiceToCart()
-
-
   ngOnInit() {
     this.getAllTheServices();
     // this.getAllTheItems();
     this.myService.isLoggedIn()
     .toPromise()
     .then( () => {
+      this.user = JSON.parse(sessionStorage.getItem('mySession'));
       this.formInfo = this.myService.currentUser;
       this.user = this.myService.currentUser;
-      console.log(this.formInfo);
     })
     .catch( err => {
       console.log('error while accessing unothorized stuff: ', err);
       // this.myRouter.navigate(['/services']);
     });
   }
+
+  toggleForm() {
+    this.isFormShowing = !this.isFormShowing;
+  }
+  toggleForm2() {
+    this.isFormShowing2 = !this.isFormShowing2;
+  }
+
+
+  getAllTheServices() {
+    console.log('getting all the services');
+    this.serviceservice.getAllServices()
+    .subscribe((serviceList) => {
+      this.allTheServices = serviceList;
+    });
+  }
+
+  createService() {
+    this.serviceservice.createNewService(this.newService)
+    .subscribe(() => {
+      this.getAllTheServices();
+    });
+  }
+
+  updateService(idOfService) {
+    this.serviceservice.updateService(idOfService , this.theUpdates)
+    .subscribe(() => {
+      this.getAllTheServices();
+    });
+  }
+
+  deleteService(idArgument) {
+    this.serviceservice.deleteService(idArgument)
+    .subscribe(() => {
+      this.getAllTheServices();
+    });
+  }
+
+
+
 
 }

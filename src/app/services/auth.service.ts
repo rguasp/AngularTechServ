@@ -25,16 +25,34 @@ export class AuthService {
       .catch(this.handleError);
   }
 
-  login(user) {
-    return this.http.post(`http://localhost:3000/api/login`, user, { withCredentials: true })
-      .map(res => {
-        this.currentUser = null;
-        res.json();
-      })
-      .catch(this.handleError);
+  // login(user) {
+  //   return this.http.post(`http://localhost:3000/api/login`, user, { withCredentials: true })
+  //     .map(res => {
+  //       this.currentUser = null;
+  //       res.json();
+  //     })
+  //     .catch(this.handleError);
+  // }
+  setSession(user) {
+    // this.sessionUser = user;
+    sessionStorage.setItem('mySession', JSON.stringify(user));
   }
 
+  login(user) {
+    this.currentUser = this.http.post(`http://localhost:3000/api/login`, user, { withCredentials: true })
+    .map(res => res.json())
+    .catch(this.handleError);
+    this.currentUser
+    .subscribe(
+      (theUser) => this.setSession(theUser)
+    );
+    return this.currentUser;
+  }
+
+
   logout() {
+    this.currentUser = '';
+    sessionStorage.clear();
     return this.http.delete(`http://localhost:3000/api/logout`, { withCredentials: true })
       .map(res => res.json())
       .catch(this.handleError);
