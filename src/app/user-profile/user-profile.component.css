@@ -344,4 +344,21 @@
 
   .top-space {
     margin-top: 56px;
+    padding-top: 100px;
+  }
+
+  .sector {
+    background: url("https://images.pexels.com/photos/872958/pexels-photo-872958.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+    height: 650px;
+    background-size: cover;
+  }
+
+  .white-let {
+    color: white;
+  }
+
+  .card {
+    width: 50%;
+    margin: 0 auto;
+    border-radius: 15px;
   }

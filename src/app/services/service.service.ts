@@ -8,8 +8,10 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class serviceService {
+  currentUser: any;
 
-  constructor(private http: Http) { }
+  constructor(
+    private http: Http) { }
 
   handleError(e) {
     return Observable.throw(e.json().message);
@@ -33,4 +35,20 @@ export class serviceService {
     return this.http.post(`http://localhost:3000/services/services/update/${theID}`, theUpdates)
     .map((responseFromApi) => responseFromApi.json());
   }
+
+  addToCart(item) {
+    return this.http.put('http://localhost:3000/api/cart/id:/add', item, {withCredentials: true})
+    // .map(res => {
+    //   // this.currentUser.cart.unshift(this.item);
+    //   // this.currentUser.cart.unshift(this.item);
+    //   // console.log("Items added to cart");
+    // })
+    // .catch(this.handleError);
+  }
+
+  getUserCart() {
+    return this.http.get('http://localhost:3000/services/userCart', {withCredentials: true})
+    .map((responseFromApi) => responseFromApi.json());
+  }
 }
+

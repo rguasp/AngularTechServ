@@ -2,7 +2,11 @@
 <!--BEGIN nav bar-->
 <nav class="navbar navbar-expand-md navbar-dark bg-dark t-bar">
         <div class="container">
-            <a class="navbar-brand" href="#">Guardian Tech Services</a>
+
+ 
+
+            <a class="navbar-brand" href="#">TLT</a>
+
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -22,7 +26,8 @@
                         <a class="nav-link"  [routerLink]="['/about']">About |</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link"  [routerLink]="['/profile']">Profile |</a>
+                        <a class="nav-link" *ngIf="myService.currentUser"  [routerLink]="['/profile']">{{myService.currentUser.username}} |</a>
+                        <a class="nav-link" *ngIf="!myService.currentUser" [routerLink]="['/login']" data-dismiss="modal" data-toggle="modal" data-target="#logModal">Login |</a>
                     </li>
                     
                 </ul> 
@@ -47,7 +52,7 @@
                       
     
                     <div>
-                        <a *ngIf="!myService.currentUser" class="nav-link text-light" [routerLink]="['/signup']">Sign up</a>
+                        <a *ngIf="!myService.currentUser" class="nav-link text-light" [routerLink]="['/signup']" data-toggle="modal" data-target="#myModal">Sign up</a>
                         <a *ngIf="myService.currentUser" (click)="logout()" class="nav-link text-light" [routerLink]="['/login']">Logout</a>
                     </div>
                     <!-- <div *ngIf="myService; else signup">
@@ -72,4 +77,101 @@
             </div>
         </div>
     </nav> <!--END navbar-->
+
+
+    <!-- The signup Modal -->
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog mod-top">
+      <div class="modal-content">
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+            
+            <div>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <form class="text-center mod-let" #techForm="ngForm">
+                <h2> Sign up </h2>
+                <br>
+                <label> <span class="fa fa-user"></span> Username : </label>
+                  <br>
+                <input type="text" [(ngModel)]="formInfo.username" name="username" #username="ngModel" class="form-control in-style" placeholder="burgerBob" required>
+                <div [hidden]="username.valid || username.pristine"
+                class=" alert-danger in-style">
+                Username is required
+                </div>
+                <br>
+                <label><span class="fa fa-key"></span> Password : </label>
+                  <br>
+                <input type="password" [(ngModel)]="formInfo.password" name="password" #password="ngModel" class="form-control in-style" required>
+                <div [hidden]="password.valid || password.pristine"
+                class=" alert-danger in-style">
+                Password is required
+                </div>
+                <br>
+                <label><span class="fa fa-at"></span> Email : </label>
+                  <br>
+                <input type="email" [(ngModel)]="formInfo.email"  ngModel [email]="true" name="email" #email="ngModel" class="form-control in-style" placeholder="bob@burgers.com" required>
+                <div [hidden]="email.valid || email.pristine"
+                class=" alert-danger in-style">
+                Valid e-mail is required
+                </div>
+                <br>   
+                <button type="button" (click)="signup()" class="btn btn-success" data-dismiss="modal" [disabled]="!techForm.form.valid"> Submit </button>
+                <p class="error"> {{ error }} </p>
+              </form>
+              
+              <div class="text-center mod-let">
+                Already have an account? <a [routerLink]="['/login']" data-dismiss="modal" data-toggle="modal" data-target="#logModal" (click)="logForm.reset()">Login</a>
+              </div>
+            </div>
+    
+        </div>
+  
+      </div>
+    </div>
+  </div>
+
+    <!-- The login Modal -->
+<div class="modal fade" id="logModal">
+        <div class="modal-dialog mod-top">
+          <div class="modal-content">
+      
+            <!-- Modal body -->
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <form class="text-center mod-let" #logForm="ngForm">
+                        <h2> Login </h2>
+                        <br>
+                        <label> <span class="fa fa-user"></span> Username : </label>
+                          <br>
+                        <input type="text" [(ngModel)]="formInfo.username" class="form-control in-style" #logUsername="ngModel" name="username" required>
+                        <div [hidden]="logUsername.valid || logUsername.pristine"
+                        class=" alert-danger in-style">
+                        Username is required
+                        </div>
+                        <br>
+                        <label><span class="fa fa-key"></span> Password : </label>
+                          <br>
+                        <input type="password" [(ngModel)]="formInfo.password" class="form-control in-style" #logPassword="ngModel" name="password" required>
+                        <div [hidden]="logPassword.valid || logPassword.pristine"
+                        class=" alert-danger in-style">
+                        Password is required
+                        </div>
+                        <br>
+                        <button type="button" (click)="login()" class="btn btn-success" data-dismiss="modal" [disabled]="!logForm.form.valid"> login </button>
+                        <p class="error"> {{ error }} </p>
+                          </form>
+                      
+                    
+                    <div class="text-center mod-let">
+                    Don't have account? <a [routerLink]="['/signup']" data-dismiss="modal" data-toggle="modal" data-target="#myModal" (click)="techForm.reset()">Signup</a>
+                    </div>
+        
+            </div>
+      
+          </div>
+        </div>
+      </div>
+
+
     <router-outlet></router-outlet>

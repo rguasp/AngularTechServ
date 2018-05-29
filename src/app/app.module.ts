@@ -16,9 +16,15 @@ import { serviceService } from './services/service.service';
 import { Router } from '@angular/router';
 import { ReviewsComponent } from './reviews/reviews.component';
 import { reviewService } from './services/review.service';
+
 import { AboutPageComponent } from './about-page/about-page.component';
 import { EditServiceComponent } from './edit-service/edit-service.component';
 import { FileSelectDirective } from 'ng2-file-upload';
+
+import { CartComponent } from './cart/cart.component';
+
+import { AgmCoreModule } from '@agm/core';
+
 
 
 
@@ -33,8 +39,12 @@ const routes: Routes = [
   // { path: 'services',  component: OfferedServicesComponent },
   { path: 'products',  component: ProductsListComponent },
   { path: 'services', component: ServiceComponent },
-  { path: 'reviews', component: ReviewsComponent }
+  // { path: 'services/usercart', component: ServiceComponent },
+  { path: 'reviews', component: ReviewsComponent },
+  { path: 'cart/:id', component: CartComponent }
 ];
+
+
 
 @NgModule({
   declarations: [
@@ -50,12 +60,19 @@ const routes: Routes = [
     AboutPageComponent,
     FileSelectDirective,
     // EditServiceComponent
+    CartComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    // == added for googhle
+    AgmCoreModule.forRoot({
+      // please get your own API key here:
+      // https://developers.google.com/maps/documentation/javascript/get-api-key?hl=en
+      apiKey: 'AIzaSyDI7YXdxw-UFTwU_zW8smFsCND2MOgFPDg'
+    })
   ],
   providers: [AuthService, serviceService, reviewService],
   bootstrap: [AppComponent]

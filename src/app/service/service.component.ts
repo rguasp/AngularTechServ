@@ -3,6 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { serviceService } from '../services/service.service';
+
 import 'rxjs/add/operator/toPromise';
 import { FileSelectDirective } from 'ng2-file-upload';
 
@@ -16,19 +17,25 @@ export class ServiceComponent implements OnInit {
 
   allTheServices: Array <any> = [];
 
+
   isFormShowing: Boolean = false;
   isFormShowing2: Boolean = false;
 
-  newService: any = {};
-
-  formInfo: any = {username: '', password: '', email: ''};
 
   theUpdates: any = {};
+
+  newService: any = {};
+
+  formInfo: any = {username: '', password: '', email: '', cart: []};
+
+  public itemsInCart: Array <any> = [];
+
+
+
 
   feedback: string;
 
   user: any;
-  currentUser: any;
 
   constructor(
     private serviceservice: serviceService,
@@ -36,8 +43,19 @@ export class ServiceComponent implements OnInit {
     private myService: AuthService
   ) { }
 
+
+  addItemToCart(itemId) {
+    // console.log("====" + this.newItem);
+    // const cartItem = JSON.stringify(this.newItem);
+    // this.myService.currentUser.cart.push(this.newItem);
+    this.myService.addToCart(this.itemId);
+    // this.itemsInCart = this.myService.currentUser.cart;
+    // console.log("items in cart" + this.itemsInCart);
+  }
+
   ngOnInit() {
     this.getAllTheServices();
+    // this.getAllTheItems();
     this.myService.isLoggedIn()
     .toPromise()
     .then( () => {
@@ -46,8 +64,8 @@ export class ServiceComponent implements OnInit {
       this.user = this.myService.currentUser;
     })
     .catch( err => {
-      console.log('error while accessing unauthorized stuff: ', err);
-      this.myRouter.navigate(['/services']);
+      console.log('error while accessing unothorized stuff: ', err);
+      // this.myRouter.navigate(['/services']);
     });
   }
 

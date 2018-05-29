@@ -37,6 +37,8 @@
       <a routerLink="/services/{{oneService._id}}" ><h3>{{oneService.name}}</h3></a>
       <p>{{oneService.description}}</p>
       <p>Service Price: ${{oneService.price}}.00</p>
+      <br>
+       <button type="button" (click)="addItemToCart(oneService._id)" >Add to Cart</button> 
       <div *ngIf="formInfo.role === 'ADMIN'">
         <button type="button" (click)="deleteService(oneService._id)" >Delete</button>
         <button type="button" (click)="toggleForm2()">Edit</button>

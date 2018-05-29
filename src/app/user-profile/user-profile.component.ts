@@ -2,6 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
@@ -9,13 +10,17 @@ import { Router } from '@angular/router';
 })
 export class UserProfileComponent implements OnInit {
 
-  formInfo: any = {username: '', password: '', email: ''};
+  formInfo: any = {};
 
   user: any;
 
   error: string;
 
-  constructor( private myService: AuthService, private myRouter: Router ) { }
+
+  constructor(
+     private myService: AuthService,
+     private myRouter: Router
+      ) { }
 
 
 
@@ -50,5 +55,7 @@ export class UserProfileComponent implements OnInit {
       (err) => this.error = err
     );
   } // end logout
+
+  
 
 }
