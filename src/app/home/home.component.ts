@@ -6,6 +6,7 @@ import { MouseEvent } from '@agm/core';
 import { AgmCoreModule } from '@agm/core';
 
 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -82,10 +83,28 @@ lng = -80.196191;
   );
 }
 
-
+searchFunction($event) {
+  // Declare variables
+  let input, filter, ul, li, a, i;
+  input = document.getElementById('my-input');
+  filter = input.value.toUpperCase();
+  ul = document.getElementById('service-list');
+  li = ul.getElementsByTagName('li');
+  // Loop through all list items, and hide those who don't match the search query
+  for (i = 0; i < li.length; i++) {
+      a = li[i].getElementsByTagName('a')[0];
+      if (filter === '' ) {
+        li[i].style.display = 'none';
+      } else if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+          li[i].style.display = '';
+      } else {
+          li[i].style.display = 'none';
+      }
+  }
 }
 
 
+}
 
 
 

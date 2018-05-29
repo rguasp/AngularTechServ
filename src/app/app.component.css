@@ -36,3 +36,18 @@ margin-top: 130px;
 .error {
     color: darkred;
 }
+
+.in-style {
+    width: 50%;
+    margin-left: 120px;
+}
+
+.ng-valid[required], .ng-valid.required  {
+    border-bottom: 3px solid #42A948; /* green */
+    opacity: 0.9;
+  }
+
+  .ng-invalid:not(form)  {
+    border-bottom: 3px solid #a94442; /* red */
+    opacity: 0.9;
+  }

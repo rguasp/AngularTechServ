@@ -36,6 +36,7 @@ constructor(
 
 
 
+
 ngOnInit() {
   this.myService.isLoggedIn()
   .toPromise()
@@ -92,5 +93,7 @@ logout() {
   );
 
 }
+
+
 }
 
