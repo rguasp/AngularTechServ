@@ -21,6 +21,7 @@ export class HomeComponent implements OnInit {
     .toPromise()
     .then( () => {
       console.log('home component.ts ', this.myService.currentUser);
+      this.user = JSON.parse(sessionStorage.getItem('mySession'));
       this.user = this.myService.currentUser;
       // console.log('User from profile component: ', JSON.parse(this.myService.currentUser._body))
     })

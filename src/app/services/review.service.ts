@@ -12,6 +12,6 @@ export class reviewService {
 
   getAllReviews() {
     return this.http.get('http://localhost:3000/reviews/reviews')
-        .map((responseFromApi) => responseFromApi.json())
+        .map((responseFromApi) => responseFromApi.json());
   }
 }

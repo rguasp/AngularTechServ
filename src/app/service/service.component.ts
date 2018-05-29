@@ -14,17 +14,16 @@ import { FileSelectDirective } from 'ng2-file-upload';
 })
 export class ServiceComponent implements OnInit {
 
-  // uploader: FileUploader = new FileUploader({
-  //   url: `/services/`
-  // });
-
   allTheServices: Array <any> = [];
 
   isFormShowing: Boolean = false;
+  isFormShowing2: Boolean = false;
 
-  newService: any = {name: '', description: '', img: ''};
+  newService: any = {};
 
   formInfo: any = {username: '', password: '', email: ''};
+
+  theUpdates: any = {};
 
   feedback: string;
 
@@ -38,17 +37,11 @@ export class ServiceComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // this.uploader.onSuccessItem = (item, response) => {
-    //   this.feedback = JSON.parse(response).message;
-    // };
-
-    // this.uploader.onErrorItem = (item, response, status, headers) => {
-    //   this.feedback = JSON.parse(response).message;
-    // };
     this.getAllTheServices();
     this.myService.isLoggedIn()
     .toPromise()
     .then( () => {
+      this.user = JSON.parse(sessionStorage.getItem('mySession'));
       this.formInfo = this.myService.currentUser;
       this.user = this.myService.currentUser;
     })
@@ -60,6 +53,9 @@ export class ServiceComponent implements OnInit {
 
   toggleForm() {
     this.isFormShowing = !this.isFormShowing;
+  }
+  toggleForm2() {
+    this.isFormShowing2 = !this.isFormShowing2;
   }
 
 
@@ -76,17 +72,14 @@ export class ServiceComponent implements OnInit {
     .subscribe(() => {
       this.getAllTheServices();
     });
-    // this.uploader.uploadAll();
   }
 
-  // updateService(){
-  //   this.serviceservice.updateService()
-  //   .subscribe(() => {
-  //     this.getAllTheServices();
-  //   });
-
-
-  // }
+  updateService(idOfService) {
+    this.serviceservice.updateService(idOfService , this.theUpdates)
+    .subscribe(() => {
+      this.getAllTheServices();
+    });
+  }
 
   deleteService(idArgument) {
     this.serviceservice.deleteService(idArgument)

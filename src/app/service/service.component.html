@@ -21,7 +21,9 @@
     <label>Description of Service</label>
       <input  [(ngModel)]="newService.description" type="text" name="description"/>
       <br>
-      <input type="file" name="file" ng2FileSelect [uploader]="uploader" />
+      <label>Price of Service</label>
+      <input  [(ngModel)]="newService.price" type="number" name="price"/>
+      <!-- <input type="file" name="file" ng2FileSelect [uploader]="uploader" /> -->
       <!-- [(ngModel)]="newService.img"  -->
       <br>
       <button (click)="createService()" type="submit"> Submit </button>
@@ -31,14 +33,27 @@
   
   <ul>
     <li *ngFor="let oneService of allTheServices.reverse()">  
-        <p> {{oneService.img}} </p> 
-  <a routerLink="/services/{{oneService._id}}" ><h3>{{oneService.name}}</h3></a>
-  <p>{{oneService.description}}</p>
-   <div *ngIf="formInfo.role === 'ADMIN'">
-  
-    <button type="button" (click)="deleteService(oneService._id)" >Delete</button>
-    <button type="button" (click)="updateService(oneService._id)" >Edit</button>
-   </div> 
-  </li>
+      <p> {{oneService.img}} </p> 
+      <a routerLink="/services/{{oneService._id}}" ><h3>{{oneService.name}}</h3></a>
+      <p>{{oneService.description}}</p>
+      <p>Service Price: ${{oneService.price}}.00</p>
+      <div *ngIf="formInfo.role === 'ADMIN'">
+        <button type="button" (click)="deleteService(oneService._id)" >Delete</button>
+        <button type="button" (click)="toggleForm2()">Edit</button>
+        <form *ngIf="isFormShowing2">
+          <h2>Edit this Service</h2>
+             <label>Name</label>
+            <input [(ngModel)]="theUpdates.name" type="text" name="name">
+            <br>
+            <label>Description</label>
+             <input [(ngModel)]="theUpdates.description" type="text" name="description">
+             <br>
+             <label>Price</label>
+             <input [(ngModel)]="theUpdates.price" type="number" name="price">
+             <br>
+          <button type="button" (click)="updateService(oneService._id)" >Submit</button>
+        </form>
+      </div> 
+    </li>
   </ul>
   </div>

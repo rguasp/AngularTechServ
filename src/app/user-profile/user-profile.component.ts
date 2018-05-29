@@ -24,6 +24,7 @@ export class UserProfileComponent implements OnInit {
     .toPromise()
     .then( () => {
       this.formInfo = this.myService.currentUser;
+      this.user = JSON.parse(sessionStorage.getItem('mySession'));
       console.log(this.formInfo);
       // this.user = JSON.parse(this.myService.currentUser._body);
       // this.user = this.myService.currentUser;
