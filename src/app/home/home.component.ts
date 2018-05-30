@@ -82,7 +82,9 @@ lng = -80.196191;
   }
 
 
-
+  mapClicked(event) {
+    console.log('hello');
+  }
   logout() {
     console.log('logged out');
     this.myService.logout()
@@ -96,8 +98,7 @@ lng = -80.196191;
 
   ); }
 
-  );
-}
+
 
 searchFunction($event) {
   // Declare variables

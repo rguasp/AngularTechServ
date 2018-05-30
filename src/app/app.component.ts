@@ -6,6 +6,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 
 import { serviceService } from './services/service.service';
 import { reviewService } from './services/review.service';
+import { HttpClient, HttpEventType } from '@angular/common/http';
 
 
 import * as $ from 'jquery';
@@ -29,16 +30,37 @@ export class AppComponent implements OnInit {
 
   newItem: any;
 
+  selectedFile: File = null;
+
 
 constructor(
-  private myService: AuthService,
-  private myRouter: Router,
-  private serviceservice: serviceService,
+  public  myService: AuthService,
+  public  myRouter: Router,
+  public  serviceservice: serviceService,
+  public  http: HttpClient
 ) {}
 
 
 
+// onFileSelected(event) {
+//   this.selectedFile = <File>event.target.files[0];
+// }
 
+// onUpload() {
+//   const fd = new FormData();
+//   fd.append('image', this.selectedFile, this.selectedFile.name);
+//    this.http.post('', fd, {
+//     reportProgress: true,
+//     observe: 'events'
+//   })
+//   .subscribe(event => {
+//     if (event.type === HttpEventType.UploadProgress) {
+//       console.log('Upload Progress: ' + Math.round(event.loaded / event.total * 100) + '%');
+//     } else if (event.type === HttpEventType.Response) {
+//       console.log(event);
+//     }
+//   });
+// }
 
 ngOnInit() {
   this.myService.isLoggedIn()
@@ -55,6 +77,7 @@ ngOnInit() {
     this.myRouter.navigate(['/']);
   });
 }
+
 
 signup() {
   // console.log(this.formInfo);

@@ -1,8 +1,4 @@
 <div class="top-space">
-  <h1>
-    service works!
-  </h1>
-  
   <!-- <div *ngIf="user">
     
     <button type="button" (click)="deleteTask(oneTask._id)" >Create Service</button>
@@ -23,7 +19,18 @@
       <br>
       <label>Price of Service</label>
       <input  [(ngModel)]="newService.price" type="number" name="price"/>
+      <label>Service Image</label>
       <!-- <input type="file" name="file" ng2FileSelect [uploader]="uploader" /> -->
+      <!-- <input 
+      [(ngModel)]="newService.img" 
+      type="file" 
+      name="img"
+      (change)="onFileSelected($event)"
+      /> -->
+      <!-- <button type="button" (click)="onUpload()">Upload</button> -->
+      <!-- style="display: none" -->
+      <!-- #fileInput -->
+      <!-- <button type="button" (click)="fileInput.click()">Pick Image</button>
       <!-- [(ngModel)]="newService.img"  -->
       <br>
       <button (click)="createService()" type="submit"> Submit </button>
@@ -33,7 +40,7 @@
   
   <ul>
     <li *ngFor="let oneService of allTheServices.reverse()">  
-      <p> {{oneService.img}} </p> 
+      <img src="{{oneService.img}}"> 
       <a routerLink="/services/{{oneService._id}}" ><h3>{{oneService.name}}</h3></a>
       <p>{{oneService.description}}</p>
       <p>Service Price: ${{oneService.price}}.00</p>
