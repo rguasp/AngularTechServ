@@ -3,6 +3,7 @@ import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
+
 //front end promise addition
 import 'rxjs/add/operator/toPromise';
 import { Observable } from 'rxjs/Observable';
@@ -11,6 +12,7 @@ import { Observable } from 'rxjs/Observable';
 export class AuthService {
   currentUser: any;
   itemId : any;
+  userId : any;
 
 
   constructor(private http: Http) { }
@@ -24,19 +26,10 @@ export class AuthService {
       .map(res => res.json())
       .catch(this.handleError);
   }
-
-  // login(user) {
-  //   return this.http.post(`http://localhost:3000/api/login`, user, { withCredentials: true })
-  //     .map(res => {
-  //       this.currentUser = null;
-  //       res.json();
-  //     })
-  //     .catch(this.handleError);
-  // }
   setSession(user) {
-    // this.sessionUser = user;
     sessionStorage.setItem('mySession', JSON.stringify(user));
   }
+
 
   login(user) {
     this.currentUser = this.http.post(`http://localhost:3000/api/login`, user, { withCredentials: true })
@@ -58,31 +51,32 @@ export class AuthService {
       .catch(this.handleError);
   }
 
+
   isLoggedIn() {
     return this.http.get(`http://localhost:3000/api/loggedin`, { withCredentials: true })
-      // .map(userFrombackend => { this.currentUser = userFrombackend, userFrombackend.json(); } )
       .map(res => {
         this.currentUser = res.json();
       })
       .catch(this.handleError);
   }
 
+
+  //Called from AddToCart button in service.html page.
   addToCart(itemId) {
-    return this.http.put('http://localhost:3000/api/cart/:id/add', itemId, {withCredentials: true})
-    .map(res => {
-      this.currentUser.cart.unshift(this.itemId);
-      console.log("Items added to cart");
-    })
-    .catch(this.handleError);
+    console.log('id from auth service :::::::::::::::::::::::::::::', itemId);
+                                                    //TO GET ID//     //BODY//
+    return this.http.put(`http://localhost:3000/api/cart/${itemId}/add`, {}, {withCredentials: true})
+    .map((res) => res.json());
   }
 
-
-  getUserCart() {
-    return this.http.get('http://localhost:3000/api/cart/:id', {withCredentials: true})
-    .map(res => {
-      this.currentUser.cart.json();
-    })
-    .catch(this.handleError);
+  //Display cart on cart page
+  getUserCart(userId) {
+    return this.http.put(`http://localhost:3000/api/cart/${userId}`, {}, {withCredentials: true})
+    .map(res => res.json());
+    // .map(res => {
+    //   this.currentUser.cart.json();
+    // })
+    // .catch(this.handleError);
   }
 
   getPrivateData() {

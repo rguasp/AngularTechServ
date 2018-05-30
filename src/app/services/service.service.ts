@@ -5,14 +5,17 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import { Observable } from 'rxjs/Observable';
 
+import { AuthService} from '../services/auth.service';
 
 @Injectable()
 export class serviceService {
   currentUser: any;
-
+  item: any;
 
   constructor(
-    private http: Http) { }
+    private http: Http,
+    private userService: AuthService
+    ) { }
 
   handleError(e) {
     return Observable.throw(e.json().message);
@@ -37,14 +40,20 @@ export class serviceService {
     .map((responseFromApi) => responseFromApi.json());
   }
 
+  
+
+  // getAllItems() {
+  //   return this.http.get('http://localhost:3000/services/cart')
+  //   .map((responseFromApi) => responseFromApi.json());
+  // }
 
 
-  addToCart(item) {
-    return this.http.put('http://localhost:3000/api/cart/:id/add', item, {withCredentials: true})
-    // .map((responseFromApi) => responseFromApi.json());
-    //   this.currentUser.cart.unshift(this.item);
-    //   // this.currentUser.cart.unshift(this.item);
-    //   console.log("Items added to cart");
+
+  addToCart(itemId) {
+    return this.http.put(`http://localhost:3000/api/cart/${itemId}/add`, {withCredentials: true})
+    .map((responseFromApi) => responseFromApi.json());
+      // this.currentUser.cart.unshift(this.item);
+      // console.log("Items added to cart");
     }
 
   getUserCart() {

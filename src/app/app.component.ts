@@ -45,9 +45,9 @@ ngOnInit() {
   .toPromise()
   .then( () => {
     console.log('app component.ts ', this.myService.currentUser);
-    this.user = JSON.parse(sessionStorage.getItem('mySession'));
-    this.formInfo = this.myService.currentUser;
-    this.user = this.myService.currentUser;
+    // this.user = JSON.parse(sessionStorage.getItem('mySession'));
+    // this.formInfo = this.myService.currentUser;
+    // this.user = this.myService.currentUser;
     // console.log('User from profile component: ', JSON.parse(this.myService.currentUser._body))
   })
   .catch( err => {
@@ -88,6 +88,7 @@ logout() {
   this.myService.logout()
   .subscribe(
     () => {
+      sessionStorage.clear();
       localStorage.clear();
       this.myService.currentUser = null;
       this.user = null;

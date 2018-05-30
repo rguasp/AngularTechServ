@@ -97,8 +97,8 @@ lng = -80.196191;
 
   ); }
 
-  );
-}
+//   );
+// }
 
 searchFunction($event) {
   // Declare variables

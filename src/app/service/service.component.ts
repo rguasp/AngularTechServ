@@ -3,7 +3,6 @@ import { Observable } from 'rxjs/Observable';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { serviceService } from '../services/service.service';
-
 import 'rxjs/add/operator/toPromise';
 import { FileSelectDirective } from 'ng2-file-upload';
 
@@ -16,6 +15,8 @@ import { FileSelectDirective } from 'ng2-file-upload';
 export class ServiceComponent implements OnInit {
 
   allTheServices: Array <any> = [];
+
+  allTheItems: Array <any> = [];
 
 
   isFormShowing: Boolean = false;
@@ -30,46 +31,26 @@ export class ServiceComponent implements OnInit {
 
   itemsInCart: Array <any> = [];
 
-  newItem: any;
+  newItem: any = {};
 
+  itemToAdd: any = {};
 
   feedback: string;
 
   user: any;
   itemId: any;
 
+  public selectedService = {};
+  public cart = [];
+
+
   constructor(
-    private serviceservice: serviceService,
+    private serviceRouter: serviceService,
     private myRouter: Router,
     private myService: AuthService
   ) { }
 
-<<<<<<< HEAD
-  getAllTheServices() {
-    console.log('getting all the services');
-    this.serviceservice.getAllServices()
-    .subscribe((serviceList) => {
-      this.allTheServices = serviceList;
-    });
-  }
 
-=======
->>>>>>> 038a39469554c28fe5a5d29fb033db6c3b7ffa51
-
-  addItemToCart(itemId) {
-    // console.log("====" + this.newItem);
-    // const newItem = JSON.stringify(this.itemId);
-    this.myService.currentUser.cart.unshift(this.itemId);
-    this.myService.addToCart(this.itemId);
-    // this.itemsInCart = this.serviceservice.cart;
-    console.log("items in cart" + this.itemsInCart);
-  }
-
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 038a39469554c28fe5a5d29fb033db6c3b7ffa51
   ngOnInit() {
     this.getAllTheServices();
     // this.getAllTheItems();
@@ -86,6 +67,8 @@ export class ServiceComponent implements OnInit {
     });
   }
 
+
+  //ROLE TOGGLE
   toggleForm() {
     this.isFormShowing = !this.isFormShowing;
   }
@@ -94,30 +77,90 @@ export class ServiceComponent implements OnInit {
   }
 
 
+
+
+  //CART CRUD
+  // getCartItems() {
+  //   console.log('getting all the cart items');
+  //   this.serviceRouter.getAllItems()
+  //   .subscribe((cartList) => {
+  //     this.allTheItems = cartList;
+  //   });
+  // }
+
+  // addService(itemToAdd) {
+  //   this.serviceRouter.addNewItem(this.itemToAdd)
+  //   .subscribe(() => {
+  //     this.getCartItems();
+  //   });
+  // }
+  
+  // addService(service) {
+  //   // this.selectedService = service;
+  //   this.selectedService = JSON.stringify(service.id);
+  //   this.cart.push(this.selectedService);
+  //   alert(this.selectedService + 'service was selected');
+  // }
+
+
+
+
+
+
+  //CART FUNCTIONALITY
+  addToCart(itemId) {
+    // console.log("====" + this.newItem);
+    // const newItem = JSON.stringify(this.itemId);
+    // this.myService.cart.unshift(this.itemId);
+    // this.myService.addToCart(this.itemId);
+    // this.itemsInCart = this.serviceservice.cart;
+    console.log('item ID ========', itemId)
+    this.myService.addToCart(itemId)
+    // .then((serviceResult) => {
+
+    // })
+    // .catch((err) => {
+    //   console.log('error when adding to cart', err)
+    // })
+    .subscribe((service) => {
+      console.log('service after adding to cart function call  >>>>>>>>>>>>', service);
+      this.itemId = service;
+    });
+    console.log('items in cart ===========',this.itemId)
+    console.log("cart: +++++++++++++" + this.myService.currentUser.cart);
+  }
+
+
+
+
+
+
+
+  //SERVICE CRUD
   getAllTheServices() {
     console.log('getting all the services');
-    this.serviceservice.getAllServices()
+    this.serviceRouter.getAllServices()
     .subscribe((serviceList) => {
       this.allTheServices = serviceList;
     });
   }
 
   createService() {
-    this.serviceservice.createNewService(this.newService)
+    this.serviceRouter.createNewService(this.newService)
     .subscribe(() => {
       this.getAllTheServices();
     });
   }
 
   updateService(idOfService) {
-    this.serviceservice.updateService(idOfService , this.theUpdates)
+    this.serviceRouter.updateService(idOfService , this.theUpdates)
     .subscribe(() => {
       this.getAllTheServices();
     });
   }
 
   deleteService(idArgument) {
-    this.serviceservice.deleteService(idArgument)
+    this.serviceRouter.deleteService(idArgument)
     .subscribe(() => {
       this.getAllTheServices();
     });
