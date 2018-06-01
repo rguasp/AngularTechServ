@@ -7,7 +7,11 @@ import { Router } from '@angular/router';
 import { UserProfileComponent } from '../user-profile/user-profile.component';
 
 
-
+// interface Cart{
+//   name: string;
+//   description: string;
+//   price: number;
+// }
 
 // import 'rxjs/add/operator/toPromise';
 
@@ -22,8 +26,8 @@ export class CartComponent implements OnInit {
   formInfo: any = {username: '', password: '', email: '', cart: []};
   cartResponse: any;
   thePersonLoggedIn: any;
-
-
+  
+  
   constructor(
     private myService: AuthService,
     private myRouter: Router,
@@ -68,18 +72,29 @@ export class CartComponent implements OnInit {
   ngOnInit() {
     
   this.myService.isLoggedIn()
-    .toPromise()
-    .then( () => {
+    // .toPromise()
+    // .then( () => {
      
-      console.log('1111111111 YO YO YO PERSON LOGGED IN !!!!')
-       console.log(this.myService.currentUser)
+    //   console.log('1111111111 YO YO YO PERSON LOGGED IN !!!!')
+    //    console.log(this.myService.currentUser)
 
-       this.myService.getUserCart(this.myService.currentUser);
-    })
-    .catch( err => {
-      console.log('error while accessing unothorized stuff: ', err);
-    });
+    //   //  this.myService.getUserCart(this.myService.currentUser);
+    //   //  this.myService.getUserCart(this.myService.currentCart);
+    // })
+    // .catch( err => {
+    //   console.log('error while accessing unothorized stuff: ', err);
+    // });
   
+  this.myService.getUserCart()
+  .then((serviceResults: any) => {
+    console.log('this is the service results {{{{{{{{{{{{{{{}}}}}}}}}}}}}}}}', serviceResults);
+    var reply = serviceResults._body
+    this.cartResponse = JSON.parse(reply);
+    console.log('cartResponse after parse and stringify -----------______________------------', this.cartResponse)
+  })
+  .catch((err) => {
+    console.log(err);
+  })
 
 
     // this.myService.getUserCart();

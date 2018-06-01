@@ -8,10 +8,20 @@ import 'rxjs/add/operator/toPromise';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
+// export class Cart {
+//   name: string;
+//   description: string[];
+//   price: number;
+
+//   constructor () {
+//     this.description = []
+//   }
+// }
 export class AuthService {
   currentUser: any;
   itemId : any;
   userId : any;
+  currentCart: any;
 
 
   constructor(private http: Http) { }
@@ -88,27 +98,35 @@ export class AuthService {
 
 
   //Display cart on cart-component.ts page
-  getUserCart(broGetCurrentUser: any) {
-    // console.warn(XMLHttpRequest);
+  // getUserCart(broGetCurrentUser: any) {
+  //   // console.warn(XMLHttpRequest);
 
-
-        console.log('=========getUserCart()--Auth Service Activated=======OUTSIDE====')
-              console.log('2222222222222222222222  YO YO YO PERSON LOGGED IN !!!!')
+  //       console.log('=========getUserCart()--Auth Service Activated=======OUTSIDE====')
+  //             console.log('2222222222222222222222  YO YO YO PERSON LOGGED IN !!!!')
               
-       console.log(broGetCurrentUser.cart)
+  //      console.log(broGetCurrentUser.cart)
+  //      this.currentCart = broGetCurrentUser.cart;
 
-    return this.http.get(`http://localhost:3000/api/theCart/${broGetCurrentUser.cart}`, {withCredentials: true})
-    .subscribe((res) => {
-    console.log('=========getUserCart()--Auth Service Activated=====')
-    console.log(res)
-    console.log(res.json())
-    })
-  
+  //   return this.http.get(`http://localhost:3000/api/theCart/${broGetCurrentUser.cart}`, {withCredentials: true})
+  //   .subscribe((res) => {
+  //   console.log('=========getUserCart()--Auth Service Activated=====')
+  //   console.log(res)
+  //   console.log(res.json())
+  //   console.log(this.currentCart);
+
+  //   })
+
+  getUserCart() {
+    return this.http.get(`http://localhost:3000/api/cart`,
+     {withCredentials: true}
+     ).toPromise()
+  }
+
     // .map(res => {
     //   this.currentUser.cart = res.cart
     // })
     // .catch(this.handleError)
-  };
+  // };
   
 
 
