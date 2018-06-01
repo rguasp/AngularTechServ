@@ -1,18 +1,23 @@
 
 <div class="top-space">
 
-<p>
-  cart works!
-</p>
 
 
-<h1>Cart:</h1>
+<div class="flex-container">
 <div *ngFor="let oneService of cartResponse">
-<h2> name: {{oneService.name}} </h2>
-<h3> description: {{oneService.description}} </h3>
-<h4> price: {{oneService.price}} </h4>
+  <div class="card" style="width:400px">
+    <div class="card-body text-center">
+      <img class="card-img-top" src="{{oneService.img}}" alt="Card image" >
+<h3>{{oneService.name}}</h3>
+ <p> <b>Description :</b><br>{{oneService.description}}</p> 
+<p><b>Price :</b>$ {{oneService.price}} .00</p>
 </div>
 
-
+</div>
 </div>
 
+</div>
+<div class="flex-btn">
+<button type="button"  class="btn btn-warning text-center" >Checkout</button>
+</div>
+</div>

@@ -30,7 +30,7 @@ export class serviceService {
   }
 
   getOneService(id) {
-    return this.http.get(`http://localhost:3000/services/services/${id}`)
+    return this.http.get(`${environment.backendUrl}/services/services/${id}`)
     .map((responseFromApi) => responseFromApi.json());
   }
 
@@ -46,12 +46,12 @@ export class serviceService {
 
 
   updateService(theUpdates) {
-    console.log("update service in services.ts ===========>>> 😁😁😁😁😁😁")
+    console.log('update service in services.ts ===========>>> 😁😁😁😁😁😁')
     console.log(theUpdates)
 
-    console.log("This is THE ID =====>")
+    console.log('This is THE ID =====>');
     console.log(theUpdates._id);
-    
+
     return this.http.post(`${environment.backendUrl}/services/services/update/${theUpdates._id}`, theUpdates)
 
     .map((responseFromApi) => responseFromApi.json());

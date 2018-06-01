@@ -68,21 +68,21 @@ export class AuthService {
 
 
 
-  //Called from AddToCart button in service.html page.
+  // Called from AddToCart button in service.html page.
   addToCart(itemObject) {
-    console.log("=======================addToCart(itemObject) GET ID ========");
+     console.log(`=======================addToCart(itemObject) GET ID ========`);
      console.log(`${itemObject._id}`);
      console.log(`============================================================`);
 
-                                                    //TO GET ID//     //BODY//
-    return this.http.put(`http://localhost:3000/api/cart/${itemObject._id}/add`, {}, {withCredentials: true})
+                                                    // TO GET ID//     //BODY//
+    return this.http.put(`${environment.backendUrl}/api/cart/${itemObject._id}/add`, {}, {withCredentials: true})
     .map((res) => res.json());
   }
 
 
 
   getUserCart() {
-    return this.http.get(`http://localhost:3000/api/cart`,
+    return this.http.get(`${environment.backendUrl}/api/cart`,
      {withCredentials: true}
      ).toPromise()
   }
