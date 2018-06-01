@@ -4,8 +4,9 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import { Observable } from 'rxjs/Observable';
-
+import { environment } from '../../environments/environment';
 import { AuthService} from '../services/auth.service';
+
 
 @Injectable()
 export class serviceService {
@@ -22,27 +23,26 @@ export class serviceService {
   }
 
   getAllServices() {
-    return this.http.get('http://localhost:3000/services/services')
+    return this.http.get(`${environment.backendUrl}/services/services`)
     .map((responseFromApi) => responseFromApi.json());
   }
   createNewService(theWholeServiceObject) {
-    return this.http.post(`http://localhost:3000/services/services/create`, theWholeServiceObject)
+    return this.http.post(`${environment.backendUrl}/services/services/create`, theWholeServiceObject)
     .map((responseFromApi) => responseFromApi.json());
   }
 
   deleteService(id) {
-    return this.http.post(`http://localhost:3000/services/services/delete/${id}`, {})
+    return this.http.post(`${environment.backendUrl}/services/services/delete/${id}`, {})
     .map((responseFromApi) => responseFromApi.json());
   }
 
   updateService(theID, theUpdates) {
-    return this.http.post(`http://localhost:3000/services/services/update/${theID}`, theUpdates)
+    return this.http.post(`${environment.backendUrl}/services/services/update/${theID}`, theUpdates)
     .map((responseFromApi) => responseFromApi.json());
   }
 
-
   addToCart(itemId) {
-    return this.http.put(`http://localhost:3000/api/cart/${itemId}/add`, {withCredentials: true})
+    return this.http.put(`${environment.backendUrl}/api/cart/${itemId}/add`, {withCredentials: true})
     .map((responseFromApi) => responseFromApi.json());
       // console.log("Items added to cart");
     }

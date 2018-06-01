@@ -18,14 +18,16 @@ import { ReviewsComponent } from './reviews/reviews.component';
 import { reviewService } from './services/review.service';
 
 import { AboutPageComponent } from './about-page/about-page.component';
-import { EditServiceComponent } from './edit-service/edit-service.component';
-import { FileSelectDirective } from 'ng2-file-upload';
+// import { EditServiceComponent } from './edit-service/edit-service.component';
+// import { FileSelectDirective } from 'ng2-file-upload';
 
 import { CartComponent } from './cart/cart.component';
 import { cartService } from './services/cart.service';
 
 
 import { AgmCoreModule } from '@agm/core';
+
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -60,7 +62,7 @@ const routes: Routes = [
     ServiceComponent,
     ReviewsComponent,
     AboutPageComponent,
-    FileSelectDirective,
+    // FileSelectDirective,
     // EditServiceComponent
     CartComponent
   ],
@@ -68,6 +70,7 @@ const routes: Routes = [
     BrowserModule,
     FormsModule,
     HttpModule,
+    HttpClientModule,
     RouterModule.forRoot(routes),
     // == added for googhle
     AgmCoreModule.forRoot({

@@ -3,9 +3,11 @@ import { Observable } from 'rxjs/Observable';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { serviceService } from '../services/service.service';
+import { HttpModule } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
-import { FileSelectDirective } from 'ng2-file-upload';
-
+// import { FileSelectDirective } from 'ng2-file-upload';
+import { FileUploader } from 'ng2-file-upload/ng2-file-upload';
+import { HttpClient, HttpEventType } from '@angular/common/http';
 
 @Component({
   selector: 'app-service',
@@ -13,6 +15,10 @@ import { FileSelectDirective } from 'ng2-file-upload';
   styleUrls: ['./service.component.css']
 })
 export class ServiceComponent implements OnInit {
+
+  // uploader: FileUploader = new FileUploader({
+  //   url: `http://localhost:3000/services/services/create`
+  // });
 
   allTheServices: Array <any> = [];
 
@@ -23,17 +29,21 @@ export class ServiceComponent implements OnInit {
   isFormShowing2: Boolean = false;
 
 
+
+
   theUpdates: any = {};
 
   newService: any = {};
 
-  formInfo: any = {username: '', password: '', email: '', cart: []};
+  formInfo: any = {username: '', password: '', email: '', cart: [], img: ''};
+
 
   itemsInCart: Array <any> = [];
 
   newItem: any = {};
 
   itemToAdd: any = {};
+
 
   feedback: string;
 
@@ -44,11 +54,35 @@ export class ServiceComponent implements OnInit {
   public cart = [];
 
 
+  selectedFile: File = null;
+
   constructor(
     private serviceRouter: serviceService,
     private myRouter: Router,
-    private myService: AuthService
+    private myService: AuthService,
+    private http: HttpClient
   ) { }
+
+  // onFileSelected(event) {
+  //   this.selectedFile = <File>event.target.files[0];
+  // }
+
+
+// onUpload() {
+//   const fd = new FormData();
+//   fd.append('image', this.selectedFile, this.selectedFile.name);
+//    this.http.post('http://localhost:3000/services/services/create', fd, {
+//     reportProgress: true,
+//     observe: 'events'
+//   })
+//   .subscribe(event => {
+//     if (event.type === HttpEventType.UploadProgress) {
+//       console.log('Upload Progress: ' + Math.round(event.loaded / event.total * 100) + '%');
+//     } else if (event.type === HttpEventType.Response) {
+//       console.log(event);
+//     }
+//   });
+// }
 
 
   ngOnInit() {
@@ -65,6 +99,14 @@ export class ServiceComponent implements OnInit {
       console.log('error while accessing unothorized stuff: ', err);
       // this.myRouter.navigate(['/services']);
     });
+
+    // this.uploader.onSuccessItem = (item, response) => {
+    //   this.feedback = JSON.parse(response).message;
+    // };
+
+    // this.uploader.onErrorItem = (item, response, status, headers) => {
+    //   this.feedback = JSON.parse(response).message;
+    // };
   }
 
 
@@ -114,6 +156,12 @@ export class ServiceComponent implements OnInit {
     .subscribe(() => {
       this.getAllTheServices();
     });
+    // this.uploader.onBuildItemForm = (item, form) => {
+    //   form.append('name', this.newService.name);
+    //   form.append('description', this.newService.description);
+    //   form.append('price', this.newService.price);
+    // };
+    // this.uploader.uploadAll();
   }
 
   updateService(idOfService) {

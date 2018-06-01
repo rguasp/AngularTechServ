@@ -1,7 +1,10 @@
 <div class="top-space">
-  <h1>
-    service works!
-  </h1>
+
+  <!-- <div *ngIf="user">
+    
+    <button type="button" (click)="deleteTask(oneTask._id)" >Create Service</button>
+  </div> -->
+
   
   <div *ngIf="formInfo.role === 'ADMIN'">
     <button type="button" (click)="toggleForm()">Add New Service</button>
@@ -16,22 +19,19 @@
     <label>Description of Service</label>
       <input  [(ngModel)]="newService.description" type="text" name="description"/>
       <br>
+      <label>Price of Service</label>
+      <input  [(ngModel)]="newService.price" type="number" name="price"/>
+      <label>Service Image</label>
+      <br>
+      <button (click)="createService()" type="submit"> Submit </button>
+  </form>
 
-      <label>Content of Task</label>
-        <input  [(ngModel)]="newService.description" type="text" name="content"/>
-        <br>
-        <br>
-        <button (click)="addNewTask()" type="button"> Submit </button>
-    </form>
-    
-    
-  
-  
-  
   
   <ul>
-    <li *ngFor="let oneService of allTheServices.reverse()" >  
-      <p> {{oneService.img}} </p> 
+
+    <li *ngFor="let oneService of allTheServices.reverse()">  
+      <img src="{{oneService.img}}"> 
+
       <a routerLink="/services/{{oneService._id}}" ><h3>{{oneService.name}}</h3></a>
       <p>{{oneService.description}}</p>
       <p>Service Price: ${{oneService.price}}.00</p>

@@ -60,6 +60,7 @@ lng = -80.196191;
 // ]
 
 
+
   ngOnInit() {
     // Stores session
     this.myService.isLoggedIn()
@@ -79,6 +80,11 @@ lng = -80.196191;
     // document.getElementsByClassName('hide')[1].setAttribute('display', 'none');
   }
 
+
+
+  mapClicked(event) {
+    console.log('hello');
+  }
 
   logout() {
     console.log('logged out');

@@ -53,6 +53,6 @@ export class UserProfileComponent implements OnInit {
     );
   } // end logout
 
-  
+
 
 }

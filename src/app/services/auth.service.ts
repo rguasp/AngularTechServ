@@ -3,9 +3,11 @@ import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
-//front end promise addition
+// front end promise addition
 import 'rxjs/add/operator/toPromise';
 import { Observable } from 'rxjs/Observable';
+
+import { environment } from '../../environments/environment';
 
 @Injectable()
 
@@ -23,7 +25,7 @@ export class AuthService {
   }
 
   signup(user) {
-    return this.http.post(`http://localhost:3000/api/signup`, user, { withCredentials: true })
+    return this.http.post(`${environment.backendUrl}/api/signup`, user, { withCredentials: true })
       .map(res => res.json())
       .catch(this.handleError);
   }
@@ -33,7 +35,7 @@ export class AuthService {
 
 
   login(user) {
-    this.currentUser = this.http.post(`http://localhost:3000/api/login`, user, { withCredentials: true })
+    this.currentUser = this.http.post(`${environment.backendUrl}/api/login`, user, { withCredentials: true })
     .map(res => res.json())
     .catch(this.handleError);
     this.currentUser
@@ -47,19 +49,21 @@ export class AuthService {
   logout() {
     this.currentUser = '';
     sessionStorage.clear();
-    return this.http.delete(`http://localhost:3000/api/logout`, { withCredentials: true })
+    return this.http.delete(`${environment.backendUrl}/api/logout`, { withCredentials: true })
       .map(res => res.json())
       .catch(this.handleError);
   }
 
 
   isLoggedIn() {
-    return this.http.get(`http://localhost:3000/api/loggedin`, { withCredentials: true })
+    return this.http.get(`${environment.backendUrl}/api/loggedin`, { withCredentials: true })
+      // .map(userFrombackend => { this.currentUser = userFrombackend, userFrombackend.json(); } )
       .map(res => {
         this.currentUser = res.json();
       })
       .catch(this.handleError);
   }
+
 
 
   //Called from AddToCart button in service.html page.
@@ -83,7 +87,7 @@ export class AuthService {
 
 
   getPrivateData() {
-    return this.http.get(`http://localhost:3000/api/private`, { withCredentials: true })
+    return this.http.get(`${environment.backendUrl}/api/private`, { withCredentials: true })
       .map(res => res.json())
       .catch(this.handleError);
   }
