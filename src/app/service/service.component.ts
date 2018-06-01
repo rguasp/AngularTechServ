@@ -77,66 +77,20 @@ export class ServiceComponent implements OnInit {
   }
 
 
-
-
-  //CART CRUD
-  // getCartItems() {
-  //   console.log('getting all the cart items');
-  //   this.serviceRouter.getAllItems()
-  //   .subscribe((cartList) => {
-  //     this.allTheItems = cartList;
-  //   });
-  // }
-
-  // addService(itemToAdd) {
-  //   this.serviceRouter.addNewItem(this.itemToAdd)
-  //   .subscribe(() => {
-  //     this.getCartItems();
-  //   });
-  // }
-  
-  // addService(service) {
-  //   // this.selectedService = service;
-  //   this.selectedService = JSON.stringify(service.id);
-  //   this.cart.push(this.selectedService);
-  //   alert(this.selectedService + 'service was selected');
-  // }
-
-
-
-
-
-
   //CART FUNCTIONALITY
   addToCartButton(itemObject) {
-    // console.log("====" + this.newItem);
-    // const newItem = JSON.stringify(this.itemId);
-    // this.myService.cart.unshift(this.itemId);
-    // this.myService.addToCart(this.itemId);
-    // this.itemsInCart = this.serviceservice.cart;
-    // const newItem = JSON.stringify(this.itemId);
-        const newItem = itemObject;
-
-    console.log('item ID ==============>', itemObject)
+      const newItem = itemObject;
+      // console.log('item ID ==============>', itemObject)
       // console.log('newItem ===============>', newItem)
       // console.log(`newItem ID ===============>', ${JSON.parse(newItem._id)}`)
-
-    this.myService.addToCart(itemObject)
-
-    // .then((serviceResult) => {
-
-    // })
-    // .catch((err) => {
-    //   console.log('error when adding to cart', err)
-    // })
-
-    .subscribe((service) => {
-      console.log('service after adding to cart function call  >>>>>>>>>>>>', service);
-      this.newItem = service;
-    });
-    console.log('items in cart ===========',this.newItem)
-    console.log("cart: +++++++++++++" + this.myService.currentUser.cart);
-  }
+      this.myService.addToCart(itemObject)
+        .subscribe((service) => {
+          // console.log('service after adding to cart function call  >>>>>>>>>>>>', service);
+          this.newItem = service;
+        });
+        // console.log('items in cart ===========',this.newItem)
+        // console.log("cart: +++++++++++++" + this.myService.currentUser.cart);
+      }
 
   
 

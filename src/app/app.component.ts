@@ -48,27 +48,12 @@ ngOnInit() {
   this.myService.isLoggedIn()
   .toPromise()
   .then( () => {
-   // console.log('app component.ts ', this.myService.currentUser);
-    // this.user = JSON.parse(sessionStorage.getItem('mySession'));
-    // this.formInfo = this.myService.currentUser;
-    // this.user = this.myService.currentUser;
-    // console.log('User from profile component: ', JSON.parse(this.myService.currentUser._body))
   })
   .catch( err => {
     console.log('error while accessing unothorized stuff: ', err);
     this.myRouter.navigate(['/']);
   });
 }
-
-  // getUserCart() {
-  //   this.myService.getUserCart()
-  //   .subscribe((cartList) => {
-  //     this.itemsInCart = cartList;
-  //     console.log('==============================')
-  //     // this.myRouter.navigate(['/services/userCart']);
-  //     console.log("is it working?", this.itemsInCart )
-  //   })
-  // }
 
 signup() {
   // console.log(this.formInfo);
