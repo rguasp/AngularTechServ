@@ -1,12 +1,16 @@
+<div class="top-space">
+
 <p>
   cart works!
 </p>
 
 
-<ul>
-<li *ngFor="let oneItem of itemsInCart">
-  <p> {{oneItem.name}} </p>
-<!--<a routerLink="/cart/{{oneReview._id}}" ><h3>{{oneReview.content}}</h3></a>-->
-<!--<button type="button" (click)="deleteTask(oneTask._id)" >Delete</button>-->
-</li>
-</ul>
+<h1>Cart:</h1>
+<div *ngFor="let oneService of cartResponse">
+<h2> name: {{oneService.name}} </h2>
+<h3> description: {{oneService.description}} </h3>
+<h4> price: {{oneService.price}} </h4>
+</div>
+
+
+</div>

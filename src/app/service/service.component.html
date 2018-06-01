@@ -1,13 +1,15 @@
 <div class="top-space">
+
   <!-- <div *ngIf="user">
     
     <button type="button" (click)="deleteTask(oneTask._id)" >Create Service</button>
   </div> -->
+
   
   <div *ngIf="formInfo.role === 'ADMIN'">
-  
     <button type="button" (click)="toggleForm()">Add New Service</button>
   </div>
+  
   <br>
 
   <form *ngIf="isFormShowing">
@@ -20,35 +22,28 @@
       <label>Price of Service</label>
       <input  [(ngModel)]="newService.price" type="number" name="price"/>
       <label>Service Image</label>
-      <!-- <input type="file" name="file" ng2FileSelect [uploader]="uploader" /> -->
-      <!-- <input 
-      [(ngModel)]="newService.img" 
-      type="file" 
-      name="img"
-      (change)="onFileSelected($event)"
-      /> -->
-      <!-- <button type="button" (click)="onUpload()">Upload</button> -->
-      <!-- style="display: none" -->
-      <!-- #fileInput -->
-      <!-- <button type="button" (click)="fileInput.click()">Pick Image</button>
-      <!-- [(ngModel)]="newService.img"  -->
       <br>
       <button (click)="createService()" type="submit"> Submit </button>
   </form>
-  
-  
+
   
   <ul>
+
     <li *ngFor="let oneService of allTheServices.reverse()">  
       <img src="{{oneService.img}}"> 
+
       <a routerLink="/services/{{oneService._id}}" ><h3>{{oneService.name}}</h3></a>
       <p>{{oneService.description}}</p>
       <p>Service Price: ${{oneService.price}}.00</p>
       <br>
-       <button type="button" (click)="addItemToCart(oneService._id)" >Add to Cart</button> 
+      <!--ADD TO CART BUTTON-->
+       <!--<button type="button" (click)="addToCart(oneService._id)" >Add to Cart</button>-->
+       <button type="button" (click)="addToCartButton(oneService)" >Add to Cart</button>
+      <!--ADD TO CART BUTTON-->
       <div *ngIf="formInfo.role === 'ADMIN'">
         <button type="button" (click)="deleteService(oneService._id)" >Delete</button>
         <button type="button" (click)="toggleForm2()">Edit</button>
+
         <form *ngIf="isFormShowing2">
           <h2>Edit this Service</h2>
              <label>Name</label>
@@ -61,8 +56,17 @@
              <input [(ngModel)]="theUpdates.price" type="number" name="price">
              <br>
           <button type="button" (click)="updateService(oneService._id)" >Submit</button>
+
         </form>
       </div> 
+
     </li>
+    <p>Recently added service: {{selectedService}}</p>
+    <!--<ul>
+      <li *ngFor="let item of cart">{{item}}
+
+      </li>
+    </ul>-->
   </ul>
-  </div>
+
+  <!--</div>-->

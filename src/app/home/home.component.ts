@@ -18,7 +18,6 @@ export class HomeComponent implements OnInit {
 
     formInfo: any = {username: '', password: '', email: ''};
 
-
   constructor(
     private myService: AuthService,
     private myRouter: Router
@@ -68,11 +67,8 @@ lng = -80.196191;
     .toPromise()
     .then( () => {
       console.log('home component.ts ', this.myService.currentUser);
-
       this.user = JSON.parse(sessionStorage.getItem('mySession'));
-
       // this.formInfo = this.myService.currentUser;
-
       this.user = this.myService.currentUser;
       // console.log('User from profile component: ', JSON.parse(this.myService.currentUser._body))
     })
@@ -80,12 +76,16 @@ lng = -80.196191;
       console.log('error while accessing unothorized stuff: ', err);
       this.myRouter.navigate(['/']);
     });
+    document.getElementById('service-list').removeAttribute('display');
+    // document.getElementsByClassName('hide')[1].setAttribute('display', 'none');
   }
+
 
 
   mapClicked(event) {
     console.log('hello');
   }
+
   logout() {
     console.log('logged out');
     this.myService.logout()
@@ -98,7 +98,6 @@ lng = -80.196191;
       (err) => this.error = err
 
   ); }
-
 
 
 searchFunction($event) {

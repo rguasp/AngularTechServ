@@ -22,6 +22,8 @@ export class ServiceComponent implements OnInit {
 
   allTheServices: Array <any> = [];
 
+  allTheItems: Array <any> = [];
+
 
   isFormShowing: Boolean = false;
   isFormShowing2: Boolean = false;
@@ -35,16 +37,27 @@ export class ServiceComponent implements OnInit {
 
   formInfo: any = {username: '', password: '', email: '', cart: [], img: ''};
 
-  public itemsInCart: Array <any> = [];
+
+  itemsInCart: Array <any> = [];
+
+  newItem: any = {};
+
+  itemToAdd: any = {};
+
 
   feedback: string;
 
   user: any;
+  itemId: any;
+
+  public selectedService = {};
+  public cart = [];
+
 
   selectedFile: File = null;
 
   constructor(
-    private serviceservice: serviceService,
+    private serviceRouter: serviceService,
     private myRouter: Router,
     private myService: AuthService,
     private http: HttpClient
@@ -71,14 +84,6 @@ export class ServiceComponent implements OnInit {
 //   });
 // }
 
-  addItemToCart(itemId) {
-    // console.log("====" + this.newItem);
-    // const cartItem = JSON.stringify(this.newItem);
-    // this.myService.currentUser.cart.push(this.newItem);
-    // this.myService.addToCart(this.itemId);
-    // this.itemsInCart = this.myService.currentUser.cart;
-    // console.log("items in cart" + this.itemsInCart);
-  }
 
   ngOnInit() {
     this.getAllTheServices();
@@ -104,6 +109,8 @@ export class ServiceComponent implements OnInit {
     // };
   }
 
+
+  //ROLE TOGGLE
   toggleForm() {
     this.isFormShowing = !this.isFormShowing;
   }
@@ -112,16 +119,40 @@ export class ServiceComponent implements OnInit {
   }
 
 
+  //CART FUNCTIONALITY
+  addToCartButton(itemObject) {
+      const newItem = itemObject;
+      // console.log('item ID ==============>', itemObject)
+      // console.log('newItem ===============>', newItem)
+      // console.log(`newItem ID ===============>', ${JSON.parse(newItem._id)}`)
+      this.myService.addToCart(itemObject)
+        .subscribe((service) => {
+          // console.log('service after adding to cart function call  >>>>>>>>>>>>', service);
+          this.newItem = service;
+        });
+        // console.log('items in cart ===========',this.newItem)
+        // console.log("cart: +++++++++++++" + this.myService.currentUser.cart);
+      }
+
+  
+
+
+
+
+
+
+
+  //SERVICE CRUD
   getAllTheServices() {
     console.log('getting all the services');
-    this.serviceservice.getAllServices()
+    this.serviceRouter.getAllServices()
     .subscribe((serviceList) => {
       this.allTheServices = serviceList;
     });
   }
 
   createService() {
-    this.serviceservice.createNewService(this.newService)
+    this.serviceRouter.createNewService(this.newService)
     .subscribe(() => {
       this.getAllTheServices();
     });
@@ -134,14 +165,14 @@ export class ServiceComponent implements OnInit {
   }
 
   updateService(idOfService) {
-    this.serviceservice.updateService(idOfService , this.theUpdates)
+    this.serviceRouter.updateService(idOfService , this.theUpdates)
     .subscribe(() => {
       this.getAllTheServices();
     });
   }
 
   deleteService(idArgument) {
-    this.serviceservice.deleteService(idArgument)
+    this.serviceRouter.deleteService(idArgument)
     .subscribe(() => {
       this.getAllTheServices();
     });

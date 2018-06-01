@@ -5,13 +5,18 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import { Observable } from 'rxjs/Observable';
 import { environment } from '../../environments/environment';
+import { AuthService} from '../services/auth.service';
+
 
 @Injectable()
 export class serviceService {
   currentUser: any;
+  item: any;
 
   constructor(
-    private http: Http) { }
+    private http: Http,
+    private userService: AuthService
+    ) { }
 
   handleError(e) {
     return Observable.throw(e.json().message);
@@ -36,19 +41,10 @@ export class serviceService {
     .map((responseFromApi) => responseFromApi.json());
   }
 
-  addToCart(item) {
-    return this.http.put(`${environment.backendUrl}/api/cart/id:/add`, item, {withCredentials: true});
-    // .map(res => {
-    //   // this.currentUser.cart.unshift(this.item);
-    //   // this.currentUser.cart.unshift(this.item);
-    //   // console.log("Items added to cart");
-    // })
-    // .catch(this.handleError);
-  }
-
-  getUserCart() {
-    return this.http.get(`${environment.backendUrl}/services/userCart`, {withCredentials: true})
+  addToCart(itemId) {
+    return this.http.put(`${environment.backendUrl}/api/cart/${itemId}/add`, {withCredentials: true})
     .map((responseFromApi) => responseFromApi.json());
-  }
+      // console.log("Items added to cart");
+    }
 }
 

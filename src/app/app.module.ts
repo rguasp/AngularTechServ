@@ -22,6 +22,8 @@ import { AboutPageComponent } from './about-page/about-page.component';
 // import { FileSelectDirective } from 'ng2-file-upload';
 
 import { CartComponent } from './cart/cart.component';
+import { cartService } from './services/cart.service';
+
 
 import { AgmCoreModule } from '@agm/core';
 
@@ -43,7 +45,7 @@ const routes: Routes = [
   { path: 'services', component: ServiceComponent },
   // { path: 'services/usercart', component: ServiceComponent },
   { path: 'reviews', component: ReviewsComponent },
-  { path: 'cart/:id', component: CartComponent }
+  { path: 'cart', component: CartComponent }
 ];
 
 
@@ -77,7 +79,7 @@ const routes: Routes = [
       apiKey: 'AIzaSyDI7YXdxw-UFTwU_zW8smFsCND2MOgFPDg'
     })
   ],
-  providers: [AuthService, serviceService, reviewService],
+  providers: [AuthService, serviceService, reviewService, cartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
