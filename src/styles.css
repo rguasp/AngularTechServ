@@ -383,3 +383,6 @@
   filter: blur(1px);
 } */
 
+body{
+font-family: 'Lato', sans-serif;
+}

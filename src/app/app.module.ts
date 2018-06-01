@@ -27,7 +27,11 @@ import { cartService } from './services/cart.service';
 
 import { AgmCoreModule } from '@agm/core';
 
+
+import { DataService } from './data.service';         // Add this
 import { HttpClientModule } from '@angular/common/http';
+import { MathRoundPipe } from './pipes/math-round.pipe';
+
 
 
 
@@ -45,7 +49,11 @@ const routes: Routes = [
   { path: 'services', component: ServiceComponent },
   // { path: 'services/usercart', component: ServiceComponent },
   { path: 'reviews', component: ReviewsComponent },
+
+  { path: 'services/:id', component: ReviewsComponent },
+
   { path: 'cart', component: CartComponent }
+
 ];
 
 
@@ -64,7 +72,8 @@ const routes: Routes = [
     AboutPageComponent,
     // FileSelectDirective,
     // EditServiceComponent
-    CartComponent
+    CartComponent,
+    MathRoundPipe
   ],
   imports: [
     BrowserModule,
@@ -72,6 +81,7 @@ const routes: Routes = [
     HttpModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
+    HttpClientModule,
     // == added for googhle
     AgmCoreModule.forRoot({
       // please get your own API key here:
@@ -79,7 +89,9 @@ const routes: Routes = [
       apiKey: 'AIzaSyDI7YXdxw-UFTwU_zW8smFsCND2MOgFPDg'
     })
   ],
-  providers: [AuthService, serviceService, reviewService, cartService],
+
+  providers: [AuthService, serviceService, reviewService, DataService, cartService],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -4,7 +4,7 @@
 
  
 
-            <a class="navbar-brand" href="#">TLT</a>
+            <a class="navbar-brand" href="/home"><span class="tech">Cryp</span>Tech</a>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -15,9 +15,9 @@
                     <li class="nav-item">
                         <a class="nav-link"  [routerLink]="['/home']">Home |</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link"  [routerLink]="['/products']">Products |</a>
-                    </li>
+                    <li class="nav-item ">
+                            <a class="nav-link"  [routerLink]="['/products']"> Crypto Rates |</a>
+                        </li>
                     <li class="nav-item ">
                         <a class="nav-link"  [routerLink]="['/services']">Services |</a>
                     </li>
@@ -32,33 +32,17 @@
                 </ul> 
     
                 <form class="form-inline my-2 my-lg-0">
-                    <!-- <div class="input-group input-group-sm">
-                        <input type="text" class="form-control" placeholder="Search...">
-                        <div class="input-group-append">
-                            <button type="button" class="btn btn-secondary btn-number">
-                                <i class="fa fa-search"></i>
-                            </button>
-                        </div>
-                    </div> -->
+               
     
                     <div class="nav-item">
        
-                        <!-- <a class="nav-link text-light" [routerLink]="['/signup']">Sign up</a>
-                        
-                        <div *ngIf="user">
-                        <a class="nav-link text-light" (click)="logout()" [routerLink]="['/home']">Logout</a>
-                    </div> -->
                       
     
                     <div>
                         <a *ngIf="!myService.currentUser" class="nav-link text-light" [routerLink]="['/signup']" data-toggle="modal" data-target="#myModal">Sign up</a>
                         <a *ngIf="myService.currentUser" (click)="logout()" class="nav-link text-light" [routerLink]="['/login']">Logout</a>
                     </div>
-                    <!-- <div *ngIf="myService; else signup">
-                        <button (click)="logout()"> <a class="nav-link text-light" [routerLink]="['/login']">Logout</a></button>
-                        
-                        <ng-template #signup><a class="nav-link text-light" [routerLink]="['/signup']">Sign up</a></ng-template>
-                    </div> -->
+                 
                    
     
     
@@ -170,6 +154,6 @@
           </div>
         </div>
       </div>
-
+ 
 
     <router-outlet></router-outlet>

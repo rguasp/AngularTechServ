@@ -344,4 +344,64 @@
 
 .top-space {
     margin-top: 56px;
+    background: #EFEFEF;
+    height: 1100px;
   }
+
+  li#crypto-container {
+    width: 50%;
+    margin: 0 auto 4px auto;
+    padding: 1em;
+    box-shadow: 1px 1px 0 lightgrey;
+  }
+  span.left {
+    font-weight: bold;
+  }
+  
+  span.right {
+    float:right;
+  }
+
+  .flex-crypto {
+  display: flex;
+  justify-content: space-around;
+  }
+
+  .list-group{
+    max-height: 300px;
+    margin-bottom: 10px;
+    overflow:scroll;
+    -webkit-overflow-scrolling: touch;
+}
+li {
+  list-style-type: none;
+  background:whitesmoke;
+
+}
+.panel-body {
+  width: 100%;
+  border-top: 2px solid darkcyan;
+  z-index: 0;
+
+}
+
+.card {
+  margin-left: 360px;
+  width: 50%;
+  height: 420px;
+  margin-top: 30px;
+  box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.2), 0 8px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: whitesmoke;
+  border-radius: 15px;
+  margin-bottom: 30px;
+}
+
+.crypt-title {
+  width: 30%;
+  margin: 0 auto 4px auto;
+  padding: 1em;
+  box-shadow: 1px 1px 0 lightgrey;
+  background:whitesmoke;
+  border-radius: 15px;
+
+}

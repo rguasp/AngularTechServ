@@ -8,6 +8,8 @@ import { serviceService } from './services/service.service';
 import { reviewService } from './services/review.service';
 import { HttpClient, HttpEventType } from '@angular/common/http';
 
+import { DataService } from './data.service';
+
 
 import * as $ from 'jquery';
 
@@ -21,6 +23,8 @@ import * as $ from 'jquery';
 })
 export class AppComponent implements OnInit {
 
+  objectKeys = Object.keys;
+  cryptos: any;
 
   formInfo: any = {username: '', password: '', email: '', cart: []};
 
@@ -39,10 +43,13 @@ export class AppComponent implements OnInit {
 
 
 constructor(
-  public  myService: AuthService,
-  public  myRouter: Router,
-  public  serviceservice: serviceService,
+
+  private myService: AuthService,
+  private myRouter: Router,
+  private serviceservice: serviceService,
+  private _data: DataService,
   public  http: HttpClient
+
 ) {}
 
 
@@ -76,6 +83,12 @@ ngOnInit() {
     console.log('error while accessing unothorized stuff: ', err);
     this.myRouter.navigate(['/']);
   });
+
+  this._data.getPrices()
+      .subscribe(res => {
+        this.cryptos = res;
+      });
+
 }
 
 

@@ -25,6 +25,7 @@ export class CartComponent implements OnInit {
   ) { }
 
 
+
   ngOnInit() {
     
   this.myService.isLoggedIn()
@@ -52,5 +53,7 @@ export class CartComponent implements OnInit {
 }
 
 
+
+}
 }
 }

@@ -1,6 +1,48 @@
 
 <div class="top-space">
-<h1>
-  products-list works!
-</h1>
-</div>
+    <!-- <div> -->
+        <br>
+       
+       
+       
+        <h1 class="text-center crypt-title">Exchange Rates</h1>
+     
+
+              <div class="card">
+                    <div class="card-body">
+
+              <div class="panel panel-primary" id="result_panel">
+                  <div class="panel-heading"><h3 class="panel-title text-center card-title">Crypto to USD</h3>
+                  </div>
+                  <div *ngIf="cryptos" class="panel-body">
+                      <ul id="crypto-container" class="list-group">
+                          <li  *ngFor="let crypto of objectKeys(cryptos)" class="list-group-item"><span class="left">{{ crypto }}</span>
+                            <span class="right">{{ cryptos[crypto].USD | currency:'USD':true}}</span>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+
+            </div>
+        </div>
+              
+        <div class="card">
+                <div class="card-body">
+
+            <div class="panel panel-primary" id="result_panel">
+                  <div class="panel-heading"><h3 class="panel-title text-center card-title">USD to Crypto</h3>
+                  </div>
+                  <div *ngIf="cryptoCompare" class="panel-body">
+                      <ul id="crypto-container"  class="list-group">
+                          <li *ngFor="let crypto of cryptoKeys(cryptoCompare)"  class="list-group-item"><span class="left">{{ crypto }}</span>
+                            <span class="right">{{ cryptoCompare[crypto]}}</span>
+                          </li>
+                          
+                      </ul>
+                  </div>
+              </div>
+         
+            </div>
+            </div>
+
+            </div>

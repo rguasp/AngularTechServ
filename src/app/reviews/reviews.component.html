@@ -1,11 +1,34 @@
-<p>
-  reviews works!
-</p>
 
-<ul>
-<li *ngFor="let oneReview of allTheReviews">
-  <p> {{oneService}} </p>
-<a routerLink="/reviews/{{oneReview._id}}" ><h3>{{oneReview.content}}</h3></a>
-<!--<button type="button" (click)="deleteTask(oneTask._id)" >Delete</button>-->
-</li>
-</ul>
+<div class="top-space">
+
+<div class="flex-container">
+
+<div class="c-position">
+    <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+        <div class="flipper">
+          <div class="front">
+            <!-- front content -->
+            <img class="card-img-top" src="{{theService.img}}" alt="Card image" >
+            <h1 class="text-center">{{theService.name}}</h1>
+          </div>
+          <div class="back">
+            <!-- back content -->
+            <p class="text-center diss">{{theService.description}}</p>
+            <div class="flex text-center">
+            <p><b>Price</b>: ${{theService.price}}.00</p>
+            <button type="button" class="btn btn-warning" (click)="addItemToCart(oneService._id)" >Add to Cart</button> 
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    </div>
+    
+
+
+   
+   
+    
+  </div>
+

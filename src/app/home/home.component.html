@@ -3,20 +3,13 @@
   
   
   
-  <form class="dropdown">
+  <form id="dropDown" class="dropdown">
     <input type="text" class="my-input"  (keyup)="searchFunction($event)" id="my-input" placeholder="SEARCH FOR A SERVICE..">
     <button type="submit" class="b-color"><span class="fa fa-search btn search-b"></span></button>
 
-    <ul class="service-list" id="service-list" >
-        <li class="hide"><a href="#">Cloud Backup</a></li>
-        <li class="hide"><a href="#">PC Diagnostic</a></li>
-      
-        <li class="hide"><a href="#">PC Tune-Up</a></li>
-        <li class="hide"><a href="#">RAM Upgrade</a></li>
-      
-        <li class="hide"><a href="#">Software Installation</a></li>
-        <li class="hide"><a href="#">SSD Upgrade</a></li>
-        <li class="hide"><a href="#">Virus Removal</a></li>
+    <ul class="service-list show" id="service-list" >
+        <li *ngFor="let oneService of allTheServices.reverse()" class="hide" ><a [routerLink]="['/services', oneService._id]">{{oneService.name}}</a></li>
+        
       </ul>
   </form>
   
@@ -76,11 +69,7 @@
     <h2 class="text-center title-padding">Meet The Team</h2> 
 
     <div class="flex-container">
-      <!-- <div class="card">
-        <div class="card-body text-center">
-          <p class="card-text">Computer repair and diagnostics</p>
-        </div>
-      </div> -->
+     
         <div class="card">
           <div class="card-body text-center">
             <h4 class="card-title">Rafa</h4>
@@ -90,11 +79,7 @@
           </div>
         </div>
      
-      <!-- <div class="card">
-        <div class="card-body text-center">
-          <p class="card-text">Computer tuneup and optimization</p>
-        </div>
-      </div> -->
+     
       <div class="card">
           <div class="card-body text-center">
             <h4 class="card-title">Neil</h4>
@@ -105,11 +90,7 @@
         </div>
       
       
-      <!-- <div class="card">
-        <div class="card-body text-center">
-          <p class="card-text">virus repair and removal</p>
-        </div>
-      </div> -->
+      
       <div class="card">
           <div class="card-body text-center">
             <h4 class="card-title">Jens</h4>
@@ -128,12 +109,11 @@
 <div class="sector">
 
 
-  <!-- <div id="googleMap"></div> -->
   
   <div class="flex-container section-4">
   
   <div class="google-map">
-  <!-- <agm-map 
+  <agm-map 
   [latitude]="lat"
   [longitude]="lng"
   [zoom]="zoom"
@@ -145,7 +125,7 @@
     <agm-info-window ><a class="google-link" href="https://www.google.com/maps/place/Ironhack/@25.765852,-80.19607,187m/data=!3m1!1e3!4m5!3m4!1s0x0:0xa0bda5d9915b7493!8m2!3d25.766033!4d-80.196191?hl=en-US" target="_blank">View in google maps</a></agm-info-window>
   </agm-marker>
 
-</agm-map>   -->
+</agm-map>  
 </div>
 
 <div class="contact-us">
@@ -168,11 +148,7 @@
   <h5><a href="https://www.instagram.com/" target="_blank">Instagram</a></h5>
   </div>
   
-  <!-- <div class="flex-icon white-let">
-  <a href="https://www.linkedin.com/feed/" target="_blank"><img class="icon" src="../../assets/images/if_square-linkedin_317725.svg"></a>
-  <h5><a href="https://www.linkedin.com/feed/" target="_blank">Linkedin</a></h5>
-  </div> -->
-
+ 
 </div>
 
 </div>

@@ -11,7 +11,9 @@ import { AuthService} from '../services/auth.service';
 @Injectable()
 export class serviceService {
   currentUser: any;
+
   item: any;
+
 
   constructor(
     private http: Http,
@@ -26,6 +28,12 @@ export class serviceService {
     return this.http.get(`${environment.backendUrl}/services/services`)
     .map((responseFromApi) => responseFromApi.json());
   }
+
+  getOneService(id) {
+    return this.http.get(`http://localhost:3000/services/services/${id}`)
+    .map((responseFromApi) => responseFromApi.json());
+  }
+
   createNewService(theWholeServiceObject) {
     return this.http.post(`${environment.backendUrl}/services/services/create`, theWholeServiceObject)
     .map((responseFromApi) => responseFromApi.json());
@@ -36,8 +44,16 @@ export class serviceService {
     .map((responseFromApi) => responseFromApi.json());
   }
 
-  updateService(theID, theUpdates) {
-    return this.http.post(`${environment.backendUrl}/services/services/update/${theID}`, theUpdates)
+
+  updateService(theUpdates) {
+    console.log("update service in services.ts ===========>>> 😁😁😁😁😁😁")
+    console.log(theUpdates)
+
+    console.log("This is THE ID =====>")
+    console.log(theUpdates._id);
+    
+    return this.http.post(`${environment.backendUrl}/services/services/update/${theUpdates._id}`, theUpdates)
+
     .map((responseFromApi) => responseFromApi.json());
   }
 

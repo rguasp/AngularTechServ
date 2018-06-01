@@ -5,20 +5,36 @@ import { Router } from '@angular/router';
 import { serviceService } from '../services/service.service';
 import { HttpModule } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
+
+import { FileSelectDirective } from 'ng2-file-upload';
+
+import { DataService } from '../data.service';
+
+
 // import { FileSelectDirective } from 'ng2-file-upload';
 import { FileUploader } from 'ng2-file-upload/ng2-file-upload';
 import { HttpClient, HttpEventType } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-service',
   templateUrl: './service.component.html',
   styleUrls: ['./service.component.css']
 })
+
+
+
 export class ServiceComponent implements OnInit {
 
-  // uploader: FileUploader = new FileUploader({
-  //   url: `http://localhost:3000/services/services/create`
-  // });
+
+
+
+  objectKeys = Object.keys;
+  cryptos: any;
+
+  cryptoKeys = Object.keys;
+  cryptoCompare: any;
+
 
   allTheServices: Array <any> = [];
 
@@ -29,13 +45,19 @@ export class ServiceComponent implements OnInit {
   isFormShowing2: Boolean = false;
 
 
-
+  theService: any = {};
 
   theUpdates: any = {};
 
   newService: any = {};
 
+
+  _id: string;
+
+  
+
   formInfo: any = {username: '', password: '', email: '', cart: [], img: ''};
+
 
 
   itemsInCart: Array <any> = [];
@@ -60,8 +82,12 @@ export class ServiceComponent implements OnInit {
     private serviceRouter: serviceService,
     private myRouter: Router,
     private myService: AuthService,
-    private http: HttpClient
-  ) { }
+    private http: HttpClient,
+    private _data: DataService
+  ) {}
+
+
+
 
   // onFileSelected(event) {
   //   this.selectedFile = <File>event.target.files[0];
@@ -85,6 +111,7 @@ export class ServiceComponent implements OnInit {
 // }
 
 
+
   ngOnInit() {
     this.getAllTheServices();
     // this.getAllTheItems();
@@ -100,22 +127,38 @@ export class ServiceComponent implements OnInit {
       // this.myRouter.navigate(['/services']);
     });
 
-    // this.uploader.onSuccessItem = (item, response) => {
-    //   this.feedback = JSON.parse(response).message;
-    // };
 
-    // this.uploader.onErrorItem = (item, response, status, headers) => {
-    //   this.feedback = JSON.parse(response).message;
-    // };
+    // for cryto
+    // setInterval(this._data.getPrices, 7000);
+    // setInterval(this._data.priceCompare, 70000);
+    // setInterval(() => this._data.getPrices(), 8000);
+    // console.log(setInterval);
+
+      this._data.getPrices()
+      .subscribe(res => {
+        this.cryptos = res;
+        console.log('data info >>>>><<<<<<<< ', this._data.getPrices);
+      });
+
+      this._data.priceCompare()
+      .subscribe(res => {
+        this.cryptoCompare = res;
+        console.log('crypto compare ======================', this.cryptoCompare);
+        // console.log(this.cryptoCompare);
+      });
+
+
+
+
   }
 
 
   //ROLE TOGGLE
   toggleForm() {
-    this.isFormShowing = !this.isFormShowing;
+    this.isFormShowing = true;
   }
   toggleForm2() {
-    this.isFormShowing2 = !this.isFormShowing2;
+    this.isFormShowing2 = true;
   }
 
 
@@ -144,10 +187,13 @@ export class ServiceComponent implements OnInit {
 
   //SERVICE CRUD
   getAllTheServices() {
+
     console.log('getting all the services');
     this.serviceRouter.getAllServices()
+
     .subscribe((serviceList) => {
       this.allTheServices = serviceList;
+      // console.log(serviceList[0]);
     });
   }
 
@@ -164,8 +210,21 @@ export class ServiceComponent implements OnInit {
     // this.uploader.uploadAll();
   }
 
-  updateService(idOfService) {
-    this.serviceRouter.updateService(idOfService , this.theUpdates)
+
+  giveServiceToModal(theWholeService: string) {
+    this.theUpdates = theWholeService;
+    console.log("==========giveServiceToModal FUNCTION HIT=========")
+    // this.updateService( this.theUpdates);
+  }
+
+  updateService(idOfService: string) {
+    console.log("==========updateService FUNCTION HIT=========")
+    console.log("========this.theUpdates==============>>>>>>");
+    console.log(this.theUpdates);
+    // console.log("==========idOfService============>>>>>");
+    // console.log(idOfService);
+    this.serviceRouter.updateService(this.theUpdates)
+
     .subscribe(() => {
       this.getAllTheServices();
     });
@@ -178,7 +237,14 @@ export class ServiceComponent implements OnInit {
     });
   }
 
-
+  getOneService(id) {
+    console.log('the id from get one service #####################', id);
+    this.serviceRouter.getOneService(id)
+    .subscribe((oneItem) => {
+      console.log('this is just one item _+_+__+_+_+_+_++_+_+_+_', oneItem);
+      this.theService = oneItem;
+    });
+  }
 
 
 }
