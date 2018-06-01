@@ -1,1 +1,18 @@
-<h1>cart</h1>
+
+<div class="top-space">
+
+<p>
+  cart works!
+</p>
+
+
+<h1>Cart:</h1>
+<div *ngFor="let oneService of cartResponse">
+<h2> name: {{oneService.name}} </h2>
+<h3> description: {{oneService.description}} </h3>
+<h4> price: {{oneService.price}} </h4>
+</div>
+
+
+</div>
+

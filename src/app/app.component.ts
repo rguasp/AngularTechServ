@@ -6,6 +6,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 
 import { serviceService } from './services/service.service';
 import { reviewService } from './services/review.service';
+import { HttpClient, HttpEventType } from '@angular/common/http';
 
 import { DataService } from './data.service';
 
@@ -33,27 +34,50 @@ export class AppComponent implements OnInit {
 
   newItem: any;
 
+  selectedFile: File = null;
+
+  cartId: any;
+
+  itemsInCart: any;
+
+
 
 constructor(
+
   private myService: AuthService,
   private myRouter: Router,
   private serviceservice: serviceService,
-  private _data: DataService
+  private _data: DataService,
+  public  http: HttpClient
+
 ) {}
 
 
 
+// onFileSelected(event) {
+//   this.selectedFile = <File>event.target.files[0];
+// }
 
+// onUpload() {
+//   const fd = new FormData();
+//   fd.append('image', this.selectedFile, this.selectedFile.name);
+//    this.http.post('', fd, {
+//     reportProgress: true,
+//     observe: 'events'
+//   })
+//   .subscribe(event => {
+//     if (event.type === HttpEventType.UploadProgress) {
+//       console.log('Upload Progress: ' + Math.round(event.loaded / event.total * 100) + '%');
+//     } else if (event.type === HttpEventType.Response) {
+//       console.log(event);
+//     }
+//   });
+// }
 
 ngOnInit() {
   this.myService.isLoggedIn()
   .toPromise()
   .then( () => {
-    console.log('app component.ts ', this.myService.currentUser);
-    this.user = JSON.parse(sessionStorage.getItem('mySession'));
-    this.formInfo = this.myService.currentUser;
-    this.user = this.myService.currentUser;
-    // console.log('User from profile component: ', JSON.parse(this.myService.currentUser._body))
   })
   .catch( err => {
     console.log('error while accessing unothorized stuff: ', err);
@@ -66,6 +90,7 @@ ngOnInit() {
       });
 
 }
+
 
 signup() {
   // console.log(this.formInfo);
@@ -97,8 +122,10 @@ login() {
 logout() {
   console.log('logged out');
   this.myService.logout()
-  .subscribe(
+  .toPromise()
+  .then(
     () => {
+      sessionStorage.clear();
       localStorage.clear();
       this.myService.currentUser = null;
       this.user = null;
@@ -108,5 +135,7 @@ logout() {
     (err) => this.error = err
   );
 }
+
+
 }
 

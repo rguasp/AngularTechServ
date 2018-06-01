@@ -1,6 +1,7 @@
 
 
 <div class="top-space">
+
   <div class="space-color">
  
   <div class="text-center">
@@ -95,8 +96,14 @@
           </select>
           </div>
               <br>
-             <button type="button" class="btn btn-warning" (click)="addItemToCart(oneService._id)" >Add to Cart</button> 
-             <br><br>
+ <!--ADD TO CART BUTTON-->
+       <!--<button type="button" (click)="addToCart(oneService._id)" >Add to Cart</button>-->
+       <button type="button" (click)="addToCartButton(oneService)" class="btn btn-warning" >Add to Cart</button>
+      <!--ADD TO CART BUTTON-->             
+                <br><br>
+               
+     
+                
             <div *ngIf="formInfo.role === 'ADMIN'">
             <div class="flex-btn">
               <button type="button" (click)="giveServiceToModal(oneService)" class="btn btn-info edit-btn" data-dismiss="modal" data-toggle="modal" data-target="#editServiceModal">Edit</button>

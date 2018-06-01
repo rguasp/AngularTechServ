@@ -18,16 +18,20 @@ import { ReviewsComponent } from './reviews/reviews.component';
 import { reviewService } from './services/review.service';
 
 import { AboutPageComponent } from './about-page/about-page.component';
-import { EditServiceComponent } from './edit-service/edit-service.component';
-import { FileSelectDirective } from 'ng2-file-upload';
+// import { EditServiceComponent } from './edit-service/edit-service.component';
+// import { FileSelectDirective } from 'ng2-file-upload';
 
 import { CartComponent } from './cart/cart.component';
+import { cartService } from './services/cart.service';
+
 
 import { AgmCoreModule } from '@agm/core';
+
 
 import { DataService } from './data.service';         // Add this
 import { HttpClientModule } from '@angular/common/http';
 import { MathRoundPipe } from './pipes/math-round.pipe';
+
 
 
 
@@ -45,8 +49,11 @@ const routes: Routes = [
   { path: 'services', component: ServiceComponent },
   // { path: 'services/usercart', component: ServiceComponent },
   { path: 'reviews', component: ReviewsComponent },
-  { path: 'cart/:id', component: CartComponent },
-  { path: 'services/:id', component: ReviewsComponent }
+
+  { path: 'services/:id', component: ReviewsComponent },
+
+  { path: 'cart', component: CartComponent }
+
 ];
 
 
@@ -63,7 +70,7 @@ const routes: Routes = [
     ServiceComponent,
     ReviewsComponent,
     AboutPageComponent,
-    FileSelectDirective,
+    // FileSelectDirective,
     // EditServiceComponent
     CartComponent,
     MathRoundPipe
@@ -72,6 +79,7 @@ const routes: Routes = [
     BrowserModule,
     FormsModule,
     HttpModule,
+    HttpClientModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
     // == added for googhle
@@ -81,7 +89,9 @@ const routes: Routes = [
       apiKey: 'AIzaSyDI7YXdxw-UFTwU_zW8smFsCND2MOgFPDg'
     })
   ],
-  providers: [AuthService, serviceService, reviewService, DataService],
+
+  providers: [AuthService, serviceService, reviewService, DataService, cartService],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

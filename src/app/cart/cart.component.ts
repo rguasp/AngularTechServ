@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {Observable} from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
-import { serviceService } from '../services/service.service';
+import { UserProfileComponent } from '../user-profile/user-profile.component';
 
-import 'rxjs/add/operator/toPromise';
+
 
 @Component({
   selector: 'app-cart',
@@ -13,20 +13,47 @@ import 'rxjs/add/operator/toPromise';
 })
 export class CartComponent implements OnInit {
 
-  itemsInCart: Array <any> = [];
-
-  newItem: any = {name: '', price: ''};
-
+  allItemsInCart: any;
+  formInfo: any = {username: '', password: '', email: '', cart: []};
+  cartResponse: any;
+  thePersonLoggedIn: any;
+  
+  
   constructor(
-    private myRouter: Router,
     private myService: AuthService,
-    private serviceservice: serviceService,
+    private myRouter: Router,
   ) { }
 
-  
+
 
   ngOnInit() {
-  
+    
+  this.myService.isLoggedIn()
 
+  
+  this.myService.getUserCart()
+  .then((serviceResults: any) => {
+    console.log('this is the service results {{{{{{{{{{{{{{{}}}}}}}}}}}}}}}}', serviceResults);
+    var reply = serviceResults._body
+    this.cartResponse = JSON.parse(reply);
+    console.log('cartResponse after parse and stringify -----------______________------------', this.cartResponse)
+  })
+  .catch((err) => {
+    console.log(err);
+  })
+
+    //TESTING
+    // console.log('============this CURRENT USER ==================')
+    // console.log(this.myService.currentUser)
+    // console.log('=====thid form info username=========================')
+    // console.log(this.formInfo.username)
+    // console.log('=====TYPE!=========================')
+    // console.log(typeof this.formInfo)
+    //TESTING
+}
+
+
+
+}
 }
 }

@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit {
     formInfo: any = {username: '', password: '', email: ''};
     theService: any = {};
 
+
   objectKeys = Object.keys;
   cryptos: any;
 
@@ -30,6 +31,7 @@ export class HomeComponent implements OnInit {
 
   allTheServices: Array <any> = [];
   id: any;
+
 
   constructor(
     private myService: AuthService,
@@ -65,6 +67,7 @@ lng = -80.196191;
   }
 
 
+
   getTheService(id) {
     console.log('the id from get one service #####################', id);
     this.serviceservice.getOneService(id)
@@ -73,6 +76,7 @@ lng = -80.196191;
       this.theService = oneItem;
     });
   }
+
 
   ngOnInit() {
 
@@ -104,11 +108,8 @@ lng = -80.196191;
     .toPromise()
     .then( () => {
       console.log('home component.ts ', this.myService.currentUser);
-
       this.user = JSON.parse(sessionStorage.getItem('mySession'));
-
       // this.formInfo = this.myService.currentUser;
-
       this.user = this.myService.currentUser;
       // console.log('User from profile component: ', JSON.parse(this.myService.currentUser._body))
     })
@@ -120,6 +121,11 @@ lng = -80.196191;
    
   }
 
+
+
+  mapClicked(event) {
+    console.log('hello');
+  }
 
   logout() {
     console.log('logged out');

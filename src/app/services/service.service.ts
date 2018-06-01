@@ -4,22 +4,28 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import { Observable } from 'rxjs/Observable';
+import { environment } from '../../environments/environment';
+import { AuthService} from '../services/auth.service';
 
 
 @Injectable()
 export class serviceService {
   currentUser: any;
-  
+
+  item: any;
+
 
   constructor(
-    private http: Http) { }
+    private http: Http,
+    private userService: AuthService
+    ) { }
 
   handleError(e) {
     return Observable.throw(e.json().message);
   }
 
   getAllServices() {
-    return this.http.get('http://localhost:3000/services/services')
+    return this.http.get(`${environment.backendUrl}/services/services`)
     .map((responseFromApi) => responseFromApi.json());
   }
 
@@ -29,14 +35,15 @@ export class serviceService {
   }
 
   createNewService(theWholeServiceObject) {
-    return this.http.post(`http://localhost:3000/services/services/create`, theWholeServiceObject)
+    return this.http.post(`${environment.backendUrl}/services/services/create`, theWholeServiceObject)
     .map((responseFromApi) => responseFromApi.json());
   }
 
   deleteService(id) {
-    return this.http.post(`http://localhost:3000/services/services/delete/${id}`, {})
+    return this.http.post(`${environment.backendUrl}/services/services/delete/${id}`, {})
     .map((responseFromApi) => responseFromApi.json());
   }
+
 
   updateService(theUpdates) {
     console.log("update service in services.ts ===========>>> 😁😁😁😁😁😁")
@@ -45,23 +52,15 @@ export class serviceService {
     console.log("This is THE ID =====>")
     console.log(theUpdates._id);
     
-    return this.http.post(`http://localhost:3000/services/services/update/${theUpdates._id}`, theUpdates)
+    return this.http.post(`${environment.backendUrl}/services/services/update/${theUpdates._id}`, theUpdates)
+
     .map((responseFromApi) => responseFromApi.json());
   }
 
-  addToCart(item) {
-    return this.http.put('http://localhost:3000/api/cart/id:/add', item, {withCredentials: true})
-    // .map(res => {
-    //   // this.currentUser.cart.unshift(this.item);
-    //   // this.currentUser.cart.unshift(this.item);
-    //   // console.log("Items added to cart");
-    // })
-    // .catch(this.handleError);
-  }
-
-  getUserCart() {
-    return this.http.get('http://localhost:3000/services/userCart', {withCredentials: true})
+  addToCart(itemId) {
+    return this.http.put(`${environment.backendUrl}/api/cart/${itemId}/add`, {withCredentials: true})
     .map((responseFromApi) => responseFromApi.json());
-  }
+      // console.log("Items added to cart");
+    }
 }
 

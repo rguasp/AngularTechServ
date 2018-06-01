@@ -3,11 +3,17 @@ import { Observable } from 'rxjs/Observable';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { serviceService } from '../services/service.service';
-
+import { HttpModule } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
+
 import { FileSelectDirective } from 'ng2-file-upload';
 
 import { DataService } from '../data.service';
+
+
+// import { FileSelectDirective } from 'ng2-file-upload';
+import { FileUploader } from 'ng2-file-upload/ng2-file-upload';
+import { HttpClient, HttpEventType } from '@angular/common/http';
 
 
 @Component({
@@ -22,45 +28,89 @@ export class ServiceComponent implements OnInit {
 
 
 
+
   objectKeys = Object.keys;
   cryptos: any;
 
   cryptoKeys = Object.keys;
   cryptoCompare: any;
 
+
   allTheServices: Array <any> = [];
+
+  allTheItems: Array <any> = [];
 
 
   isFormShowing: Boolean = false;
   isFormShowing2: Boolean = false;
 
+
   theService: any = {};
+
   theUpdates: any = {};
 
   newService: any = {};
 
+
   _id: string;
 
-  formInfo: any = {username: '', password: '', email: '', cart: []};
+  
 
-  public itemsInCart: Array <any> = [];
+  formInfo: any = {username: '', password: '', email: '', cart: [], img: ''};
 
 
+
+  itemsInCart: Array <any> = [];
+
+  newItem: any = {};
+
+  itemToAdd: any = {};
 
 
   feedback: string;
 
   user: any;
+  itemId: any;
+
+  public selectedService = {};
+  public cart = [];
+
+
+  selectedFile: File = null;
 
   constructor(
-    private serviceservice: serviceService,
+    private serviceRouter: serviceService,
     private myRouter: Router,
     private myService: AuthService,
+    private http: HttpClient,
     private _data: DataService
   ) {}
 
 
- 
+
+
+  // onFileSelected(event) {
+  //   this.selectedFile = <File>event.target.files[0];
+  // }
+
+
+// onUpload() {
+//   const fd = new FormData();
+//   fd.append('image', this.selectedFile, this.selectedFile.name);
+//    this.http.post('http://localhost:3000/services/services/create', fd, {
+//     reportProgress: true,
+//     observe: 'events'
+//   })
+//   .subscribe(event => {
+//     if (event.type === HttpEventType.UploadProgress) {
+//       console.log('Upload Progress: ' + Math.round(event.loaded / event.total * 100) + '%');
+//     } else if (event.type === HttpEventType.Response) {
+//       console.log(event);
+//     }
+//   });
+// }
+
+
 
   ngOnInit() {
     this.getAllTheServices();
@@ -76,6 +126,7 @@ export class ServiceComponent implements OnInit {
       console.log('error while accessing unothorized stuff: ', err);
       // this.myRouter.navigate(['/services']);
     });
+
 
     // for cryto
     // setInterval(this._data.getPrices, 7000);
@@ -98,8 +149,11 @@ export class ServiceComponent implements OnInit {
 
 
 
+
   }
 
+
+  //ROLE TOGGLE
   toggleForm() {
     this.isFormShowing = true;
   }
@@ -108,8 +162,35 @@ export class ServiceComponent implements OnInit {
   }
 
 
+  //CART FUNCTIONALITY
+  addToCartButton(itemObject) {
+      const newItem = itemObject;
+      // console.log('item ID ==============>', itemObject)
+      // console.log('newItem ===============>', newItem)
+      // console.log(`newItem ID ===============>', ${JSON.parse(newItem._id)}`)
+      this.myService.addToCart(itemObject)
+        .subscribe((service) => {
+          // console.log('service after adding to cart function call  >>>>>>>>>>>>', service);
+          this.newItem = service;
+        });
+        // console.log('items in cart ===========',this.newItem)
+        // console.log("cart: +++++++++++++" + this.myService.currentUser.cart);
+      }
+
+  
+
+
+
+
+
+
+
+  //SERVICE CRUD
   getAllTheServices() {
-    this.serviceservice.getAllServices()
+
+    console.log('getting all the services');
+    this.serviceRouter.getAllServices()
+
     .subscribe((serviceList) => {
       this.allTheServices = serviceList;
       // console.log(serviceList[0]);
@@ -117,11 +198,18 @@ export class ServiceComponent implements OnInit {
   }
 
   createService() {
-    this.serviceservice.createNewService(this.newService)
+    this.serviceRouter.createNewService(this.newService)
     .subscribe(() => {
       this.getAllTheServices();
     });
+    // this.uploader.onBuildItemForm = (item, form) => {
+    //   form.append('name', this.newService.name);
+    //   form.append('description', this.newService.description);
+    //   form.append('price', this.newService.price);
+    // };
+    // this.uploader.uploadAll();
   }
+
 
   giveServiceToModal(theWholeService: string) {
     this.theUpdates = theWholeService;
@@ -135,14 +223,15 @@ export class ServiceComponent implements OnInit {
     console.log(this.theUpdates);
     // console.log("==========idOfService============>>>>>");
     // console.log(idOfService);
-    this.serviceservice.updateService(this.theUpdates)
+    this.serviceRouter.updateService(this.theUpdates)
+
     .subscribe(() => {
       this.getAllTheServices();
     });
   }
 
   deleteService(idArgument) {
-    this.serviceservice.deleteService(idArgument)
+    this.serviceRouter.deleteService(idArgument)
     .subscribe(() => {
       this.getAllTheServices();
     });
@@ -150,7 +239,7 @@ export class ServiceComponent implements OnInit {
 
   getOneService(id) {
     console.log('the id from get one service #####################', id);
-    this.serviceservice.getOneService(id)
+    this.serviceRouter.getOneService(id)
     .subscribe((oneItem) => {
       console.log('this is just one item _+_+__+_+_+_+_++_+_+_+_', oneItem);
       this.theService = oneItem;
