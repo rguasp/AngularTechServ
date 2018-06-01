@@ -56,9 +56,9 @@ export class serviceService {
       // console.log("Items added to cart");
     }
 
-  getUserCart() {
-    return this.http.get('http://localhost:3000/services/userCart', {withCredentials: true})
-    .map((responseFromApi) => responseFromApi.json());
-  }
+//   getUserCart() {
+//     return this.http.get('http://localhost:3000/services/userCart', {withCredentials: true})
+//     .map((responseFromApi) => responseFromApi.json());
+//   }
 }
 

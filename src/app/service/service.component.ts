@@ -108,27 +108,37 @@ export class ServiceComponent implements OnInit {
 
 
   //CART FUNCTIONALITY
-  addToCart(itemId) {
+  addToCartButton(itemObject) {
     // console.log("====" + this.newItem);
     // const newItem = JSON.stringify(this.itemId);
     // this.myService.cart.unshift(this.itemId);
     // this.myService.addToCart(this.itemId);
     // this.itemsInCart = this.serviceservice.cart;
-    console.log('item ID ========', itemId)
-    this.myService.addToCart(itemId)
+    // const newItem = JSON.stringify(this.itemId);
+        const newItem = itemObject;
+
+    console.log('item ID ==============>', itemObject)
+      // console.log('newItem ===============>', newItem)
+      // console.log(`newItem ID ===============>', ${JSON.parse(newItem._id)}`)
+
+    this.myService.addToCart(itemObject)
+
     // .then((serviceResult) => {
 
     // })
     // .catch((err) => {
     //   console.log('error when adding to cart', err)
     // })
+
     .subscribe((service) => {
       console.log('service after adding to cart function call  >>>>>>>>>>>>', service);
-      this.itemId = service;
+      this.newItem = service;
     });
-    console.log('items in cart ===========',this.itemId)
+    console.log('items in cart ===========',this.newItem)
     console.log("cart: +++++++++++++" + this.myService.currentUser.cart);
   }
+
+  
 
 
 

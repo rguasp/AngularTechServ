@@ -29,6 +29,10 @@ export class AppComponent implements OnInit {
 
   newItem: any;
 
+  cartId: any;
+
+  itemsInCart: any;
+
 
 constructor(
   private myService: AuthService,
@@ -44,7 +48,7 @@ ngOnInit() {
   this.myService.isLoggedIn()
   .toPromise()
   .then( () => {
-    console.log('app component.ts ', this.myService.currentUser);
+   // console.log('app component.ts ', this.myService.currentUser);
     // this.user = JSON.parse(sessionStorage.getItem('mySession'));
     // this.formInfo = this.myService.currentUser;
     // this.user = this.myService.currentUser;
@@ -55,6 +59,16 @@ ngOnInit() {
     this.myRouter.navigate(['/']);
   });
 }
+
+  // getUserCart() {
+  //   this.myService.getUserCart()
+  //   .subscribe((cartList) => {
+  //     this.itemsInCart = cartList;
+  //     console.log('==============================')
+  //     // this.myRouter.navigate(['/services/userCart']);
+  //     console.log("is it working?", this.itemsInCart )
+  //   })
+  // }
 
 signup() {
   // console.log(this.formInfo);
@@ -86,7 +100,8 @@ login() {
 logout() {
   console.log('logged out');
   this.myService.logout()
-  .subscribe(
+  .toPromise()
+  .then(
     () => {
       sessionStorage.clear();
       localStorage.clear();
@@ -98,5 +113,7 @@ logout() {
     (err) => this.error = err
   );
 }
+
+
 }
 

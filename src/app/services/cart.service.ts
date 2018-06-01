@@ -15,8 +15,8 @@ export class cartService {
 //     .map((responseFromApi) => responseFromApi.json());
 //     }
 
-  getUserCart() {
-    return this.http.get('http://localhost:3000/cart/:id', {withCredentials: true})
+  getTheUserCart() {
+    return this.http.get('http://localhost:3000/cart', {withCredentials: true})
     .map((responseFromApi) => responseFromApi.json());
   }
 

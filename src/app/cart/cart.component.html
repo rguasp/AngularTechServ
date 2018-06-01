@@ -1,4 +1,4 @@
-<!--<div class="top-space">
+<div class="top-space">
 <p>
   cart works!
 </p>
@@ -6,13 +6,27 @@
 
 
 <ul>
-<li *ngFor="let item of itemsInCart">
-  <p> {{this.item}} </p>-->
-<!--<a routerLink="/cart/{{oneReview._id}}" ><h3>{{oneReview.content}}</h3></a>-->
-<!--<button type="button" (click)="deleteTask(oneTask._id)" >Delete</button>-->
-<!--</li>
+  
 </ul>
 
 <h1>WTFFFFFFFFFF</h1>
-<a routerLink="/cart/{{oneItem._id}}" ><h3>{{oneItem.name}}</h3></a>
-</div>-->
+
+  <!--<h1> Test: {{myService.currentUser.cart}} </h1>-->
+
+  <h1> Test1: {{myService.currentUser.cart}} </h1>
+  <h1> Test2: {{myService.currentUser.username}} </h1>
+  <h1> Test3: {{myService.currentUser.email}} </h1>
+----------------------------
+  <h1> Test4: {{this.formInfo}} </h1>
+  <h1> Test5: {{this.formInfo.username}} </h1>
+
+  <li *ngFor="let oneItem of formInfo">
+  <p> {{oneItem}} </p>
+  </li>
+
+
+
+<!--<li *ngFor="let oneItem of cartResponse">
+  <h1> {{oneItem.name}} </h1>
+  </li>-->
+</div>

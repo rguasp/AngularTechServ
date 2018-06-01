@@ -37,7 +37,8 @@
       <p>Service Price: ${{oneService.price}}.00</p>
       <br>
       <!--ADD TO CART BUTTON-->
-       <button type="button" (click)="addToCart(oneService._id)" >Add to Cart</button>
+       <!--<button type="button" (click)="addToCart(oneService._id)" >Add to Cart</button>-->
+       <button type="button" (click)="addToCartButton(oneService)" >Add to Cart</button>
       <!--ADD TO CART BUTTON-->
       <div *ngIf="formInfo.role === 'ADMIN'">
         <button type="button" (click)="deleteService(oneService._id)" >Delete</button>
