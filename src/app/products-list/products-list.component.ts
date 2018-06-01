@@ -24,11 +24,6 @@ export class ProductsListComponent implements OnInit {
 
   ngOnInit() {
 
-    // setInterval(this._data.getPrices, 7000);
-    // setInterval(this._data.priceCompare, 70000);
-    // setInterval(() => this._data.getPrices(), 8000);
-    // console.log(setInterval);
-
     this._data.getPrices()
     .subscribe(res => {
       this.cryptos = res;
@@ -39,7 +34,6 @@ export class ProductsListComponent implements OnInit {
     .subscribe(res => {
       this.cryptoCompare = res;
       console.log('crypto compare ======================', this.cryptoCompare);
-      // console.log(this.cryptoCompare);
     });
 
   }

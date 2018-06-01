@@ -52,21 +52,10 @@ zoom = 10;
 lat = 25.766034;
 lng = -80.196191;
 
-// clickedMarker(label: string, index: number) {
-//   console.log(`clicked the marker: ${label || index}`);
-// }
 
-// mapClicked($event: MouseEvent) {
-//   this.markers.push({
-//     lat: $event.coords.lat,
-//     lng: $event.coords.lng,
-//     draggable: true
-//   });
-// }
 
-// markerDragEnd(m: marker, $event: MouseEvent) {
-//   console.log('dragEnd', m, $event);
-// }√
+
+
   getAllTheServices() {
     this.serviceservice.getAllServices()
     .subscribe((serviceList) => {
@@ -75,14 +64,7 @@ lng = -80.196191;
     });
   }
 
-// markers: marker[] = [
-//   {
-//     lat: 51.673858,
-//     lng: 7.815982,
-//     label: 'A',
-//     draggable: true
-//   }
-// ]
+
   getTheService(id) {
     console.log('the id from get one service #####################', id);
     this.serviceservice.getOneService(id)
@@ -91,20 +73,7 @@ lng = -80.196191;
       this.theService = oneItem;
     });
   }
-// item: any;
-// filter: any;
-// input: any;
 
-//   ngAfterViewInIt() {
-//     this.input = document.getElementById('my-input');
-//     this.filter = this.input.value.toUpperCase();
-//     this.item = document.querySelectorAll('#dropDown');
-//     for (let i = 0; i < this.item.length; i++) {
-//       if (this.input === '') {
-//         this.item[i].style.display = 'none';
-//       }
-//     }
-//   }
   ngOnInit() {
 
     this.getAllTheServices();
@@ -148,14 +117,7 @@ lng = -80.196191;
       this.myRouter.navigate(['/']);
     });
 
-    // document.getElementById('service-list').classList.add('hide');
-    // if (document.getElementById('service-list').classList.contains('show')) {
-    //   document.getElementById('service-list').classList.remove('show');
-    // }
-
-    // }
-    // document.getElementById('dropDown').setAttribute('display', 'none');
-    // document.getElementsByClassName('hide')[1].setAttribute('display', 'none');
+   
   }
 
 

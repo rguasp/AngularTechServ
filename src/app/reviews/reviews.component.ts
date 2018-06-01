@@ -35,13 +35,7 @@ export class ReviewsComponent implements OnInit {
 
   ) { }
 
-  // getAllTheReviews(){
-  //   console.log("getting all the reviews");
-  //   this.ReviewService.getAllReviews()
-  //   .subscribe((reviewList) => {
-  //     this.allTheReviews = reviewList;
-  //   })
-  // }
+
   getTheService(id) {
     console.log('the id from get one service #####################', id);
     this.serviceservice.getOneService(id)
@@ -52,7 +46,6 @@ export class ReviewsComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.getAllTheServices();
     this.route.params
     .subscribe((theParams) => {
       const theId = theParams ['id'];
@@ -78,13 +71,7 @@ export class ReviewsComponent implements OnInit {
       });
 
     }
-    // getAllTheServices() {
-      //   this.serviceservice.getAllServices()
-      //   .subscribe((serviceList) => {
-  //     this.allTheServices = serviceList;
-  //     console.log(serviceList[0]);
-  //   });
-  // }
+ 
 
 
 

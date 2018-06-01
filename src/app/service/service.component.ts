@@ -60,14 +60,7 @@ export class ServiceComponent implements OnInit {
   ) {}
 
 
-  // addItemToCart(itemId) {
-    // console.log("====" + this.newItem);
-    // const cartItem = JSON.stringify(this.newItem);
-    // this.myService.currentUser.cart.push(this.newItem);
-    // this.myService.addToCart(this.itemId);
-    // this.itemsInCart = this.myService.currentUser.cart;
-    // console.log("items in cart" + this.itemsInCart);
-  // }
+ 
 
   ngOnInit() {
     this.getAllTheServices();
