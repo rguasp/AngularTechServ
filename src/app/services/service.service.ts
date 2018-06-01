@@ -37,7 +37,7 @@ export class serviceService {
   }
 
   addToCart(item) {
-    return this.http.put(`${environment.backendUrl}/api/cart/id:/add`, item, {withCredentials: true})
+    return this.http.put(`${environment.backendUrl}/api/cart/id:/add`, item, {withCredentials: true});
     // .map(res => {
     //   // this.currentUser.cart.unshift(this.item);
     //   // this.currentUser.cart.unshift(this.item);

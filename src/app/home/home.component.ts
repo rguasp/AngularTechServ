@@ -61,6 +61,7 @@ lng = -80.196191;
 // ]
 
 
+
   ngOnInit() {
     // Stores session
     this.myService.isLoggedIn()
