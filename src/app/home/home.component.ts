@@ -4,6 +4,9 @@ import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
 import { MouseEvent } from '@agm/core';
 import { AgmCoreModule } from '@agm/core';
+import { serviceService } from '../services/service.service';
+import { DataService } from '../data.service';
+import { ActivatedRoute } from '@angular/router';
 
 
 
@@ -17,11 +20,25 @@ import { AgmCoreModule } from '@agm/core';
 export class HomeComponent implements OnInit {
 
     formInfo: any = {username: '', password: '', email: ''};
+    theService: any = {};
 
+  objectKeys = Object.keys;
+  cryptos: any;
+
+  cryptoKeys = Object.keys;
+  cryptoCompare: any;
+
+  allTheServices: Array <any> = [];
+  id: any;
 
   constructor(
     private myService: AuthService,
-    private myRouter: Router
+    private myRouter: Router,
+    private route: ActivatedRoute,
+    private serviceservice: serviceService,
+    private _data: DataService
+
+
       ) {}
 
   user: any;
@@ -49,7 +66,14 @@ lng = -80.196191;
 
 // markerDragEnd(m: marker, $event: MouseEvent) {
 //   console.log('dragEnd', m, $event);
-// }
+// }√
+  getAllTheServices() {
+    this.serviceservice.getAllServices()
+    .subscribe((serviceList) => {
+      this.allTheServices = serviceList;
+      console.log(serviceList[0]);
+    });
+  }
 
 // markers: marker[] = [
 //   {
@@ -59,9 +83,53 @@ lng = -80.196191;
 //     draggable: true
 //   }
 // ]
+  getTheService(id) {
+    console.log('the id from get one service #####################', id);
+    this.serviceservice.getOneService(id)
+    .subscribe((oneItem) => {
+      console.log('this is just one item _+_+__+_+_+_+_++_+_+_+_', oneItem);
+      this.theService = oneItem;
+    });
+  }
+// item: any;
+// filter: any;
+// input: any;
 
-
+//   ngAfterViewInIt() {
+//     this.input = document.getElementById('my-input');
+//     this.filter = this.input.value.toUpperCase();
+//     this.item = document.querySelectorAll('#dropDown');
+//     for (let i = 0; i < this.item.length; i++) {
+//       if (this.input === '') {
+//         this.item[i].style.display = 'none';
+//       }
+//     }
+//   }
   ngOnInit() {
+
+    this.getAllTheServices();
+
+    this.route.params
+    .subscribe((theParams) => {
+      const theId = theParams ['id'];
+      this.getTheService(theId);
+    });
+
+
+    this._data.getPrices()
+    .subscribe(res => {
+      this.cryptos = res;
+    });
+
+    this._data.priceCompare()
+    .subscribe(res => {
+      this.cryptoCompare = res;
+      // console.log(this.cryptoCompare);
+    });
+
+
+
+
     // Stores session
     this.myService.isLoggedIn()
     .toPromise()
@@ -79,7 +147,14 @@ lng = -80.196191;
       console.log('error while accessing unothorized stuff: ', err);
       this.myRouter.navigate(['/']);
     });
-    document.getElementById('service-list').removeAttribute('display');
+
+    // document.getElementById('service-list').classList.add('hide');
+    // if (document.getElementById('service-list').classList.contains('show')) {
+    //   document.getElementById('service-list').classList.remove('show');
+    // }
+
+    // }
+    // document.getElementById('dropDown').setAttribute('display', 'none');
     // document.getElementsByClassName('hide')[1].setAttribute('display', 'none');
   }
 
@@ -97,8 +172,6 @@ lng = -80.196191;
 
   ); }
 
-  );
-}
 
 searchFunction($event) {
   // Declare variables
@@ -111,17 +184,21 @@ searchFunction($event) {
   for (i = 0; i < li.length; i++) {
       a = li[i].getElementsByTagName('a')[0];
       if (filter === '' ) {
-        li[i].style.display = 'none';
+        // li[i].style.display = 'none';
+        li[i].classList.add('hide');
       } else if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
-          li[i].style.display = '';
+          // li[i].style.display = '';
+          li[i].classList.remove('hide');
+          li[i].classList.add('show');
       } else {
-          li[i].style.display = 'none';
+          // li[i].style.display = 'none';
+          li[i].classList.add('hide');
       }
   }
 }
-
-
 }
+
+
 
 
 

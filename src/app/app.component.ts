@@ -7,6 +7,8 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { serviceService } from './services/service.service';
 import { reviewService } from './services/review.service';
 
+import { DataService } from './data.service';
+
 
 import * as $ from 'jquery';
 
@@ -20,6 +22,8 @@ import * as $ from 'jquery';
 })
 export class AppComponent implements OnInit {
 
+  objectKeys = Object.keys;
+  cryptos: any;
 
   formInfo: any = {username: '', password: '', email: '', cart: []};
 
@@ -34,6 +38,7 @@ constructor(
   private myService: AuthService,
   private myRouter: Router,
   private serviceservice: serviceService,
+  private _data: DataService
 ) {}
 
 
@@ -54,6 +59,12 @@ ngOnInit() {
     console.log('error while accessing unothorized stuff: ', err);
     this.myRouter.navigate(['/']);
   });
+
+  this._data.getPrices()
+      .subscribe(res => {
+        this.cryptos = res;
+      });
+
 }
 
 signup() {

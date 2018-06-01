@@ -361,7 +361,7 @@ template {
   }
 
   .white-div {
-    background: whitesmoke;
+    background: #EFEFEF;
     color: #353A3F;
   }
   
@@ -419,7 +419,7 @@ template {
   padding-top: 40px;
 }
 .section-4 {
-  padding-top: 80px;
+  padding-top: 100px;
 }
 
 .contact-us {
@@ -461,7 +461,7 @@ a:active {
   color: #1E90FF;
 }
 .google-link:hover {
-  color: #0000CD;
+  color: #4169E1;
 }
 
 .team-member {
@@ -572,3 +572,10 @@ ol.carousel-indicators li.active {
 background-position: 10px 12px; Position the search icon
 background-repeat: no-repeat; Do not repeat the icon image */
 
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}

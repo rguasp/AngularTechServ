@@ -3,20 +3,13 @@
   
   
   
-  <form class="dropdown">
+  <form id="dropDown" class="dropdown">
     <input type="text" class="my-input"  (keyup)="searchFunction($event)" id="my-input" placeholder="SEARCH FOR A SERVICE..">
     <button type="submit" class="b-color"><span class="fa fa-search btn search-b"></span></button>
 
-    <ul class="service-list" id="service-list" >
-        <li class="hide"><a href="#">Cloud Backup</a></li>
-        <li class="hide"><a href="#">PC Diagnostic</a></li>
-      
-        <li class="hide"><a href="#">PC Tune-Up</a></li>
-        <li class="hide"><a href="#">RAM Upgrade</a></li>
-      
-        <li class="hide"><a href="#">Software Installation</a></li>
-        <li class="hide"><a href="#">SSD Upgrade</a></li>
-        <li class="hide"><a href="#">Virus Removal</a></li>
+    <ul class="service-list show" id="service-list" >
+        <li *ngFor="let oneService of allTheServices.reverse()" class="hide" ><a [routerLink]="['/services', oneService._id]">{{oneService.name}}</a></li>
+        
       </ul>
   </form>
   
@@ -133,7 +126,7 @@
   <div class="flex-container section-4">
   
   <div class="google-map">
-  <!-- <agm-map 
+  <agm-map 
   [latitude]="lat"
   [longitude]="lng"
   [zoom]="zoom"
@@ -145,7 +138,7 @@
     <agm-info-window ><a class="google-link" href="https://www.google.com/maps/place/Ironhack/@25.765852,-80.19607,187m/data=!3m1!1e3!4m5!3m4!1s0x0:0xa0bda5d9915b7493!8m2!3d25.766033!4d-80.196191?hl=en-US" target="_blank">View in google maps</a></agm-info-window>
   </agm-marker>
 
-</agm-map>   -->
+</agm-map>  
 </div>
 
 <div class="contact-us">

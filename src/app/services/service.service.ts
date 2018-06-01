@@ -21,6 +21,12 @@ export class serviceService {
     return this.http.get('http://localhost:3000/services/services')
     .map((responseFromApi) => responseFromApi.json());
   }
+
+  getOneService(id) {
+    return this.http.get(`http://localhost:3000/services/services/${id}`)
+    .map((responseFromApi) => responseFromApi.json());
+  }
+
   createNewService(theWholeServiceObject) {
     return this.http.post(`http://localhost:3000/services/services/create`, theWholeServiceObject)
     .map((responseFromApi) => responseFromApi.json());

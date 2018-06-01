@@ -3,7 +3,6 @@ import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
-//front end promise addition
 import 'rxjs/add/operator/toPromise';
 import { Observable } from 'rxjs/Observable';
 
@@ -67,14 +66,14 @@ export class AuthService {
       .catch(this.handleError);
   }
 
-  addToCart(item) {
-    return this.http.get('http://localhost:3000/api/cart/:id/add', item, {withCredentials: true})
-    .map(res => {
-      this.currentUser.cart.unshift(this.item);
-      console.log("Items added to cart");
-    })
-    .catch(this.handleError);
-  }
+  // addToCart(item) {
+  //   return this.http.get('http://localhost:3000/api/cart/:id/add', item, {withCredentials: true})
+  //   .map(res => {
+  //     this.currentUser.cart.unshift(this.item);
+  //     console.log("Items added to cart");
+  //   })
+  //   .catch(this.handleError);
+  // }
 
 
   getUserCart() {
