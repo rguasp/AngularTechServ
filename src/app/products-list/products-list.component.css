@@ -395,3 +395,13 @@ li {
   border-radius: 15px;
   margin-bottom: 30px;
 }
+
+.crypt-title {
+  width: 30%;
+  margin: 0 auto 4px auto;
+  padding: 1em;
+  box-shadow: 1px 1px 0 lightgrey;
+  background:whitesmoke;
+  border-radius: 15px;
+
+}
