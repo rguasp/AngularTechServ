@@ -9,6 +9,7 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class serviceService {
   currentUser: any;
+  
 
   constructor(
     private http: Http) { }
@@ -37,8 +38,14 @@ export class serviceService {
     .map((responseFromApi) => responseFromApi.json());
   }
 
-  updateService(theID, theUpdates) {
-    return this.http.post(`http://localhost:3000/services/services/update/${theID}`, theUpdates)
+  updateService(theUpdates) {
+    console.log("update service in services.ts ===========>>> 😁😁😁😁😁😁")
+    console.log(theUpdates)
+
+    console.log("This is THE ID =====>")
+    console.log(theUpdates._id);
+    
+    return this.http.post(`http://localhost:3000/services/services/update/${theUpdates._id}`, theUpdates)
     .map((responseFromApi) => responseFromApi.json());
   }
 

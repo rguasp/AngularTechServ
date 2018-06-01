@@ -3,12 +3,12 @@
 
 <div class="flex-container">
   
-        
+<!--         
       <div  class="card" style="width:400px" >
         <div class="card-body">
         <img class="card-img-top" src="{{theService.img}}" alt="Card image" >
       <h3 class="text-center">{{theService.name}}</h3>
-      <p class="text-center">{{theService.description}}</p>
+      <p class="text-center">{{theService.description}}</p> -->
 
       <!-- <div class="flex-crypto">
       <p><b>Price</b>: ${{theService.price}}.00</p>
@@ -35,29 +35,29 @@
           <option><b>QTUM</b>: {{this.cryptoCompare.ETH * oneService.price | mathRound }}</option>
         </select>
     </div> -->
-    </div>
-    </div>
-    </div>
-    
+    <!-- </div>
+    </div> -->
+<div class="c-position">
     <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
         <div class="flipper">
           <div class="front">
-              <div  class="card" style="width:400px" >
-                  <div class="card-body">
             <!-- front content -->
             <img class="card-img-top" src="{{theService.img}}" alt="Card image" >
+            <h1 class="text-center">{{theService.name}}</h1>
           </div>
           <div class="back">
-              <div  class="card" style="width:400px" >
-                  <div class="card-body">
             <!-- back content -->
-            <h3 class="text-center">{{theService.name}}</h3>
             <p class="text-center">{{theService.description}}</p>
           </div>
         </div>
       </div>
-      </div>
     </div>
+
+    </div>
+    
+
+
+   
    
     
   </div>

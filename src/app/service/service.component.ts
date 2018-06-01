@@ -39,6 +39,8 @@ export class ServiceComponent implements OnInit {
 
   newService: any = {};
 
+  _id: string;
+
   formInfo: any = {username: '', password: '', email: '', cart: []};
 
   public itemsInCart: Array <any> = [];
@@ -117,7 +119,7 @@ export class ServiceComponent implements OnInit {
     this.serviceservice.getAllServices()
     .subscribe((serviceList) => {
       this.allTheServices = serviceList;
-      console.log(serviceList[0]);
+      // console.log(serviceList[0]);
     });
   }
 
@@ -128,12 +130,19 @@ export class ServiceComponent implements OnInit {
     });
   }
 
-  giveServiceToModal(theWholeService){
+  giveServiceToModal(theWholeService: string) {
     this.theUpdates = theWholeService;
+    console.log("==========giveServiceToModal FUNCTION HIT=========")
+    // this.updateService( this.theUpdates);
   }
-  
-  updateService(idOfService) {
-    this.serviceservice.updateService(idOfService , this.theUpdates)
+
+  updateService(idOfService: string) {
+    console.log("==========updateService FUNCTION HIT=========")
+    console.log("========this.theUpdates==============>>>>>>");
+    console.log(this.theUpdates);
+    // console.log("==========idOfService============>>>>>");
+    // console.log(idOfService);
+    this.serviceservice.updateService(this.theUpdates)
     .subscribe(() => {
       this.getAllTheServices();
     });

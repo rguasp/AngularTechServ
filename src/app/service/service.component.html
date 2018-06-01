@@ -130,8 +130,8 @@
               <div class="card-body text-center">
                   <img class="card-img-top" src="{{oneService.img}}" alt="Card image" >
            <a [routerLink]="['/services', oneService._id]" ><h3>{{oneService.name}}</h3></a>
-            <p>{{oneService.description}}</p>
-
+            <!-- <p>{{oneService.description}}</p> -->
+<br>
             <div class="flex-crypto">
             <p><b>Price</b>: ${{oneService.price}}.00</p>
             <select onmousedown="if(this.options.length>8){this.size=3;}" onchange="this.size=0;" onblur="this.size=0;">
@@ -166,25 +166,6 @@
               <button type="button" (click)="deleteService(oneService._id)" class="btn btn-danger">Delete</button>
             </div>
             
-            
-            <!-- <br>
-              <form *ngIf="isFormShowing2">
-                <div class="text-center card-footer">
-                  <br>
-                <h2>Edit this Service</h2>
-                   <label>Name : </label>
-        
-                  <input [(ngModel)]="theUpdates.name" type="text" name="name">
-                  <br>
-                  <label>Desc : </label>
-                   <input [(ngModel)]="theUpdates.description" type="text" name="description">
-                   <br>
-                   <label>Price : </label>
-                   <input [(ngModel)]="theUpdates.price" type="number" name="price">
-                   <br>
-                <button type="button" (click)="updateService(oneService._id)" class="btn btn-success">Submit</button>
-              </div>
-              </form> -->
             </div> 
           </div>
         </div>
@@ -231,7 +212,7 @@
                  New service price is required
                  </div>
                    <br>
-                <button type="button" (click)="updateService(oneService._id)" class="btn btn-success" data-dismiss="modal" [disabled]="!serviceEditForm.form.valid">Submit</button>
+                <button type="button" (click)="updateService(oneService)" class="btn btn-success" data-dismiss="modal" [disabled]="!serviceEditForm.form.valid">Submit</button>
               </div>
               </form>
             
